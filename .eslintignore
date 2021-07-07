@@ -1,0 +1,4 @@
+node_modules
+.next
+tailwind.config.js
+next.config.js

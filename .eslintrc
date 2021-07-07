@@ -1,0 +1,21 @@
+{
+  "plugins": ["simple-import-sort"],
+  "extends": ["next"],
+  "rules": {
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [["^react$", "^next", "^@?\\w"], ["^src"], ["^"], ["^\\."], ["^\\u0000"]]
+      }
+    ],
+    "simple-import-sort/exports": "error",
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "ignoreCase": true,
+        "callbacksLast": true,
+        "shorthandLast": true
+      }
+    ]
+  }
+}
