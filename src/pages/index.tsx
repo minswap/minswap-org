@@ -3,12 +3,14 @@ import * as React from 'react';
 import {
   AFamiliarExperience,
   Announcement,
+  DeepDive,
   Footer,
   Header,
   Introduction,
   JoinTheCommunity,
   SeparatorLine,
   TokenDistribution,
+  WeeklyGithubAnalytics,
 } from 'src/components';
 
 export default function HomePage(): React.ReactElement {
@@ -20,6 +22,16 @@ export default function HomePage(): React.ReactElement {
 
       <main>
         <Introduction />
+
+        <div className="h-20"></div>
+
+        <DeepDive />
+
+        <div className="h-20"></div>
+
+        <WeeklyGithubAnalytics />
+
+        <div className="h-20"></div>
 
         <TokenDistribution />
 

@@ -16,19 +16,45 @@ const items = [
 
 export function TokenDistribution() {
   return (
-    <div className="flex flex-col items-center pt-24">
-      <SectionTitle>Token Distribution</SectionTitle>
+    <div className="flex flex-col items-center">
+      <SectionTitle subTitle="Our data">Token Distribution</SectionTitle>
 
       <div className="h-48"></div>
 
       <SeparatorLine />
 
-      <div className="flex flex-col items-center justify-center w-full pt-20 bg-trueGray-50">
-        <div className="flex items-center justify-center rounded-full w-60 h-60 bg-primaryMain">
-          <div className="relative flex items-center justify-center w-32 h-32 rounded-full bg-primaryMain">
-            <Image alt="Logo" src={tokenDistributionLogo} />
+      <div className="relative flex flex-col items-center justify-center w-full pt-20 bg-trueGray-50">
+        <div className="absolute top-0 z-10 flex items-center justify-center transform -translate-y-1/2 rounded-full shadow-2xl w-60 h-60 bg-primaryMain">
+          <div className="w-44 h-44">
+            <svg className="w-full h-full">
+              <circle
+                className="w-full h-full"
+                cx="80"
+                cy="80"
+                fill="none"
+                r="80"
+                stroke="#1B2771"
+                strokeLinecap="round"
+                strokeWidth="15"
+                style={{ transform: 'translate(8px, 8px)' }}
+              ></circle>
+              <circle
+                cx="80"
+                cy="80"
+                fill="none"
+                r="80"
+                stroke="#fff"
+                strokeDasharray="500"
+                strokeDashoffset="50"
+                strokeLinecap="round"
+                strokeWidth="16"
+                style={{ transform: 'translate(8px, 8px)' }}
+              ></circle>
+            </svg>
+          </div>
 
-            <div className="absolute"></div>
+          <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+            <Image alt="Logo" src={tokenDistributionLogo} />
           </div>
         </div>
 

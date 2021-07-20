@@ -17,6 +17,9 @@ module.exports = {
       zIndex: {
         '-1': '-1',
       },
+      fill: {
+        none: 'none',
+      },
     },
     fontFamily: {
       sans: ['Inter', 'system-ui'],
