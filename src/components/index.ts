@@ -7,6 +7,7 @@ export * from './Header';
 export * from './icons';
 export * from './Introduction';
 export * from './JoinTheCommunity';
+export * from './RoadMap';
 export * from './SectionTitle';
 export * from './SeparatorLine';
 export * from './TokenDistribution';

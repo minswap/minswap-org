@@ -8,6 +8,7 @@ import {
   Header,
   Introduction,
   JoinTheCommunity,
+  RoadMap,
   SeparatorLine,
   TokenDistribution,
   WeeklyGithubAnalytics,
@@ -22,6 +23,10 @@ export default function HomePage(): React.ReactElement {
 
       <main>
         <Introduction />
+
+        <div className="h-20"></div>
+
+        <RoadMap />
 
         <div className="h-20"></div>
 
