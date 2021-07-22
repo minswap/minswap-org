@@ -13,6 +13,7 @@ import {
   TokenDistribution,
   WeeklyGithubAnalytics,
 } from 'src/components';
+import { MinArt } from 'src/components/MinArt';
 
 export default function HomePage(): React.ReactElement {
   return (
@@ -43,6 +44,12 @@ export default function HomePage(): React.ReactElement {
         <AFamiliarExperience />
 
         <SeparatorLine />
+
+        <div className="h-20"></div>
+
+        <MinArt />
+
+        <div className="h-20"></div>
 
         <JoinTheCommunity />
       </main>
