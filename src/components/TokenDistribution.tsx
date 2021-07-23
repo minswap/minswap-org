@@ -2,7 +2,7 @@ import * as React from 'react';
 import Image from 'next/image';
 
 import tokenDistributionBg from 'src/assets/token-distribution-bg.png';
-import tokenDistributionLogo from 'src/assets/token-distribution-logo.png';
+import tokenDistributionLogo from 'src/assets/token-distribution-logo.svg';
 
 import { SectionTitle } from './SectionTitle';
 import { SeparatorLine } from './SeparatorLine';
@@ -54,7 +54,7 @@ export function TokenDistribution() {
           </div>
 
           <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-            <Image alt="Logo" src={tokenDistributionLogo} />
+            <Image alt="Logo" src={tokenDistributionLogo} width={75} />
           </div>
         </div>
 
