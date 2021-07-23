@@ -23,7 +23,7 @@ export function Header() {
 
         <div className="flex items-center text-sm text-gray-500 gap-x-5">
           <Link href="#">
-            <a>Road Map</a>
+            <a>Roadmap</a>
           </Link>
 
           <Link href="#">
@@ -31,21 +31,25 @@ export function Header() {
           </Link>
 
           <Link href="#">
-            <a>Token</a>
+            <a>Tokenomics</a>
           </Link>
 
           <Link href="#">
             <a>Team</a>
           </Link>
 
-          <Link href="#">
+          <Link href="https://docs.minswap.org/faq">
             <a>FAQ</a>
           </Link>
         </div>
 
         <div className="flex gap-x-2">
+          {/* <a href="https://docs.minswap.org/"> */}
           <Button>Documentation</Button>
+          {/* </a> */}
+          {/* <a href="https://app.minswap.org/"> */}
           <Button color="primary">App</Button>
+          {/* </a> */}
         </div>
       </header>
       <style jsx>{`

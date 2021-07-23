@@ -20,53 +20,45 @@ export function DeepDive() {
       <div className="h-16"></div>
 
       <div className="grid grid-cols-2 gap-x-7 gap-y-10">
-        <Item
-          description="No pre-mine, no pre-sale. MIN tokens are distributed fairly with only 10% allocated to development funds."
-          image={fairLaunchImage}
-          title="Fair Launch"
-        />
+        <Item image={fairLaunchImage} title="Fair Launch">
+          No pre-mine, no pre-sale, no VC. The only way to get MIN tokens is by participating in the protocol or
+          airdrop.
+        </Item>
 
-        <Item
-          description="MIN tokens are rewarded to liquidity providers who stake their liquidity pool tokens."
-          image={yieldFarmingImage}
-          title="Yield Farming"
-        />
+        <Item image={yieldFarmingImage} title="Yield Farming">
+          MIN tokens are rewarded to liquidity providers who stake their liquidity pool tokens.
+        </Item>
 
-        <Item
-          description="If it is your key, it is your money. Participating in the market without ever leaving your wallet."
-          image={transparentImage}
-          title="Transparent"
-        />
+        <Item image={transparentImage} title="Transparent">
+          If it is your key, it is your money. Participating in the market without ever leaving your wallet.
+        </Item>
 
-        <Item
-          description="Supporting new projects in Cardano ecosystem with Initial DEX Offering (IDO) and Initial Farm Offering (IFO)."
-          image={launchpoolImage}
-          title="Launchpool"
-        />
+        <Item image={launchpoolImage} title="Launchpool">
+          Supporting new projects in Cardano ecosystem with Initial DEX Offering (IDO) and Initial Farm Offering (IFO).
+        </Item>
 
-        <Item
-          description="Anybody can list tokens without permission. Anybody can trade tokens without KYC."
-          image={permissionlessImage}
-          title="Permissionless"
-        />
+        <Item image={permissionlessImage} title="Permissionless">
+          Anybody can list tokens without permission. Anybody can trade tokens without KYC.
+        </Item>
 
-        <Item
-          description="All trading fees go directly to liquidity providers. MIN token holder vote democratically on protocol changes."
-          image={communityFirstImage}
-          title="Community First"
-        />
+        <Item image={communityFirstImage} title="Community First">
+          All trading fees go directly to liquidity providers. MIN token holder vote democratically on protocol changes.
+        </Item>
 
-        <Item
-          description="With ERC-20 Converter, users can trade Ethereum tokens at much lower fees."
-          image={ethereumCompatibleImage}
-          title="Ethereum Compatible"
-        />
+        <Item image={ethereumCompatibleImage} title="Ethereum Compatible">
+          With ERC-20 Converter, users can trade Ethereum tokens at much lower fees.
+        </Item>
 
-        <Item
-          description="Minswap supports the SPOs by a community-oriented ADA delegation policy and automatic native token fees conversion."
-          image={stakePoolImage}
-          title="Stake Pool Operators Support"
-        />
+        <Item image={stakePoolImage} title="Stake Pool Operators Support">
+          Minswap supports the SPOs by a community-oriented ADA delegation policy and{' '}
+          <a
+            className="text-primaryMain hover:underline"
+            href="https://medium.com/minswap/fair-iso-application-for-stake-pool-operators-begins-now-e6d563f85eec"
+          >
+            Fair Initial Stake Offering
+          </a>
+          .
+        </Item>
       </div>
     </div>
   );
@@ -75,15 +67,15 @@ export function DeepDive() {
 type ItemProps = {
   image: StaticImageData;
   title: string;
-  description: string;
+  children: React.ReactNode;
 };
 
-function Item({ description, title, image }: ItemProps) {
+function Item({ children, title, image }: ItemProps) {
   return (
     <div className="flex flex-col items-start gap-y-5 w-[500px]">
       <Image alt={title} height="140" src={image} width="140" />
       <div className="text-3xl font-bold">{title}</div>
-      <div className="text-xl text-trueGray-500">{description}</div>
+      <div className="text-xl text-trueGray-500">{children}</div>
     </div>
   );
 }

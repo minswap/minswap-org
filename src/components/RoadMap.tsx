@@ -10,7 +10,12 @@ type Milestone = {
 };
 
 const milestones: Milestone[] = [
-  { items: ['Fundraising', 'Constant-Product Pool', 'Testnet'], time: 'Q2 2021', hasReached: true },
+  { items: ['Fundraising', 'Constant-Product Pool'], time: 'Q2 2021', hasReached: true },
+  {
+    items: ['Testnet', 'Fair Initial Stake Offering (FISO)'],
+    time: 'Q3 2021',
+    hasReached: true,
+  },
   {
     items: [
       'Mainnet',
@@ -19,13 +24,17 @@ const milestones: Milestone[] = [
       'Initial DEX Offering (IDO)',
       'Initial Farm Offering (IFO)',
     ],
-    time: 'Q3 2021',
+    time: 'Q4 2021',
     hasReached: false,
   },
-  { items: ['Stable Pool'], time: 'Q4 2021', hasReached: false },
+  {
+    items: ['Stable Pool'],
+    time: 'Q1 2022',
+    hasReached: false,
+  },
   {
     items: ['Decentralized Autonomous Organization (DAO)', 'Community Governance'],
-    time: 'Q1 2022',
+    time: 'Q2 2022',
     hasReached: false,
   },
 ];

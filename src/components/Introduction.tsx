@@ -18,16 +18,20 @@ export function Introduction() {
         <div className="h-7"></div>
 
         <p className="text-center text-gray-500 break-words whitespace-pre-line">
-          {`Minswap is a Multi-pool decentralized exchange on Cardano.\nSwap tokens with minimal cost, minimal time and maximal convenience.`}
+          {`Minswap is a multi-pool decentralized exchange on Cardano.\nSwap tokens with minimal cost, minimal time and maximal convenience.`}
         </p>
 
         <div className="h-5"></div>
 
         <div className="flex gap-x-4">
+          {/* <a href="https://docs.minswap.org/whitepaper"> */}
           <Button size="lg">Read Whitepaper</Button>
+          {/* </a> */}
+          {/* <a href="https://app.minswap.org"> */}
           <Button color="primary" size="lg">
             View the app <ArrowRightIcon />
           </Button>
+          {/* </a> */}
         </div>
 
         <div className="absolute inset-0 -z-1">

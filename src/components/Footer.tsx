@@ -4,37 +4,25 @@ import Link from 'next/link';
 const resourcesLinksProps: LinksColumnProps = {
   title: 'Resources',
   links: [
-    { text: 'Whitepaper', href: '#' },
-    { text: 'FAQs', href: '#' },
-    { text: 'Privacy Policy', href: '#' },
-    { text: 'Brand Assets', href: '#' },
-    { text: 'Feeds', href: '#' },
-    { text: 'Service Status', href: '#' },
+    { text: 'Whitepaper', href: 'https://docs.minswap.org/whitepaper' },
+    { text: 'FAQ', href: 'https://docs.minswap.org/faq' },
+    { text: 'Brand Assets', href: '/minswap-branding.zip' },
   ],
 };
 
 const productsLinksProps: LinksColumnProps = {
   title: 'Products',
-  links: [
-    { text: 'Farming', href: '#' },
-    { text: 'Liquidity', href: '#' },
-    { text: 'Migrate', href: '#' },
-    { text: 'Ecosystem', href: '#' },
-    { text: 'Governance', href: '#' },
-  ],
+  links: [{ text: 'Governance', href: 'https://docs.minswap.org/proposals/governance' }],
 };
 
 const documentationLinksProps: LinksColumnProps = {
   title: 'Documentation',
-  links: [
-    { text: 'Developer Guides', href: '#' },
-    { text: 'Foundation', href: '#' },
-  ],
+  links: [{ text: 'Oracle', href: 'https://docs.minswap.org/oracle' }],
 };
 
 const foundationLinksProps: LinksColumnProps = {
-  title: 'Foundation',
-  links: [{ text: 'Contact', href: '#' }],
+  title: 'Partnership',
+  links: [{ text: 'Contact', href: 'contact@minswap.org' }],
 };
 
 export function Footer() {
@@ -55,7 +43,7 @@ export function Footer() {
 
         <div className="flex flex-col text-sm gap-y-2">
           <div className="font-bold">Minswap</div>
-          <div className="text-trueGray-500">Copyright © 2021 Minswap. All rights reserved.</div>
+          <div className="text-trueGray-500">Copyright © 2021 Minswap Labs. All rights reserved.</div>
         </div>
       </div>
     </footer>

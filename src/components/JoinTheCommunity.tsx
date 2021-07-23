@@ -17,33 +17,33 @@ export function JoinTheCommunity() {
       <div className="h-6"></div>
 
       <p className="text-center break-words whitespace-pre-line text-trueGray-500">
-        {`Learn more about Minswap, chat with the team, others in the community,\nand have your say in shaping the future of decentralized finance.`}
+        {`Learn more about Minswap, chat with the team and the community,\n have your say in shaping the future of decentralized finance.`}
       </p>
 
       <div className="h-16"></div>
 
       <div className="flex gap-x-16">
-        <a className="flex flex-col items-center gap-y-4" href="#">
+        <a className="flex flex-col items-center gap-y-4" href="https://twitter.com/minswapdex">
           <Image alt="Twitter" src={twitterImage} />
           <span className="text-xl font-bold">Twitter</span>
         </a>
 
-        <a className="flex flex-col items-center gap-y-4" href="#">
+        <a className="flex flex-col items-center gap-y-4" href="https://www.reddit.com/r/MinSwap/">
           <Image alt="Reddit" src={redditImage} />
           <span className="text-xl font-bold">Reddit</span>
         </a>
 
-        <a className="flex flex-col items-center gap-y-4" href="#">
+        <a className="flex flex-col items-center gap-y-4" href="https://github.com/minswap">
           <Image alt="Github" src={githubImage} />
-          <span className="text-xl font-bold">Github</span>
+          <span className="text-xl font-bold">GitHub</span>
         </a>
 
-        <a className="flex flex-col items-center gap-y-4" href="#">
+        <a className="flex flex-col items-center gap-y-4" href="https://discord.gg/amg2AFrPMJ">
           <Image alt="Discord" src={discordImage} />
           <span className="text-xl font-bold">Discord</span>
         </a>
 
-        <a className="flex flex-col items-center gap-y-4" href="#">
+        <a className="flex flex-col items-center gap-y-4" href="https://medium.com/minswap">
           <Image alt="Medium" src={mediumImage} />
           <span className="text-xl font-bold">Medium</span>
         </a>

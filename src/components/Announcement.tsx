@@ -4,11 +4,10 @@ import { ArrowRightIcon, CloseIcon } from './icons';
 
 type Props = {
   href: string;
-  linkText: string;
-  message: string;
+  children: React.ReactNode;
 };
 
-export function Announcement({ href, linkText, message }: Props) {
+export function Announcement({ href, children }: Props) {
   return (
     <>
       <div className="grid py-2 text-sm leading-none text-white px-7 bg-primaryMain announcement">
@@ -16,11 +15,7 @@ export function Announcement({ href, linkText, message }: Props) {
 
         <div className="flex items-center justify-center">
           <a className="flex items-center" href={href} rel="noopener noreferrer" target="_blank">
-            <span>{message}</span>
-            <div className="w-4"></div>
-            <span>|</span>
-            <div className="w-4"></div>
-            <span>{linkText}</span>
+            <span>{children}</span>
             <div className="w-1"></div>
             <ArrowRightIcon />
           </a>

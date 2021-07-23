@@ -14,9 +14,9 @@ type MinArt = {
 };
 
 const mainArt: MinArt = {
-  title: 'Unbank the world NFT',
+  title: 'Unbank The World NFT',
   content:
-    'Unbank the World is our NFT giveaway campaign to promote Minswap. Followers of our social media pages stand a chance to win one out of 10 copies of exclusive NFT artworks featuring Catdano in his many adventures throughout the world.',
+    'Unbank The World is our NFT giveaway campaign to promote Minswap to communities from all over the world. Followers of our social media pages stand a chance to win one out of 10 copies of exclusive NFT artworks featuring Catdano in their many adventures throughout the world!',
   image: minswapNFTJapan,
 };
 
@@ -36,10 +36,13 @@ export function MinArt() {
           <div className="flex-1" />
 
           <div className="flex gap-x-4">
+            {/* <a href="https://twitter.com/MinswapDEX/status/1398683903255326726"> */}
             <Button color="primary" size="lg">
               Learn more <ArrowRightIcon />
             </Button>
-            <Button size="lg">Previous drops</Button>
+            {/* </a> */}
+            {/* LONG: I don't know what to link to, so I hide it. */}
+            {/* <Button size="lg">Previous drops</Button> */}
           </div>
         </div>
       </div>

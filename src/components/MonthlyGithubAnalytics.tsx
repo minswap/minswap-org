@@ -14,7 +14,7 @@ type Props = {
 export function MonthlyGithubAnalytics({ totalCodeAddition, totalCodeDeletion, totalCommits, totalMergedPRs }: Props) {
   return (
     <div className="flex flex-col items-center">
-      <SectionTitle subTitle="Some Facts">Monthly Github Analytics</SectionTitle>
+      <SectionTitle subTitle="Some Facts">Monthly GitHub Analytics</SectionTitle>
 
       <div className="h-14"></div>
 
@@ -34,7 +34,7 @@ export function MonthlyGithubAnalytics({ totalCodeAddition, totalCodeDeletion, t
             target="_blank"
           >
             <GithubIcon />
-            View project on Github
+            View project on GitHub
           </Button>
         </div>
       </div>
@@ -50,7 +50,7 @@ type ItemProps = {
 function Item({ staticNumber, label }: ItemProps) {
   return (
     <div className="flex flex-col gap-y-2">
-      <div className="text-6xl font-bold">{staticNumber}</div>
+      <div className="text-6xl font-bold">{staticNumber.toLocaleString('en-US')}</div>
       <div className="text-2xl text-trueGray-500">{label}</div>
     </div>
   );

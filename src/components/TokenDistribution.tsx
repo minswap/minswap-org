@@ -8,10 +8,10 @@ import { SectionTitle } from './SectionTitle';
 import { SeparatorLine } from './SeparatorLine';
 
 const items = [
-  'MIN token can be used to stake to earn profits from trading fees (kinda like dividends)',
-  'Burning (deflationary) mechanism in the future by IFO, lottery,... to increase token price',
-  'Huge APY on mainnet launch',
-  "We're fair launch project with no presale, no VC, and 90% allocated to the community",
+  'MIN tokens can be staked to earn profit-sharing from trading fees.',
+  'Burning and deflationary mechanism by economic activities such as IFO, lottery.',
+  'Huge APY on mainnet launch to reward early community and adopters.',
+  'Fair launch token with no pre-mine, no private sale, no VC.',
 ];
 
 export function TokenDistribution() {
@@ -92,7 +92,7 @@ function Item({ children, index }: ItemProps) {
   return (
     <div className="flex items-center gap-x-5">
       <div className="flex items-center justify-center w-12 h-12 text-2xl font-bold leading-none text-white rounded-full select-none bg-primaryMain">
-        {index}
+        {index + 1}
       </div>
       <div className="text-trueGray-500 w-96">{children}</div>
     </div>

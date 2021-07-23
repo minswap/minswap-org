@@ -21,7 +21,9 @@ type Props = React.ComponentPropsWithoutRef<typeof MonthlyGithubAnalytics>;
 export default function HomePage(props: Props): React.ReactElement {
   return (
     <>
-      <Announcement href="#" linkText="Go to Ideascale" message="Support Minswap on Catalyst Fund 5" />
+      <Announcement href="https://twitter.com/MinswapDEX/status/1418221475681558529">
+        Vote for Minswap on Catalyst Fund 5
+      </Announcement>
 
       <Header />
 
