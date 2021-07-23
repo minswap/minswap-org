@@ -17,18 +17,12 @@ const milestones: Milestone[] = [
     hasReached: true,
   },
   {
-    items: [
-      'Mainnet',
-      'Security Audit',
-      'Liquidity Mining',
-      'Initial DEX Offering (IDO)',
-      'Initial Farm Offering (IFO)',
-    ],
+    items: ['Mainnet', 'Security Audit', 'Liquidity Mining', 'Initial DEX Offering (IDO)'],
     time: 'Q4 2021',
     hasReached: false,
   },
   {
-    items: ['Stable Pool'],
+    items: ['Stable Pool', 'Initial Farm Offering (IFO)'],
     time: 'Q1 2022',
     hasReached: false,
   },
