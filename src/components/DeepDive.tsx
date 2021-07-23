@@ -6,7 +6,7 @@ import ethereumCompatibleImage from 'src/assets/ethereum-compatible.svg';
 import fairLaunchImage from 'src/assets/fair-launch.svg';
 import launchpoolImage from 'src/assets/launchpool.svg';
 import permissionlessImage from 'src/assets/permissionless.svg';
-import stakePoolImage from 'src/assets/stakePool.svg';
+import stakePoolImage from 'src/assets/stake-pool.svg';
 import transparentImage from 'src/assets/transparent.svg';
 import yieldFarmingImage from 'src/assets/yield-farming.svg';
 
