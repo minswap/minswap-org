@@ -7,7 +7,8 @@ export default class MinswapInterfaceDocument extends Document {
       <Html lang="en">
         <Head>
           <link href="https://fonts.googleapis.com" rel="preconnect" />
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;500&display=swap" rel="stylesheet" />
+          <link crossOrigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
         </Head>
 
         <body>

@@ -1,18 +1,26 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { ExtendableComponentProps } from './extendableComponentProps';
+import { OverrideableComponentProps } from './extendableComponentProps';
 
 type BaseProps = {
   color?: 'default' | 'primary';
   size?: 'md' | 'lg';
 };
 
-type Props = ExtendableComponentProps<'button', BaseProps>;
+type Props<C extends React.ElementType> = OverrideableComponentProps<C, BaseProps>;
 
-export function Button({ children, className, color = 'default', size = 'md' }: Props) {
+export function Button<C extends React.ElementType = 'button'>({
+  children,
+  className,
+  component,
+  color = 'default',
+  size = 'md',
+  ...rest
+}: Props<C>) {
+  const Component = component ?? 'button';
   return (
-    <button
+    <Component
       className={classNames(
         'leading-none rounded whitespace-nowrap flex-nowrap flex items-center justify-center select-none',
         {
@@ -25,8 +33,9 @@ export function Button({ children, className, color = 'default', size = 'md' }: 
         }[color],
         className,
       )}
+      {...rest}
     >
       {children}
-    </button>
+    </Component>
   );
 }

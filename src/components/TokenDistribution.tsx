@@ -59,18 +59,6 @@ export function TokenDistribution() {
         </div>
 
         <div className="relative pr-24 bg-white shadow-2xl p-14 rounded-3xl">
-          <div className="flex justify-center w-full font-medium uppercase gap-x-5 text-trueGray-500">
-            <div>
-              <span className="text-trueGray-700">90%</span> community
-            </div>
-
-            <div>
-              <span className="text-trueGray-700">10%</span> developer fund
-            </div>
-          </div>
-
-          <div className="h-12"></div>
-
           <div className="grid grid-cols-2 gap-y-7 gap-x-7">
             {items.map((item, index) => (
               <Item index={index} key={item}>

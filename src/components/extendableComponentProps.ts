@@ -5,3 +5,7 @@ export type ExtendableComponentProps<C extends React.ElementType, P = {}> = Omit
   keyof P
 > &
   P;
+
+export type OverrideableComponentProps<C extends React.ElementType, P = {}> = ExtendableComponentProps<C, P> & {
+  component?: C;
+};
