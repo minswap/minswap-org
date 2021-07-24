@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Image from 'next/image';
 
-import minswapNFTJapan from 'src/assets/minswap-nft-japan.png';
+import minswapNFTJapan from 'src/assets/minswap-nft-japan.jpg';
 
 import { Button } from './Button';
 import { ArrowRightIcon } from './icons';
