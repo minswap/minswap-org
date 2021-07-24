@@ -22,7 +22,7 @@ const documentationLinksProps: LinksColumnProps = {
 
 const foundationLinksProps: LinksColumnProps = {
   title: 'Partnership',
-  links: [{ text: 'Contact', href: 'contact@minswap.org' }],
+  links: [{ text: 'Contact', href: 'mailto:contact@minswap.org' }],
 };
 
 export function Footer() {
