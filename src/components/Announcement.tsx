@@ -21,12 +21,6 @@ export function Announcement({ href, children }: Props) {
           </a>
         </div>
 
-        <div className="flex justify-end">
-          <button>
-            <CloseIcon className="w-6 h-6" />
-          </button>
-        </div>
-
         <style jsx>{`
           .announcement {
             grid-template-columns: 24px 1fr 24px;
