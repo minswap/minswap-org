@@ -14,9 +14,13 @@ const items = [
   'Fair launch token with no pre-mine, no private sale, no VC.',
 ];
 
-export function TokenDistribution() {
+type Props = {
+  id: string;
+};
+
+export function TokenDistribution({ id }: Props) {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center" id={id}>
       <SectionTitle subTitle="Our data">Token Distribution</SectionTitle>
 
       <div className="h-48"></div>

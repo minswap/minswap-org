@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Image from 'next/image';
-import classNames from 'classnames';
 
 import introductionImage from 'src/assets/introduction-bg.png';
 
@@ -24,14 +23,16 @@ export function Introduction() {
         <div className="h-5"></div>
 
         <div className="flex gap-x-4">
-          {/* <a href="https://docs.minswap.org/whitepaper"> */}
-          <Button size="lg">Read Whitepaper</Button>
-          {/* </a> */}
-          {/* <a href="https://app.minswap.org"> */}
-          <Button color="primary" size="lg">
-            View the app <ArrowRightIcon />
-          </Button>
-          {/* </a> */}
+          <a href="https://docs.minswap.org/whitepaper" rel="noreferrer" target="_blank">
+            <Button className="h-full" size="lg">
+              Read Whitepaper
+            </Button>
+          </a>
+          <a href="https://app.minswap.org" rel="noreferrer" target="_blank">
+            <Button className="h-full" color="primary" size="lg">
+              View the app <ArrowRightIcon />
+            </Button>
+          </a>
         </div>
 
         <div className="absolute inset-0 -z-1">

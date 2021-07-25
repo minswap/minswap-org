@@ -1,12 +1,10 @@
 import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import classNames from 'classnames';
 
 import logoSmall from 'src/assets/logo-small.svg';
 
 import { Button } from './Button';
-import classes from './Header.module.scss';
 
 export function Header() {
   return (
@@ -22,15 +20,15 @@ export function Header() {
         </Link>
 
         <div className="flex items-center text-sm text-gray-500 gap-x-5">
-          <Link href="#">
+          <Link href="#roadmap">
             <a>Roadmap</a>
           </Link>
 
-          <Link href="#">
+          <Link href="#features">
             <a>Features</a>
           </Link>
 
-          <Link href="#">
+          <Link href="#tokenomics">
             <a>Tokenomics</a>
           </Link>
 
@@ -44,12 +42,14 @@ export function Header() {
         </div>
 
         <div className="flex gap-x-2">
-          {/* <a href="https://docs.minswap.org/"> */}
-          <Button>Documentation</Button>
-          {/* </a> */}
-          {/* <a href="https://app.minswap.org/"> */}
-          <Button color="primary">App</Button>
-          {/* </a> */}
+          <a href="https://docs.minswap.org/" rel="noreferrer" target="_blank">
+            <Button className="h-full">Documentation</Button>
+          </a>
+          <a href="https://app.minswap.org/" rel="noreferrer" target="_blank">
+            <Button className="h-full" color="primary">
+              App
+            </Button>
+          </a>
         </div>
       </header>
       <style jsx>{`

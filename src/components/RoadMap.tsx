@@ -33,9 +33,13 @@ const milestones: Milestone[] = [
   },
 ];
 
-export function RoadMap() {
+type Props = {
+  id: string;
+};
+
+export function RoadMap({ id }: Props) {
   return (
-    <div>
+    <div id={id}>
       <SectionTitle subTitle="Explore the Minswap way">The Roadmap</SectionTitle>
 
       <div className="h-5"></div>

@@ -36,11 +36,11 @@ export function MinArt() {
           <div className="flex-1" />
 
           <div className="flex gap-x-4">
-            {/* <a href="https://twitter.com/MinswapDEX/status/1398683903255326726"> */}
-            <Button color="primary" size="lg">
-              Learn more <ArrowRightIcon />
-            </Button>
-            {/* </a> */}
+            <a href="https://twitter.com/MinswapDEX/status/1398683903255326726" rel="noreferrer" target="_blank">
+              <Button color="primary" size="lg">
+                Learn more <ArrowRightIcon />
+              </Button>
+            </a>
             {/* LONG: I don't know what to link to, so I hide it. */}
             {/* <Button size="lg">Previous drops</Button> */}
           </div>

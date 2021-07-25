@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import 'tailwindcss/tailwind.css';
+import 'swiper/swiper.scss';
 
 function MinswapInterfaceApp({ Component, pageProps }: AppProps): React.ReactElement<AppProps> {
   return (

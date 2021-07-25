@@ -16,6 +16,7 @@ import {
   SeparatorLine,
   TokenDistribution,
 } from 'src/components';
+import { DiscordCommunity } from 'src/components/DiscordCommunity';
 import { MinArt } from 'src/components/MinArt';
 
 type Props = {
@@ -24,9 +25,6 @@ type Props = {
 };
 
 export default function HomePage(props: Props): React.ReactElement {
-  // TODO (HIEU): Add top Discord users
-  console.log(props);
-
   return (
     <>
       <Announcement href="https://twitter.com/MinswapDEX/status/1418221475681558529">
@@ -38,33 +36,37 @@ export default function HomePage(props: Props): React.ReactElement {
       <main>
         <Introduction />
 
-        <div className="h-20"></div>
+        <div className="h-20" />
 
-        <RoadMap />
+        <RoadMap id="roadmap" />
 
-        <div className="h-20"></div>
+        <div className="h-20" />
 
-        <DeepDive />
+        <DeepDive id="features" />
 
-        <div className="h-20"></div>
+        <div className="h-20" />
 
         <MonthlyGithubAnalytics {...props.githubStats} />
 
-        <div className="h-20"></div>
+        <div className="h-20" />
 
-        <TokenDistribution />
+        <TokenDistribution id="tokenomics" />
 
         <AFamiliarExperience />
 
         <SeparatorLine />
 
-        <div className="h-20"></div>
+        <div className="h-20" />
 
         <MinArt />
 
-        <div className="h-20"></div>
+        <div className="h-20" />
 
         <JoinTheCommunity />
+
+        <DiscordCommunity users={props.discordUsers} />
+
+        <div className="h-20" />
       </main>
 
       <SeparatorLine />

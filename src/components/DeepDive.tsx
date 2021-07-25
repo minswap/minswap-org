@@ -12,9 +12,13 @@ import yieldFarmingImage from 'src/assets/yield-farming.svg';
 
 import { SectionTitle } from './SectionTitle';
 
-export function DeepDive() {
+type Props = {
+  id: string;
+};
+
+export function DeepDive({ id }: Props) {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center" id={id}>
       <SectionTitle subTitle="Some Facts">Deep Dive</SectionTitle>
 
       <div className="h-16"></div>

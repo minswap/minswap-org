@@ -16,6 +16,7 @@ const config = {
     optimizeCss: true,
   },
   images: {
+    domains: ['cdn.discordapp.com'],
     deviceSizes: [640, 768, 1024, 1280, 1536],
   },
 };
