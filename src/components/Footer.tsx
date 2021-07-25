@@ -43,7 +43,7 @@ export function Footer() {
 
         <div className="flex flex-col text-sm gap-y-2">
           <div className="font-bold">Minswap</div>
-          <div className="text-trueGray-500">Copyright © 2021 Minswap Labs. All rights reserved.</div>
+          <div className="text-trueGray-500">© 2021 Minswap Labs. All rights reserved.</div>
         </div>
       </div>
     </footer>
@@ -65,7 +65,7 @@ function LinksColumn({ links, title }: LinksColumnProps) {
       <div className="flex flex-col gap-y-2">
         {links.map((link) => (
           <Link href={link.href} key={link.text}>
-            <a className="text-trueGray-500">{link.text}</a>
+            <a className="text-trueGray-500 hover:text-black">{link.text}</a>
           </Link>
         ))}
       </div>

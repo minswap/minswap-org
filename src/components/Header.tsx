@@ -21,23 +21,23 @@ export function Header() {
 
         <div className="flex items-center text-sm text-gray-500 gap-x-5">
           <Link href="#roadmap">
-            <a>Roadmap</a>
+            <a className="hover:text-black">Roadmap</a>
           </Link>
 
           <Link href="#features">
-            <a>Features</a>
+            <a className="hover:text-black">Features</a>
           </Link>
 
           <Link href="#tokenomics">
-            <a>Tokenomics</a>
+            <a className="hover:text-black">Tokenomics</a>
           </Link>
 
           <Link href="#">
-            <a>Team</a>
+            <a className="hover:text-black">Team</a>
           </Link>
 
           <Link href="https://docs.minswap.org/faq">
-            <a>FAQ</a>
+            <a className="hover:text-black">FAQ</a>
           </Link>
         </div>
 

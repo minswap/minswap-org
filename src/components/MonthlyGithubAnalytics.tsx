@@ -26,7 +26,7 @@ export function MonthlyGithubAnalytics({ totalCodeAddition, totalCodeDeletion, t
 
         <div className="flex col-start-1 row-span-1 row-start-2 col-span-full">
           <Button
-            className="text-white bg-black gap-x-5"
+            className="text-white bg-black gap-x-5 hover:bg-opacity-80 hover:text-white"
             component="a"
             href="https://github.com/minswap/minswap-org"
             rel="noreferrer noopener"
