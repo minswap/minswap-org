@@ -23,6 +23,7 @@ export function DiscordCommunity({ users }: Props) {
     <Swiper
       autoplay={autoplay}
       centeredSlides={true}
+      className="mr-20"
       direction={'horizontal'}
       effect={'fade'}
       loop={true}
@@ -30,14 +31,15 @@ export function DiscordCommunity({ users }: Props) {
       slidesPerView={6}
     >
       {chunk(users, 3).map((data, index) => (
-        <SwiperSlide className="grid grid-flow-col grid-rows-3" key={index}>
-          <div className="flex justify-center ml-20">
+        <SwiperSlide className="relative grid grid-flow-col grid-rows-3" key={index}>
+          <div className="flex justify-center">
             <Image alt={data[0].id} className="rounded-full" height={80} src={data[0].avatarUrl} width={80} />
           </div>
-          <div className="flex">
+          <div className="absolute flex justify-center -left-10 inset-y-20">
             <Image alt={data[1].id} className="rounded-full" height={80} src={data[1].avatarUrl} width={80} />
           </div>
-          <div className="flex justify-center ml-20">
+          <div className="flex" />
+          <div className="flex justify-center">
             <Image alt={data[2].id} className="rounded-full" height={80} src={data[2].avatarUrl} width={80} />
           </div>
         </SwiperSlide>
