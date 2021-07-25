@@ -7,6 +7,7 @@ import {
   AFamiliarExperience,
   Announcement,
   DeepDive,
+  DiscordCommunity,
   Footer,
   Header,
   Introduction,
@@ -16,7 +17,6 @@ import {
   SeparatorLine,
   TokenDistribution,
 } from 'src/components';
-import { DiscordCommunity } from 'src/components/DiscordCommunity';
 import { MinArt } from 'src/components/MinArt';
 
 type Props = {

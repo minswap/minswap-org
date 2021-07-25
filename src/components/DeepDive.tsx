@@ -4,6 +4,7 @@ import Image from 'next/image';
 import communityFirstImage from 'src/assets/community-first.svg';
 import ethereumCompatibleImage from 'src/assets/ethereum-compatible.svg';
 import fairLaunchImage from 'src/assets/fair-launch.svg';
+import featureBackgroundImage from 'src/assets/feature-bg.svg';
 import launchpoolImage from 'src/assets/launchpool.svg';
 import permissionlessImage from 'src/assets/permissionless.svg';
 import stakePoolImage from 'src/assets/stake-pool.svg';
@@ -18,7 +19,7 @@ type Props = {
 
 export function DeepDive({ id }: Props) {
   return (
-    <div className="flex flex-col items-center" id={id}>
+    <div className="relative flex flex-col items-center" id={id}>
       <SectionTitle subTitle="Some Facts">Deep Dive</SectionTitle>
 
       <div className="h-16"></div>
@@ -63,6 +64,17 @@ export function DeepDive({ id }: Props) {
           </a>
           .
         </Item>
+      </div>
+
+      <div className="absolute inset-y-0 right-0 pointer-events-none select-none w-96">
+        <Image
+          alt="feature-bg"
+          layout="fill"
+          objectFit="contain"
+          placeholder="empty"
+          quality="100"
+          src={featureBackgroundImage}
+        />
       </div>
     </div>
   );
