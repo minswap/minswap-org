@@ -20,15 +20,15 @@ export function Header() {
         </Link>
 
         <div className="flex items-center text-sm text-gray-500 gap-x-5">
-          <Link href="#roadmap">
+          <Link href="/#roadmap">
             <a className="hover:text-black">Roadmap</a>
           </Link>
 
-          <Link href="#features">
+          <Link href="/#features">
             <a className="hover:text-black">Features</a>
           </Link>
 
-          <Link href="#tokenomics">
+          <Link href="/#tokenomics">
             <a className="hover:text-black">Tokenomics</a>
           </Link>
 
