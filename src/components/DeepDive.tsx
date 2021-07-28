@@ -59,6 +59,8 @@ export function DeepDive({ id }: Props) {
           <a
             className="text-primaryMain hover:underline"
             href="https://medium.com/minswap/fair-iso-application-for-stake-pool-operators-begins-now-e6d563f85eec"
+            rel="noreferrer"
+            target="_blank"
           >
             Fair Initial Stake Offering
           </a>

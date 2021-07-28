@@ -43,7 +43,7 @@ export function Footer() {
 
         <div className="flex flex-col text-sm gap-y-2">
           <div className="font-bold">Minswap</div>
-          <div className="text-trueGray-500">© 2021 Minswap Labs. All rights reserved.</div>
+          <div className="text-trueGray-500">© 2021 Minswap Team. All rights reserved.</div>
         </div>
       </div>
     </footer>

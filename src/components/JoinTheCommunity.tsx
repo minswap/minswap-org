@@ -23,27 +23,52 @@ export function JoinTheCommunity() {
       <div className="h-16"></div>
 
       <div className="flex gap-x-16">
-        <a className="flex flex-col items-center gap-y-4" href="https://twitter.com/minswapdex">
+        <a
+          className="flex flex-col items-center gap-y-4"
+          href="https://twitter.com/minswapdex"
+          rel="noreferrer"
+          target="_blank"
+        >
           <Image alt="Twitter" src={twitterImage} />
           <span className="text-xl font-bold">Twitter</span>
         </a>
 
-        <a className="flex flex-col items-center gap-y-4" href="https://www.reddit.com/r/MinSwap/">
+        <a
+          className="flex flex-col items-center gap-y-4"
+          href="https://www.reddit.com/r/MinSwap/"
+          rel="noreferrer"
+          target="_blank"
+        >
           <Image alt="Reddit" src={redditImage} />
           <span className="text-xl font-bold">Reddit</span>
         </a>
 
-        <a className="flex flex-col items-center gap-y-4" href="https://github.com/minswap">
+        <a
+          className="flex flex-col items-center gap-y-4"
+          href="https://github.com/minswap"
+          rel="noreferrer"
+          target="_blank"
+        >
           <Image alt="Github" src={githubImage} />
           <span className="text-xl font-bold">GitHub</span>
         </a>
 
-        <a className="flex flex-col items-center gap-y-4" href="https://discord.gg/amg2AFrPMJ">
+        <a
+          className="flex flex-col items-center gap-y-4"
+          href="https://discord.gg/YugFh5jMjX"
+          rel="noreferrer"
+          target="_blank"
+        >
           <Image alt="Discord" src={discordImage} />
           <span className="text-xl font-bold">Discord</span>
         </a>
 
-        <a className="flex flex-col items-center gap-y-4" href="https://medium.com/minswap">
+        <a
+          className="flex flex-col items-center gap-y-4"
+          href="https://medium.com/minswap"
+          rel="noreferrer"
+          target="_blank"
+        >
           <Image alt="Medium" src={mediumImage} />
           <span className="text-xl font-bold">Medium</span>
         </a>
