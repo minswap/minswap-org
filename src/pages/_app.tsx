@@ -9,7 +9,7 @@ function MinswapInterfaceApp({ Component, pageProps }: AppProps): React.ReactEle
   return (
     <>
       <Head>
-        <title>Minswap. | Multi-pool decentralized exchange on Cardano</title>
+        <title>Minswap | Multi-pool decentralized exchange on the Cardano blockchain</title>
         <meta charSet="UTF-8" />
         <meta content="Multi-pool decentralized exchange on Cardano" name="description" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
