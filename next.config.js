@@ -7,6 +7,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
  **/
 const config = {
   target: 'serverless',
+  poweredByHeader: false,
   reactStrictMode: true,
   future: {
     strictPostcssConfiguration: true,
@@ -15,7 +16,7 @@ const config = {
     optimizeCss: true,
   },
   images: {
-    domains: ['assets.coingecko.com'],
+    domains: ['cdn.discordapp.com'],
     deviceSizes: [640, 768, 1024, 1280, 1536],
   },
 };
