@@ -12,4 +12,5 @@ export * from './MonthlyGithubAnalytics';
 export * from './RoadMap';
 export * from './SectionTitle';
 export * from './SeparatorLine';
+export * from './TeamMemberItem';
 export * from './TokenDistribution';

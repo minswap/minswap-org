@@ -32,7 +32,7 @@ export function Header() {
             <a className="hover:text-black">Tokenomics</a>
           </Link>
 
-          <Link href="#">
+          <Link href="/team">
             <a className="hover:text-black">Team</a>
           </Link>
 

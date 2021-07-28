@@ -77,7 +77,15 @@ export default function HomePage(props: Props): React.ReactElement {
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
-  const [githubStats, discordUsers] = await Promise.all([getGithubStats(), getTopDiscordUsers()]);
+  let githubStats: GithubStats = { totalCodeAddition: 0, totalCodeDeletion: 0, totalCommits: 0, totalMergedPRs: 0 };
+  let discordUsers: DiscordUser[] = [];
+
+  try {
+    const [githubStatsResult, discordUsersResult] = await Promise.all([getGithubStats(), getTopDiscordUsers()]);
+
+    githubStats = githubStatsResult;
+    discordUsers = discordUsersResult;
+  } catch {}
 
   return {
     props: { githubStats, discordUsers },
