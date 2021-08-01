@@ -18,7 +18,7 @@ export function DesktopHeader({ isScroll, className }: Props) {
         Vote for Minswap on Catalyst Fund 5
       </Announcement>
 
-      <header className={classNames('grid justify-around py-4 header', isScroll ? 'shadow-md bg-white' : '')}>
+      <header className={classNames('grid justify-around py-4 header', isScroll ? 'shadow-md bg-white' : null)}>
         <Logo />
 
         <Links />

@@ -28,7 +28,7 @@ export function JoinTheCommunity() {
 
       <div className="h-10 lg:h-16" />
 
-      <div className="flex gap-x-5 lg:gap-x-16">
+      <div className="flex gap-x-4 lg:gap-x-16">
         {/* Twitter */}
         <a
           className="flex flex-col items-center gap-y-2 lg:hidden"

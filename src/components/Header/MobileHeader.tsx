@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classNames from 'classnames';
 
 import { Announcement } from '../Announcement';
 import { MenuIcon } from '../icons';
@@ -11,7 +12,7 @@ type Props = {
   className?: string;
 };
 
-export function MobileHeader({ className }: Props) {
+export function MobileHeader({ isScroll, className }: Props) {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
   function handleDrawerClose() {
@@ -23,12 +24,15 @@ export function MobileHeader({ className }: Props) {
   }
 
   return (
-    <div className={className}>
-      <Announcement href="https://twitter.com/MinswapDEX/status/1418221475681558529">
+    <div className={classNames(isScroll ? 'sticky top-0 z-50' : null, className)}>
+      <Announcement
+        className={isScroll ? 'hidden' : ''}
+        href="https://twitter.com/MinswapDEX/status/1418221475681558529"
+      >
         Vote for Minswap on Catalyst Fund 5
       </Announcement>
 
-      <header className={'flex items-center py-4 px-5 gap-x-2'}>
+      <header className={classNames('flex items-center py-4 px-5 gap-x-2', isScroll ? 'shadow-md bg-white' : null)}>
         <Logo />
 
         <div className="flex-1"></div>

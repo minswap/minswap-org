@@ -82,7 +82,7 @@ type Props = {
 
 export default function TeamPage(props: Props) {
   return (
-    <MainLayout discordUsers={props.discordUsers} isScroll={true}>
+    <MainLayout discordUsers={props.discordUsers}>
       <div className="h-12 lg:h-24"></div>
 
       <SectionTitle>The Team</SectionTitle>

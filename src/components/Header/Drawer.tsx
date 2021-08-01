@@ -18,7 +18,7 @@ export function Drawer({ isOpen, onClose }: Props) {
       <Links onLinkClick={onClose} />
 
       <button className="absolute right-4 top-4 text-trueGray-500" onClick={onClose}>
-        <CloseIcon className="w-6 h-6" />
+        <CloseIcon className="w-4 h-4" />
       </button>
     </div>
   );

@@ -21,30 +21,11 @@ type Props = {
 };
 
 export default function HomePage(props: Props): React.ReactElement {
-  const [isScroll, setIsScroll] = React.useState(false);
-
-  React.useEffect(() => {
-    const handlScrollY = () => {
-      const value = window.scrollY;
-      if (value > 0 && isScroll === false) {
-        setIsScroll(true);
-      } else if (value === 0) {
-        setIsScroll(false);
-      }
-    };
-    handlScrollY();
-
-    window.addEventListener('scroll', handlScrollY);
-    return () => {
-      window.removeEventListener('scroll', handlScrollY);
-    };
-  });
-
   return (
-    <MainLayout discordUsers={props.discordUsers} isScroll={isScroll}>
+    <MainLayout discordUsers={props.discordUsers}>
       <Introduction />
 
-      <div className="h-10 lg:h-20" />
+      <div className="h-0 lg:h-20" />
 
       <RoadMap id="roadmap" />
 

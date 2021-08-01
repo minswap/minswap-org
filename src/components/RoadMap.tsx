@@ -47,8 +47,8 @@ export function RoadMap({ id }: Props) {
       <div className="relative flex flex-col items-start justify-start ml-10 lg:items-center lg:justify-center">
         <div className="w-px h-28 bg-primaryMain bg-gradient-to-t from-[#7CC6DC] via-[#7cc6dc] to-white"></div>
         <div className="w-px h-36 bg-primaryMain bg-gradient-to-t from-[#2F45C5] to-[#7CC6DC]"></div>
-        <div className="w-px h-72 bg-primaryMain"></div>
-        <div className="w-px h-32 bg-primaryMain bg-gradient-to-b from-primaryMain to-white"></div>
+        <div className="w-px h-72 lg:h-80 bg-primaryMain"></div>
+        <div className="w-px h-32 lg:40 bg-primaryMain bg-gradient-to-b from-primaryMain to-white"></div>
 
         <div className="absolute grid grid-flow-row grid-cols-1 left-1 lg:hidden gap-y-4 top-20">
           {milestones.map((milestone, index) => (
