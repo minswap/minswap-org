@@ -5,7 +5,6 @@ import { DiscordUser, getTopDiscordUsers } from 'src/api/discord-users';
 import { getGithubStats, GithubStats } from 'src/api/github-stats';
 import {
   AFamiliarExperience,
-  Announcement,
   DeepDive,
   DiscordCommunity,
   Footer,
@@ -25,13 +24,28 @@ type Props = {
 };
 
 export default function HomePage(props: Props): React.ReactElement {
+  const [isScroll, setIsScroll] = React.useState(false);
+
+  React.useEffect(() => {
+    const handlScrollY = () => {
+      const value = window.scrollY;
+      if (value > 0 && isScroll === false) {
+        setIsScroll(true);
+      } else if (value === 0) {
+        setIsScroll(false);
+      }
+    };
+    handlScrollY();
+
+    window.addEventListener('scroll', handlScrollY);
+    return () => {
+      window.removeEventListener('scroll', handlScrollY);
+    };
+  });
+
   return (
     <>
-      <Announcement href="https://twitter.com/MinswapDEX/status/1418221475681558529">
-        Vote for Minswap on Catalyst Fund 5
-      </Announcement>
-
-      <Header />
+      <Header isScroll={isScroll} />
 
       <main>
         <Introduction />
