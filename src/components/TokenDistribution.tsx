@@ -10,7 +10,7 @@ import { SeparatorLine } from './SeparatorLine';
 const items = [
   'MIN tokens can be staked to earn profit-sharing from trading fees.',
   'Burning and deflationary mechanism by economic activities such as IFO, lottery.',
-  'Huge APY on mainnet launch to reward early community and adopters.',
+  'Huge APY on mainnet launch to reward early community and adopters (with lock-up period).',
   'Fair launch token with no pre-mine, no private sale, no VC.',
 ];
 
