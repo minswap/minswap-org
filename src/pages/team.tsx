@@ -10,16 +10,8 @@ import khanhLeImage from 'src/assets/team/khanhle.jpeg';
 import longNguyenImage from 'src/assets/team/longnlv.jpg';
 import mattImage from 'src/assets/team/mattcass.jpeg';
 import qayyumImage from 'src/assets/team/qayyum.png';
-import {
-  Announcement,
-  DiscordCommunity,
-  Footer,
-  Header,
-  JoinTheCommunity,
-  SectionTitle,
-  SeparatorLine,
-  TeamMemberItem,
-} from 'src/components';
+import { SectionTitle, TeamMemberItem } from 'src/components';
+import { MainLayout } from 'src/layouts';
 
 const teamMembers = [
   {
@@ -90,17 +82,15 @@ type Props = {
 
 export default function TeamPage(props: Props) {
   return (
-    <>
-      <Header isScroll={true} />
+    <MainLayout discordUsers={props.discordUsers}>
+      <div className="h-12 lg:h-24"></div>
 
-      <main>
-        <div className="h-24"></div>
+      <SectionTitle>The Team</SectionTitle>
 
-        <SectionTitle>The Team</SectionTitle>
+      <div className="h-12 lg:h-24"></div>
 
-        <div className="h-24"></div>
-
-        <div className="grid justify-center gap-x-20 gap-y-20 teamMembers">
+      <div className="flex justify-center w-full px-5">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 lg:gap-20 md:gap-15 w-max teamMembers">
           {teamMembers.map((member) => (
             <TeamMemberItem
               github={member.github}
@@ -114,26 +104,8 @@ export default function TeamPage(props: Props) {
             />
           ))}
         </div>
-
-        <div className="h-20" />
-
-        <JoinTheCommunity />
-
-        <DiscordCommunity users={props.discordUsers} />
-
-        <div className="h-20" />
-      </main>
-
-      <SeparatorLine />
-
-      <Footer />
-
-      <style jsx>{`
-        .teamMembers {
-          grid-template-columns: repeat(3, max-content);
-        }
-      `}</style>
-    </>
+      </div>
+    </MainLayout>
   );
 }
 

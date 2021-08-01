@@ -9,20 +9,33 @@ import { ArrowRightIcon } from './icons';
 export function Introduction() {
   return (
     <>
-      <div className="relative flex flex-col items-center w-full pt-20 introduction">
-        <h1 className="font-bold text-8xl">
+      <div className="flex flex-col items-center w-full pt-8 pb-0 lg:relative lg:pt-20 lg:pb-0 introduction">
+        <h1 className="text-4xl font-bold text-center md:text-6xl lg:text-8xl">
           Dive into <span className="text-primaryMain">liquidity</span>
         </h1>
 
-        <div className="h-7"></div>
+        <div className="h-5 lg:h-7"></div>
 
-        <p className="text-center text-gray-500 break-words whitespace-pre-line">
+        <p className="px-5 text-sm text-center text-gray-500 break-words lg:whitespace-pre-line lg:text-base">
           {`Minswap is a multi-pool decentralized exchange on Cardano.\nSwap tokens with minimal cost, minimal time and maximal convenience.`}
         </p>
 
-        <div className="h-5"></div>
+        <div className="m-3 md:h-5"></div>
 
-        <div className="flex gap-x-4">
+        <div className="flex gap-x-4 lg:hidden">
+          <a href="https://docs.minswap.org/whitepaper" rel="noreferrer" target="_blank">
+            <Button className="h-full" size="md">
+              Read Whitepaper
+            </Button>
+          </a>
+          <a href="https://app.minswap.org" rel="noreferrer" target="_blank">
+            <Button className="h-full" color="primary" size="md">
+              View the app <ArrowRightIcon />
+            </Button>
+          </a>
+        </div>
+
+        <div className="hidden lg:flex gap-x-4">
           <a href="https://docs.minswap.org/whitepaper" rel="noreferrer" target="_blank">
             <Button className="h-full" size="lg">
               Read Whitepaper
@@ -35,7 +48,13 @@ export function Introduction() {
           </a>
         </div>
 
-        <div className="absolute inset-0 -z-1">
+        {/* Mobile */}
+        <div className="transform -translate-y-10 lg:hidden -z-1">
+          <Image alt="Background" placeholder="blur" quality="100" src={introductionImage} priority />
+        </div>
+
+        {/* Desktop */}
+        <div className="absolute inset-0 hidden -z-1 lg:block">
           <Image
             alt="Background"
             layout="fill"
@@ -49,8 +68,10 @@ export function Introduction() {
       </div>
 
       <style jsx>{`
-        .introduction {
-          height: calc(100vh - 100px);
+        @media (min-width: 1024px) {
+          .introduction {
+            height: calc(100vh - 100px);
+          }
         }
       `}</style>
     </>
