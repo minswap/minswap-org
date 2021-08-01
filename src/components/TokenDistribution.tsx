@@ -34,25 +34,27 @@ export function TokenDistribution({ id }: Props) {
               {/* Mobile  */}
               <circle
                 className="w-full h-full lg:hidden"
-                cx="48"
-                cy="48"
+                cx="40"
+                cy="40"
                 fill="none"
                 r="40"
                 stroke="#1B2771"
                 strokeLinecap="round"
                 strokeWidth="9"
+                style={{ transform: 'translate(8px, 8px)' }}
               />
               <circle
                 className="lg:hidden"
-                cx="48"
-                cy="48"
+                cx="40"
+                cy="40"
                 fill="none"
                 r="40"
                 stroke="#fff"
-                strokeDasharray="500"
-                strokeDashoffset="50"
+                strokeDasharray="250"
+                strokeDashoffset="25"
                 strokeLinecap="round"
                 strokeWidth="10"
+                style={{ transform: 'translate(8px, 8px)' }}
               />
 
               {/* Desktop */}

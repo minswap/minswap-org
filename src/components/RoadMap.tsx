@@ -100,7 +100,7 @@ type MileStoneItemProps = Milestone & {
 
 function MilestoneItem({ hasReached, items, time, className, flip = false }: MileStoneItemProps) {
   return (
-    <div className={classNames('grid gap-x-7 auto-cols-max items-center', flip ? 'text-right' : null, className)}>
+    <div className={classNames('grid gap-x-7 auto-cols-max items-center ', flip ? 'text-right' : null, className)}>
       <div
         className={classNames(
           'flex justify-center items-center rounded-full bg-white border lg:w-7 lg:h-7 h-5 w-5 row-start-1 box-border',
@@ -118,7 +118,7 @@ function MilestoneItem({ hasReached, items, time, className, flip = false }: Mil
       <div className={classNames('flex flex-col row-start-2 pl-13 gap-y-1', flip ? 'col-start-1' : 'col-start-2')}>
         <div className="h-3 lg:h-4"></div>
         {items.map((item) => (
-          <div className="text-sm lg:text-base text-trueGray-500" key={item}>
+          <div className="text-sm w-[17rem] lg:text-base text-trueGray-500 lg:w-auto" key={item}>
             {item}
           </div>
         ))}

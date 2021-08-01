@@ -29,7 +29,7 @@ export function ScrollToTopButton() {
 
   return (
     <button
-      className="fixed flex items-center justify-center w-20 h-20 text-white transition duration-300 border border-transparent rounded-full right-10 bottom-10 bg-primaryMain hover:bg-white hover:text-primaryMain hover:border-primaryMain"
+      className="fixed flex items-center justify-center text-white transition duration-300 border border-transparent rounded-full lg:w-20 lg:h-20 w-14 h-14 lg:right-10 lg:bottom-10 right-6 bottom-6 bg-primaryMain hover:bg-white hover:text-primaryMain hover:border-primaryMain"
       onClick={handleClick}
     >
       <ScrollUpIcon />
