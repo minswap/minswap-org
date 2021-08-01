@@ -10,16 +10,8 @@ import khanhLeImage from 'src/assets/team/khanhle.jpeg';
 import longNguyenImage from 'src/assets/team/longnlv.jpg';
 import mattImage from 'src/assets/team/mattcass.jpeg';
 import qayyumImage from 'src/assets/team/qayyum.png';
-import {
-  Announcement,
-  DiscordCommunity,
-  Footer,
-  Header,
-  JoinTheCommunity,
-  SectionTitle,
-  SeparatorLine,
-  TeamMemberItem,
-} from 'src/components';
+import { SectionTitle, TeamMemberItem } from 'src/components';
+import { MainLayout } from 'src/layouts';
 
 const teamMembers = [
   {
@@ -90,50 +82,34 @@ type Props = {
 
 export default function TeamPage(props: Props) {
   return (
-    <>
-      <Header isScroll={true} />
+    <MainLayout discordUsers={props.discordUsers} isScroll>
+      <div className="h-24"></div>
 
-      <main>
-        <div className="h-24"></div>
+      <SectionTitle>The Team</SectionTitle>
 
-        <SectionTitle>The Team</SectionTitle>
+      <div className="h-24"></div>
 
-        <div className="h-24"></div>
-
-        <div className="grid justify-center gap-x-20 gap-y-20 teamMembers">
-          {teamMembers.map((member) => (
-            <TeamMemberItem
-              github={member.github}
-              image={member.image}
-              key={member.name}
-              link={member.link}
-              linkedin={member.linkedin}
-              name={member.name}
-              title={member.title}
-              twitter={member.twitter}
-            />
-          ))}
-        </div>
-
-        <div className="h-20" />
-
-        <JoinTheCommunity />
-
-        <DiscordCommunity users={props.discordUsers} />
-
-        <div className="h-20" />
-      </main>
-
-      <SeparatorLine />
-
-      <Footer />
+      <div className="grid justify-center gap-x-20 gap-y-20 teamMembers">
+        {teamMembers.map((member) => (
+          <TeamMemberItem
+            github={member.github}
+            image={member.image}
+            key={member.name}
+            link={member.link}
+            linkedin={member.linkedin}
+            name={member.name}
+            title={member.title}
+            twitter={member.twitter}
+          />
+        ))}
+      </div>
 
       <style jsx>{`
         .teamMembers {
           grid-template-columns: repeat(3, max-content);
         }
       `}</style>
-    </>
+    </MainLayout>
   );
 }
 

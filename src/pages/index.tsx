@@ -6,17 +6,14 @@ import { getGithubStats, GithubStats } from 'src/api/github-stats';
 import {
   AFamiliarExperience,
   DeepDive,
-  DiscordCommunity,
-  Footer,
-  Header,
   Introduction,
-  JoinTheCommunity,
   MonthlyGithubAnalytics,
   RoadMap,
   SeparatorLine,
   TokenDistribution,
 } from 'src/components';
 import { MinArt } from 'src/components/MinArt';
+import { MainLayout } from 'src/layouts';
 
 type Props = {
   githubStats: GithubStats;
@@ -44,49 +41,33 @@ export default function HomePage(props: Props): React.ReactElement {
   });
 
   return (
-    <>
-      <Header isScroll={isScroll} />
+    <MainLayout discordUsers={props.discordUsers} isScroll={isScroll}>
+      <Introduction />
 
-      <main>
-        <Introduction />
+      <div className="h-20" />
 
-        <div className="h-20" />
+      <RoadMap id="roadmap" />
 
-        <RoadMap id="roadmap" />
+      <div className="h-20" />
 
-        <div className="h-20" />
+      <DeepDive id="features" />
 
-        <DeepDive id="features" />
+      <div className="h-20" />
 
-        <div className="h-20" />
+      <MonthlyGithubAnalytics {...props.githubStats} />
 
-        <MonthlyGithubAnalytics {...props.githubStats} />
+      <div className="h-20" />
 
-        <div className="h-20" />
+      <TokenDistribution id="tokenomics" />
 
-        <TokenDistribution id="tokenomics" />
-
-        <AFamiliarExperience />
-
-        <SeparatorLine />
-
-        <div className="h-20" />
-
-        <MinArt />
-
-        <div className="h-20" />
-
-        <JoinTheCommunity />
-
-        <DiscordCommunity users={props.discordUsers} />
-
-        <div className="h-20" />
-      </main>
+      <AFamiliarExperience />
 
       <SeparatorLine />
 
-      <Footer />
-    </>
+      <div className="h-20" />
+
+      <MinArt />
+    </MainLayout>
   );
 }
 
