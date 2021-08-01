@@ -7,7 +7,7 @@ import { SectionTitle } from './SectionTitle';
 
 export function AFamiliarExperience() {
   return (
-    <div className="flex flex-col items-center pt-20 bg-trueGray-50">
+    <div className="flex flex-col items-center lg:pt-20 pt-14 bg-trueGray-50">
       <SectionTitle>A familiar experience</SectionTitle>
 
       <div className="h-5"></div>

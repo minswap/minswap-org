@@ -92,7 +92,7 @@ function Item({ children, title, image }: ItemProps) {
   return (
     <>
       {/* Mobile */}
-      <div className="flex flex-col items-start gap-y-2 px-5 lg:w-[500px] lg:hidden">
+      <div className="flex flex-col items-center px-5 text-center gap-y-2 lg:hidden">
         <Image alt={title} height="100" src={image} width="100" />
         <div className="text-2xl font-bold lg:text-3xl">{title}</div>
         <div className="text-base lg:text-xl text-trueGray-500">{children}</div>
