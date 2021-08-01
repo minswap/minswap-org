@@ -19,7 +19,20 @@ type Props = {
 export function TeamMemberItem({ image, github, link, linkedin, twitter, name, title }: Props) {
   return (
     <div className="flex flex-col items-center">
-      <div className="w-[12.5rem] h-[12.5rem]">
+      <div className="md:hidden">
+        <Image
+          alt={name}
+          className="rounded-full"
+          height="160"
+          objectFit="cover"
+          placeholder="blur"
+          src={image}
+          width="160"
+          priority
+        />
+      </div>
+
+      <div className="w-[12.5rem] h-[12.5rem] md:block hidden">
         <Image
           alt={name}
           className="rounded-full"
@@ -32,37 +45,37 @@ export function TeamMemberItem({ image, github, link, linkedin, twitter, name, t
         />
       </div>
 
-      <div className="h-8"></div>
+      <div className="h-5 md:h-8"></div>
 
-      <div className="text-3xl font-bold">{name}</div>
+      <div className="text-2xl font-bold lg:text-3xl">{name}</div>
 
       <div className="h-2"></div>
 
-      <div>{title}</div>
+      <div className="text-sm md:text-base">{title}</div>
 
-      <div className="h-4"></div>
+      <div className="h-3 md:h-4"></div>
 
       <div className="flex items-center gap-x-2">
         {github ? (
-          <a className="leading-none" href={github} rel="noreferrer noopener" target="_blank">
+          <a className="leading-none hover:opacity-80" href={github} rel="noreferrer noopener" target="_blank">
             <Image alt="Github link" src={githubIcon} />
           </a>
         ) : null}
 
         {linkedin ? (
-          <a className="leading-none" href={linkedin} rel="noreferrer noopener" target="_blank">
+          <a className="leading-none hover:opacity-80" href={linkedin} rel="noreferrer noopener" target="_blank">
             <Image alt="Linkedin link" src={linkedinIcon} />
           </a>
         ) : null}
 
         {twitter ? (
-          <a className="leading-none" href={twitter} rel="noreferrer noopener" target="_blank">
+          <a className="leading-none hover:opacity-80" href={twitter} rel="noreferrer noopener" target="_blank">
             <Image alt="Twitter link" src={twitterIcon} />
           </a>
         ) : null}
 
         {link ? (
-          <a className="leading-none" href={link} rel="noreferrer noopener" target="_blank">
+          <a className="leading-none hover:opacity-80" href={link} rel="noreferrer noopener" target="_blank">
             <Image alt="Link" src={linkIcon} />
           </a>
         ) : null}

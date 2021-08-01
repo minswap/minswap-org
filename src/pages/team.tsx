@@ -83,32 +83,28 @@ type Props = {
 export default function TeamPage(props: Props) {
   return (
     <MainLayout discordUsers={props.discordUsers} isScroll={true}>
-      <div className="h-24"></div>
+      <div className="h-12 lg:h-24"></div>
 
       <SectionTitle>The Team</SectionTitle>
 
-      <div className="h-24"></div>
+      <div className="h-12 lg:h-24"></div>
 
-      <div className="grid justify-center gap-x-20 gap-y-20 teamMembers">
-        {teamMembers.map((member) => (
-          <TeamMemberItem
-            github={member.github}
-            image={member.image}
-            key={member.name}
-            link={member.link}
-            linkedin={member.linkedin}
-            name={member.name}
-            title={member.title}
-            twitter={member.twitter}
-          />
-        ))}
+      <div className="flex justify-center w-full px-5">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 lg:gap-20 md:gap-15 w-max teamMembers">
+          {teamMembers.map((member) => (
+            <TeamMemberItem
+              github={member.github}
+              image={member.image}
+              key={member.name}
+              link={member.link}
+              linkedin={member.linkedin}
+              name={member.name}
+              title={member.title}
+              twitter={member.twitter}
+            />
+          ))}
+        </div>
       </div>
-
-      <style jsx>{`
-        .teamMembers {
-          grid-template-columns: repeat(3, max-content);
-        }
-      `}</style>
     </MainLayout>
   );
 }
