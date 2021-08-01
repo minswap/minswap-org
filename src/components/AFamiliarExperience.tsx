@@ -17,6 +17,7 @@ export function AFamiliarExperience() {
           alt="A familiar experience"
           layout="responsive"
           objectFit="cover"
+          placeholder="blur"
           quality="100"
           src={aFamiliarExperienceImage}
         />

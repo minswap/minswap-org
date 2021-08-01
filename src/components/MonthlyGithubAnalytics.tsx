@@ -20,7 +20,7 @@ export function MonthlyGithubAnalytics({ totalCodeAddition, totalCodeDeletion, t
 
       <div className="grid grid-flow-row grid-cols-2 p-5 mx-5 border rounded-lg gap-y-6 lg:grid-cols-4 bg-trueGray-50 border-trueGray-200 lg:gap-x-5 lg:gap-y-12 lg:px-10 lg:py-12">
         <Item label="Total Commits" staticNumber={totalCommits} />
-        <Item label="Merged Pull Requests" staticNumber={totalMergedPRs} />
+        <Item label="Merged Requests" staticNumber={totalMergedPRs} />
         <Item label="Code Additions" staticNumber={totalCodeAddition} />
         <Item label="Code Deletions" staticNumber={totalCodeDeletion} />
 
