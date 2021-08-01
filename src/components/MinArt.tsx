@@ -27,7 +27,7 @@ export function MinArt() {
 
       {/* Mobile */}
       <div className="flex flex-col shadow-2xl rounded-[12px] p-5 mt-5 mx-5 lg:hidden">
-        <Image alt="Logo" height="390" src={mainArt.image} width="320" />
+        <Image alt="Logo" height="390" placeholder="blur" src={mainArt.image} width="320" />
 
         <div className="flex flex-col mt-5">
           <div className="text-xl font-bold">{mainArt.title}</div>
@@ -49,7 +49,7 @@ export function MinArt() {
 
       {/* Desktop */}
       <div className="lg:flex flex-row p-10 mt-10 shadow-2xl gap-x-16 rounded-[20px] hidden">
-        <Image alt="Logo" height="420" src={mainArt.image} width="337" />
+        <Image alt="Logo" height="420" placeholder="blur" src={mainArt.image} width="337" />
 
         <div className="w-[523px] flex flex-col">
           <div className="text-3xl font-bold">{mainArt.title}</div>
