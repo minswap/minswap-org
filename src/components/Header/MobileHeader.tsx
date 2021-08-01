@@ -29,15 +29,13 @@ export function MobileHeader({ className }: Props) {
       </Announcement>
 
       <header className={'flex items-center py-4 px-5 gap-x-2'}>
-        <button aria-label="Open menu" className="text-primaryMain" onClick={openDrawer}>
-          <MenuIcon />
-        </button>
-
         <Logo />
 
         <div className="flex-1"></div>
 
-        <Buttons />
+        <button aria-label="Open menu" className="text-primaryMain" onClick={openDrawer}>
+          <MenuIcon />
+        </button>
       </header>
 
       <Drawer isOpen={isDrawerOpen} onClose={handleDrawerClose} />

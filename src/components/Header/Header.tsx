@@ -10,7 +10,7 @@ type Props = {
 export function Header({ isScroll }: Props) {
   return (
     <>
-      <DesktopHeader className="hidden lg:block" />
+      <DesktopHeader className="hidden lg:block" isScroll={isScroll} />
       <MobileHeader className="lg:hidden" />
     </>
   );

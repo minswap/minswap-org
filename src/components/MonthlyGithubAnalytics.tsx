@@ -16,17 +16,29 @@ export function MonthlyGithubAnalytics({ totalCodeAddition, totalCodeDeletion, t
     <div className="flex flex-col items-center">
       <SectionTitle subTitle="Some Facts">Monthly GitHub Analytics</SectionTitle>
 
-      <div className="h-14"></div>
+      <div className="h-5 lg:h-14"></div>
 
-      <div className="grid grid-flow-row grid-cols-4 px-10 py-12 border rounded-lg bg-trueGray-50 border-trueGray-200 gap-x-5 gap-y-12">
+      <div className="grid grid-flow-row grid-cols-2 p-5 mx-5 border rounded-lg gap-y-6 lg:grid-cols-4 bg-trueGray-50 border-trueGray-200 lg:gap-x-5 lg:gap-y-12 lg:px-10 lg:py-12">
         <Item label="Total Commits" staticNumber={totalCommits} />
         <Item label="Merged Pull Requests" staticNumber={totalMergedPRs} />
         <Item label="Code Additions" staticNumber={totalCodeAddition} />
         <Item label="Code Deletions" staticNumber={totalCodeDeletion} />
 
-        <div className="flex col-start-1 row-span-1 row-start-2 col-span-full">
+        <div className="flex col-start-1 row-span-1 row-start-3 lg:row-start-2 col-span-full">
           <Button
-            className="text-white bg-black gap-x-5 hover:bg-opacity-80 hover:text-white"
+            className="w-full text-white bg-black gap-x-4 hover:bg-opacity-80 hover:text-white lg:hidden"
+            component="a"
+            href="https://github.com/minswap/minswap-org"
+            rel="noreferrer noopener"
+            size="md"
+            target="_blank"
+          >
+            <GithubIcon />
+            View project on GitHub
+          </Button>
+
+          <Button
+            className="hidden text-white bg-black gap-x-5 hover:bg-opacity-80 hover:text-white lg:flex"
             component="a"
             href="https://github.com/minswap/minswap-org"
             rel="noreferrer noopener"
@@ -49,9 +61,9 @@ type ItemProps = {
 
 function Item({ staticNumber, label }: ItemProps) {
   return (
-    <div className="flex flex-col gap-y-2">
-      <div className="text-6xl font-bold">{staticNumber.toLocaleString('en-US')}</div>
-      <div className="text-2xl text-trueGray-500">{label}</div>
+    <div className="flex flex-col lg:gap-y-2 gap-y-1">
+      <div className="text-3xl font-bold lg:text-6xl">{staticNumber.toLocaleString('en-US')}</div>
+      <div className="text-base lg:text-2xl text-trueGray-500">{label}</div>
     </div>
   );
 }

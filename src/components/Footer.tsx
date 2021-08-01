@@ -22,14 +22,14 @@ const documentationLinksProps: LinksColumnProps = {
 
 const foundationLinksProps: LinksColumnProps = {
   title: 'Partnership',
-  links: [{ text: 'Contact', href: 'mailto:contact@minswap.org' }],
+  links: [{ text: 'Contact us', href: 'mailto:contact@minswap.org' }],
 };
 
 export function Footer() {
   return (
-    <footer className="flex justify-center pt-20 pb-16 bg-trueGray-50 gap-y-2">
+    <footer className="bg-trueGray-50 p-7 lg:flex lg:justify-center lg:pt-20 ls:pb-16 lg:gap-y-2">
       <div>
-        <div className="flex gap-x-32">
+        <div className="grid grid-cols-2 gap-7 lg:flex lg:gap-x-32">
           <LinksColumn links={resourcesLinksProps.links} title={resourcesLinksProps.title} />
 
           <LinksColumn links={productsLinksProps.links} title={productsLinksProps.title} />
@@ -39,7 +39,7 @@ export function Footer() {
           <LinksColumn links={foundationLinksProps.links} title={foundationLinksProps.title} />
         </div>
 
-        <div className="h-10"></div>
+        <div className="h-10" />
 
         <div className="flex flex-col text-sm gap-y-2">
           <div className="font-bold">Minswap</div>

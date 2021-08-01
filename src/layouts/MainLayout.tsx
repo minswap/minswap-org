@@ -17,13 +17,13 @@ export function MainLayout({ children, isScroll, discordUsers }: Props) {
       <main>
         {children}
 
-        <div className="h-20" />
+        <div className="h-10 lg:h-20" />
 
         <JoinTheCommunity />
 
         <DiscordCommunity users={discordUsers} />
 
-        <div className="h-20" />
+        <div className="h-10 lg:h-20" />
       </main>
 
       <SeparatorLine />
