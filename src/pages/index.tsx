@@ -29,15 +29,15 @@ export default function HomePage(props: Props): React.ReactElement {
 
       <RoadMap id="roadmap" />
 
-      <div className="h-10 lg:h-20" />
+      <div className="h-14 lg:h-20" />
 
       <DeepDive id="features" />
 
-      <div className="h-10 lg:h-20" />
+      <div className="h-14 lg:h-20" />
 
       <MonthlyGithubAnalytics {...props.githubStats} />
 
-      <div className="h-10 lg:h-20" />
+      <div className="h-14 lg:h-20" />
 
       <TokenDistribution id="tokenomics" />
 
@@ -45,7 +45,7 @@ export default function HomePage(props: Props): React.ReactElement {
 
       <SeparatorLine />
 
-      <div className="h-10 lg:h-20" />
+      <div className="h-14 lg:h-20" />
 
       <MinArt />
     </MainLayout>
