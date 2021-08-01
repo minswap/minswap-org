@@ -4,11 +4,15 @@ import { IconProps } from './props';
 
 export function CloseIcon(props: IconProps) {
   return (
-    <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <g>
-        <path d="M8.57141 8.57129L15.4286 15.4284" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M15.4286 8.57129L8.57141 15.4284" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
-      </g>
+    <svg height="311pt" viewBox="0 0 311 311.07733" width="311pt" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="m16.035156 311.078125c-4.097656 0-8.195312-1.558594-11.308594-4.695313-6.25-6.25-6.25-16.382812 0-22.632812l279.0625-279.0625c6.25-6.25 16.382813-6.25 22.632813 0s6.25 16.382812 0 22.636719l-279.058594 279.058593c-3.136719 3.117188-7.234375 4.695313-11.328125 4.695313zm0 0"
+        fill="currentColor"
+      />
+      <path
+        d="m295.117188 311.078125c-4.097657 0-8.191407-1.558594-11.308594-4.695313l-279.082032-279.058593c-6.25-6.253907-6.25-16.386719 0-22.636719s16.382813-6.25 22.636719 0l279.058594 279.0625c6.25 6.25 6.25 16.382812 0 22.632812-3.136719 3.117188-7.230469 4.695313-11.304687 4.695313zm0 0"
+        fill="currentColor"
+      />
     </svg>
   );
 }
