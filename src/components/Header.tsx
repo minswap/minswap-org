@@ -1,15 +1,25 @@
 import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import classNames from 'classnames';
 
 import logoSmall from 'src/assets/logo-small.svg';
 
+import { Announcement } from './Announcement';
 import { Button } from './Button';
 
-export function Header() {
+type Props = {
+  isScroll?: boolean;
+};
+
+export function Header({ isScroll }: Props) {
   return (
-    <>
-      <header className="grid justify-around py-4 header">
+    <div className={isScroll ? 'sticky top-0 z-50' : ''}>
+      <Announcement href="https://twitter.com/MinswapDEX/status/1418221475681558529">
+        Vote for Minswap on Catalyst Fund 5
+      </Announcement>
+
+      <header className={classNames('grid justify-around py-4 header', isScroll ? 'shadow-md bg-white' : '')}>
         <Link href="/">
           <a className="flex items-center text-lg font-bold gap-x-2">
             <div className="w-6 h-6">
@@ -57,6 +67,6 @@ export function Header() {
           grid-template-columns: 250px max-content 250px;
         }
       `}</style>
-    </>
+    </div>
   );
 }

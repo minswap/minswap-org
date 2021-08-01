@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ArrowRightIcon, CloseIcon } from './icons';
+import { ArrowRightIcon } from './icons';
 
 type Props = {
   href: string;

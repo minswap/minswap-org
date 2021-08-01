@@ -11,6 +11,7 @@ import longNguyenImage from 'src/assets/team/longnlv.jpg';
 import mattImage from 'src/assets/team/mattcass.jpeg';
 import qayyumImage from 'src/assets/team/qayyum.png';
 import {
+  Announcement,
   DiscordCommunity,
   Footer,
   Header,
@@ -90,7 +91,7 @@ type Props = {
 export default function TeamPage(props: Props) {
   return (
     <>
-      <Header />
+      <Header isScroll={true} />
 
       <main>
         <div className="h-24"></div>
