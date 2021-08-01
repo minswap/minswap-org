@@ -28,7 +28,7 @@ export function Button<C extends React.ElementType = 'button'>({
           lg: 'px-6 py-3',
         }[size],
         {
-          default: 'border border-gray-300 hover:text-black hover:border-black',
+          default: 'border border-gray-300 hover:text-black hover:border-black bg-white',
           primary: 'border border-primaryMain bg-primaryMain text-white hover:bg-white hover:text-primaryMain',
         }[color],
         className,
