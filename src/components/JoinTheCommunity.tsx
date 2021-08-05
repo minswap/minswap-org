@@ -95,7 +95,7 @@ export function JoinTheCommunity() {
         {/* Discord  */}
         <a
           className="flex flex-col items-center gap-y-2 lg:hidden"
-          href="https://discord.gg/YugFh5jMjX"
+          href="https://discord.gg/ZjB8ZBhkbm"
           rel="noreferrer"
           target="_blank"
         >
@@ -105,7 +105,7 @@ export function JoinTheCommunity() {
 
         <a
           className="flex-col items-center hidden lg:flex gap-y-4"
-          href="https://discord.gg/YugFh5jMjX"
+          href="https://discord.gg/ZjB8ZBhkbm"
           rel="noreferrer"
           target="_blank"
         >
