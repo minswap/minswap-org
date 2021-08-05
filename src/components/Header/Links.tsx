@@ -54,13 +54,11 @@ export function Links({ onLinkClick }: Props) {
         </a>
       </Link>
 
-      <a
-        className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto"
-        href="https://docs.minswap.org/whitepaper"
-        onClick={onLinkClick}
-      >
-        Whitepaper
-      </a>
+      <Link href="https://minswap.creator-spring.com/">
+        <a className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto" onClick={onLinkClick}>
+          Merch
+        </a>
+      </Link>
     </div>
   );
 }
