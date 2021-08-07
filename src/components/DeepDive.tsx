@@ -19,7 +19,7 @@ type Props = {
 
 export function DeepDive({ id }: Props) {
   return (
-    <div className="relative flex flex-col items-center" id={id}>
+    <div className="relative flex flex-col items-center pt-14 lg:pt-20" id={id}>
       <SectionTitle subTitle="Some Facts">Deep Dive</SectionTitle>
 
       <div className="h-8 lg:h-16"></div>

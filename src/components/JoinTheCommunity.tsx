@@ -11,7 +11,7 @@ import { SectionTitle } from './SectionTitle';
 
 export function JoinTheCommunity() {
   return (
-    <div className="flex flex-col items-center pb-10 lg:pt-16 lg:pb-32 pt-7">
+    <div className="flex flex-col items-center pt-14 lg:pt-20">
       <SectionTitle>Join the community</SectionTitle>
 
       <div className="h-5 lg:h-6" />

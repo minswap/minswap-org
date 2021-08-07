@@ -7,6 +7,8 @@ import { AutoplayOptions } from 'swiper/types/components/autoplay';
 
 import { DiscordUser } from 'src/api/discord-users';
 
+import { SectionTitle } from './SectionTitle';
+
 type Props = {
   users: DiscordUser[];
 };
@@ -20,7 +22,13 @@ export function DiscordCommunity({ users }: Props) {
   };
 
   return (
-    <>
+    <div className="py-14 lg:py-20">
+      <SectionTitle>
+        Our <span className="text-blueBerry">Discord</span> community member
+      </SectionTitle>
+
+      <div className="h-5 lg:h-12" />
+
       {/* Mobile */}
       <Swiper
         autoplay={autoplay}
@@ -80,6 +88,6 @@ export function DiscordCommunity({ users }: Props) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 }

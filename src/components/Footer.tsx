@@ -27,9 +27,9 @@ const foundationLinksProps: LinksColumnProps = {
 
 export function Footer() {
   return (
-    <footer className="bg-trueGray-50 p-7 lg:flex lg:justify-center lg:pt-20 ls:pb-16 lg:gap-y-2">
+    <footer className="bg-trueGray-50 p-7 lg:flex lg:justify-center lg:pt-20 lg:pb-16 lg:gap-y-2">
       <div>
-        <div className="grid grid-cols-2 gap-7 lg:flex lg:gap-x-32">
+        <div className="grid grid-cols-2 gap-7 lg:grid-cols-4 lg:gap-x-32">
           <LinksColumn links={resourcesLinksProps.links} title={resourcesLinksProps.title} />
 
           <LinksColumn links={productsLinksProps.links} title={productsLinksProps.title} />

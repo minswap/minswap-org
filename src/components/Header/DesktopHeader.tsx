@@ -23,7 +23,7 @@ export function DesktopHeader({ isScroll, className }: Props) {
 
         <Links />
 
-        <div className="flex gap-x-2">
+        <div className="flex justify-end gap-x-2">
           <Buttons />
         </div>
       </header>
