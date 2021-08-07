@@ -27,9 +27,9 @@ export function MobileHeader({ isScroll, className }: Props) {
     <div className={classNames(isScroll ? 'sticky top-0 z-50' : null, className)}>
       <Announcement
         className={isScroll ? 'hidden' : ''}
-        href="https://twitter.com/MinswapDEX/status/1418221475681558529"
+        href="https://medium.com/minswap/minswap-fair-launch-tokenomics-and-fiso-airdrop-start-date-a75f3e75a546"
       >
-        Vote for Minswap on Catalyst Fund 5
+        Minswap fair launch tokenomics and FISO airdrop start date
       </Announcement>
 
       <header className={classNames('flex items-center py-4 px-5 gap-x-2', isScroll ? 'shadow-md bg-white' : null)}>
