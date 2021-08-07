@@ -25,27 +25,17 @@ export default function HomePage(props: Props): React.ReactElement {
     <MainLayout discordUsers={props.discordUsers}>
       <Introduction />
 
-      <div className="h-0 lg:h-20" />
-
       <RoadMap id="roadmap" />
-
-      <div className="h-14 lg:h-20" />
 
       <DeepDive id="features" />
 
-      <div className="h-14 lg:h-20" />
-
       <MonthlyGithubAnalytics {...props.githubStats} />
-
-      <div className="h-14 lg:h-20" />
 
       <TokenDistribution id="tokenomics" />
 
       <AFamiliarExperience />
 
       <SeparatorLine />
-
-      <div className="h-14 lg:h-20" />
 
       <MinArt />
     </MainLayout>

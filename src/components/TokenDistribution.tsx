@@ -20,7 +20,7 @@ type Props = {
 
 export function TokenDistribution({ id }: Props) {
   return (
-    <div className="flex flex-col items-center" id={id}>
+    <div className="flex flex-col items-center pt-14 lg:pt-20" id={id}>
       <SectionTitle subTitle="Our data">Token Distribution</SectionTitle>
 
       <div className="h-24 lg:h-48" />

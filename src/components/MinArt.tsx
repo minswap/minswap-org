@@ -22,7 +22,7 @@ const mainArt: MinArt = {
 
 export function MinArt() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center pt-14 lg:pt-20">
       <SectionTitle subTitle="Art">MinArt</SectionTitle>
 
       {/* Mobile */}

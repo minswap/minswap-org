@@ -35,13 +35,9 @@ export function MainLayout({ children, discordUsers }: Props) {
       <main>
         {children}
 
-        <div className="h-10 lg:h-20" />
-
         <JoinTheCommunity />
 
         <DiscordCommunity users={discordUsers} />
-
-        <div className="h-10 lg:h-20" />
       </main>
 
       <SeparatorLine />

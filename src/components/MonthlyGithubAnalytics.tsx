@@ -13,12 +13,12 @@ type Props = {
 
 export function MonthlyGithubAnalytics({ totalCodeAddition, totalCodeDeletion, totalCommits, totalMergedPRs }: Props) {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center px-5 pt-14 lg:pt-20">
       <SectionTitle subTitle="Some Facts">Monthly GitHub Analytics</SectionTitle>
 
       <div className="h-5 lg:h-14"></div>
 
-      <div className="grid grid-flow-row grid-cols-2 p-5 mx-5 border rounded-lg gap-y-6 lg:grid-cols-4 bg-trueGray-50 border-trueGray-200 lg:gap-x-5 lg:gap-y-12 lg:px-10 lg:py-12">
+      <div className="grid w-full grid-flow-row grid-cols-2 p-5 border rounded-lg md:w-max gap-y-6 lg:grid-cols-4 bg-trueGray-50 border-trueGray-200 lg:gap-x-5 lg:gap-y-12 lg:px-10 lg:py-12">
         <Item label="Total Commits" staticNumber={totalCommits} />
         <Item label="Merged Requests" staticNumber={totalMergedPRs} />
         <Item label="Code Additions" staticNumber={totalCodeAddition} />
