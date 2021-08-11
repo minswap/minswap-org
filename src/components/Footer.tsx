@@ -5,14 +5,18 @@ const resourcesLinksProps: LinksColumnProps = {
   title: 'Resources',
   links: [
     { text: 'Whitepaper', href: 'https://docs.minswap.org/whitepaper' },
-    { text: 'FAQ', href: 'https://docs.minswap.org/faq' },
+    { text: 'FAQ', href: 'https://docs.minswap.org/faq/general' },
+    { text: 'FISO', href: 'https://docs.minswap.org/faq/fiso' },
     { text: 'Brand Assets', href: '/minswap-branding.zip' },
   ],
 };
 
 const productsLinksProps: LinksColumnProps = {
   title: 'Products',
-  links: [{ text: 'Governance', href: 'https://docs.minswap.org/proposals/governance' }],
+  links: [
+    { text: 'Governance', href: 'https://docs.minswap.org/proposals/governance' },
+    { text: 'Merch', href: 'https://minswap.creator-spring.com/' },
+  ],
 };
 
 const documentationLinksProps: LinksColumnProps = {
