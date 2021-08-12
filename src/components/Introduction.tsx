@@ -23,9 +23,9 @@ export function Introduction() {
         <div className="m-3 md:h-5"></div>
 
         <div className="flex gap-x-4 lg:hidden">
-          <a href="https://docs.minswap.org/whitepaper" rel="noreferrer" target="_blank">
+          <a href="https://docs.minswap.org/faq/fiso#how-do-i-participate-in-the-fiso" rel="noreferrer" target="_blank">
             <Button className="h-full" size="md">
-              Read Whitepaper
+              FISO Stake Pools
             </Button>
           </a>
           <a href="https://app.minswap.org" rel="noreferrer" target="_blank">
@@ -36,9 +36,9 @@ export function Introduction() {
         </div>
 
         <div className="hidden lg:flex gap-x-4">
-          <a href="https://docs.minswap.org/whitepaper" rel="noreferrer" target="_blank">
+          <a href="https://docs.minswap.org/faq/fiso#how-do-i-participate-in-the-fiso" rel="noreferrer" target="_blank">
             <Button className="h-full" size="lg">
-              Read Whitepaper
+              FISO Stake Pools
             </Button>
           </a>
           <a href="https://app.minswap.org" rel="noreferrer" target="_blank">
