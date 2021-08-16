@@ -6,7 +6,8 @@ const resourcesLinksProps: LinksColumnProps = {
   links: [
     { text: 'Whitepaper', href: 'https://docs.minswap.org/whitepaper' },
     { text: 'FAQ', href: 'https://docs.minswap.org/faq/general' },
-    { text: 'FISO', href: 'https://docs.minswap.org/faq/fiso' },
+    { text: 'FISO Dashboard', href: 'https://fiso.minswap.org/' },
+    { text: 'FISO FAQ', href: 'https://docs.minswap.org/faq/fiso' },
     { text: 'Brand Assets', href: '/minswap-branding.zip' },
   ],
 };
