@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { GetStaticPropsResult } from 'next';
 
-import { DiscordUser, getTopDiscordUsers } from 'src/api/discord-users';
-import { getGithubStats, GithubStats } from 'src/api/github-stats';
 import {
   AFamiliarExperience,
   DeepDive,
@@ -15,13 +12,9 @@ import {
 import { MinArt } from 'src/components/MinArt';
 import { MainLayout } from 'src/layouts';
 
-type Props = {
-  discordUsers: DiscordUser[];
-};
-
-export default function HomePage(props: Props): React.ReactElement {
+export default function HomePage(): React.ReactElement {
   return (
-    <MainLayout discordUsers={props.discordUsers}>
+    <MainLayout>
       <Introduction />
 
       <RoadMap id="roadmap" />
@@ -39,13 +32,4 @@ export default function HomePage(props: Props): React.ReactElement {
       <MinArt />
     </MainLayout>
   );
-}
-
-export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
-  let discordUsers: DiscordUser[] = await getTopDiscordUsers();
-
-  return {
-    props: { discordUsers },
-    revalidate: 3600 * 24, // Cache for 1 day
-  };
 }

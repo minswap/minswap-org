@@ -1,19 +1,21 @@
 import * as React from 'react';
 import Image from 'next/image';
-import { chunk } from 'lodash';
+import chunk from 'lodash/chunk';
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { AutoplayOptions } from 'swiper/types/components/autoplay';
 
-import { DiscordUser } from 'src/api/discord-users';
+import { DiscordUser, getTopDiscordUsers } from 'src/api/discord-users';
 
 import { SectionTitle } from './SectionTitle';
 
-type Props = {
-  users: DiscordUser[];
-};
+export function DiscordCommunity() {
+  const [discordUsers, setDiscordUsers] = React.useState<DiscordUser[]>([]);
 
-export function DiscordCommunity({ users }: Props) {
+  React.useEffect(() => {
+    getTopDiscordUsers().then((res) => setDiscordUsers(res));
+  }, []);
+
   SwiperCore.use([Autoplay]);
 
   const autoplay: AutoplayOptions = {
@@ -40,7 +42,7 @@ export function DiscordCommunity({ users }: Props) {
         mousewheel={true}
         slidesPerView={3}
       >
-        {chunk(users, 3).map((data, index) => (
+        {chunk(discordUsers, 3).map((data, index) => (
           <SwiperSlide className="relative grid grid-flow-col grid-rows-3" key={index}>
             <div className="flex justify-center">
               <Image alt={data[0].id} className="rounded-full" height={48} src={data[0].avatarUrl} width={48} />
@@ -70,7 +72,7 @@ export function DiscordCommunity({ users }: Props) {
         mousewheel={true}
         slidesPerView={6}
       >
-        {chunk(users, 3).map((data, index) => (
+        {chunk(discordUsers, 3).map((data, index) => (
           <SwiperSlide className="relative grid grid-flow-col grid-rows-3" key={index}>
             <div className="flex justify-center">
               <Image alt={data[0].id} className="rounded-full" height={80} src={data[0].avatarUrl} width={80} />

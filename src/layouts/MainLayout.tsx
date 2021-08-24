@@ -1,14 +1,12 @@
 import * as React from 'react';
 
-import { DiscordUser } from 'src/api/discord-users';
 import { DiscordCommunity, Footer, Header, JoinTheCommunity, ScrollToTopButton, SeparatorLine } from 'src/components';
 
 type Props = {
   children: React.ReactNode;
-  discordUsers: DiscordUser[];
 };
 
-export function MainLayout({ children, discordUsers }: Props) {
+export function MainLayout({ children }: Props) {
   const [isScroll, setIsScroll] = React.useState(false);
 
   React.useEffect(() => {
@@ -37,7 +35,7 @@ export function MainLayout({ children, discordUsers }: Props) {
 
         <JoinTheCommunity />
 
-        <DiscordCommunity users={discordUsers} />
+        <DiscordCommunity />
       </main>
 
       <SeparatorLine />

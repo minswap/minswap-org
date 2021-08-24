@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { GetStaticPropsResult } from 'next';
 
-import { DiscordUser, getTopDiscordUsers } from 'src/api/discord-users';
 import abdelImage from 'src/assets/team/abdel.jpeg';
 import ethanImage from 'src/assets/team/ethan.jpg';
 import hieuPhanImage from 'src/assets/team/hieupnh.jpeg';
@@ -76,13 +74,9 @@ const teamMembers = [
   },
 ];
 
-type Props = {
-  discordUsers: DiscordUser[];
-};
-
-export default function TeamPage(props: Props) {
+export default function TeamPage() {
   return (
-    <MainLayout discordUsers={props.discordUsers}>
+    <MainLayout>
       <div className="h-12 lg:h-24"></div>
 
       <SectionTitle>The Team</SectionTitle>
@@ -107,13 +101,4 @@ export default function TeamPage(props: Props) {
       </div>
     </MainLayout>
   );
-}
-
-export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
-  const discordUsers = await getTopDiscordUsers();
-
-  return {
-    props: { discordUsers },
-    revalidate: 3600 * 24, // Cache for 1 day
-  };
 }
