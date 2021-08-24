@@ -1,17 +1,18 @@
 import * as React from 'react';
 
+import { getGithubAnalytics, GithubAnalytic } from 'src/api/github-analytic';
+
 import { Button } from './Button';
 import { GithubIcon } from './icons';
 import { SectionTitle } from './SectionTitle';
 
-type Props = {
-  totalCommits: number;
-  totalCodeAddition: number;
-  totalCodeDeletion: number;
-  totalMergedPRs: number;
-};
+export function MonthlyGithubAnalytics() {
+  const [githubAnalytic, setGithubAnalytic] = React.useState<GithubAnalytic>();
 
-export function MonthlyGithubAnalytics({ totalCodeAddition, totalCodeDeletion, totalCommits, totalMergedPRs }: Props) {
+  React.useEffect(() => {
+    getGithubAnalytics().then((res) => setGithubAnalytic(res));
+  }, []);
+
   return (
     <div className="flex flex-col items-center px-5 pt-14 lg:pt-20">
       <SectionTitle subTitle="Some Facts">Monthly GitHub Analytics</SectionTitle>
@@ -19,10 +20,10 @@ export function MonthlyGithubAnalytics({ totalCodeAddition, totalCodeDeletion, t
       <div className="h-5 lg:h-14"></div>
 
       <div className="grid w-full grid-flow-row grid-cols-2 p-5 border rounded-lg md:w-max gap-y-6 lg:grid-cols-4 bg-trueGray-50 border-trueGray-200 lg:gap-x-5 lg:gap-y-12 lg:px-10 lg:py-12">
-        <Item label="Total Commits" staticNumber={totalCommits} />
-        <Item label="Merged Requests" staticNumber={totalMergedPRs} />
-        <Item label="Code Additions" staticNumber={totalCodeAddition} />
-        <Item label="Code Deletions" staticNumber={totalCodeDeletion} />
+        <Item label="Total Commits" staticNumber={githubAnalytic?.totalCommit ?? 0} />
+        <Item label="Merged Requests" staticNumber={githubAnalytic?.totalMergedPullRequest ?? 0} />
+        <Item label="Code Additions" staticNumber={githubAnalytic?.totalCodeAddition ?? 0} />
+        <Item label="Code Deletions" staticNumber={githubAnalytic?.totalCodeDeletion ?? 0} />
 
         <div className="flex col-start-1 row-span-1 row-start-3 lg:row-start-2 col-span-full">
           <Button
