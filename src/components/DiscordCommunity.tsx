@@ -11,12 +11,12 @@ import { SectionTitle } from './SectionTitle';
 
 export function DiscordCommunity() {
   SwiperCore.use([Autoplay]);
-  const [discordUsers, setDiscordUsers] = React.useState<DiscordUser[]>([])
+  const [discordUsers, setDiscordUsers] = React.useState<DiscordUser[]>([]);
 
   React.useEffect(() => {
     async function getTopDiscordUsers() {
       try {
-        const users = await  fetch('/api/getTopDiscordUsers').then(res => res.json());
+        const users = await fetch('/api/getTopDiscordUsers').then((res) => res.json());
         setDiscordUsers(users);
       } catch (error) {
         console.log(error);

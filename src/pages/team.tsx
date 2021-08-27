@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { GetStaticPropsResult } from 'next';
 
-import { DiscordUser, getTopDiscordUsers } from 'src/api/discord-users';
 import abdelImage from 'src/assets/team/abdel.jpeg';
+import dungPhamImage from 'src/assets/team/dungph.jpeg';
 import ethanImage from 'src/assets/team/ethan.jpg';
 import hieuPhanImage from 'src/assets/team/hieupnh.jpeg';
 import richardNguyenImage from 'src/assets/team/hungnv.jpg';
@@ -19,7 +18,7 @@ const teamMembers = [
     image: longNguyenImage,
     title: 'Shadowy Super-Coder Lead',
     github: 'https://github.com/longngn',
-    twitter: 'https://twitter.com/ngnlongl',
+    twitter: 'https://twitter.com/ngnlong',
     linkedin: 'https://www.linkedin.com/in/ngnlong/',
   },
   {
@@ -35,7 +34,7 @@ const teamMembers = [
     image: richardNguyenImage,
     title: 'Shadowy Super-Coder',
     github: 'https://github.com/h2physics',
-    twitter: 'https://twitter.com/Richard78244114',
+    twitter: 'https://twitter.com/richard_ng_42',
     linkedin: 'https://www.linkedin.com/in/richard-nguyen-700739163/',
   },
   {
@@ -73,6 +72,14 @@ const teamMembers = [
     image: ethanImage,
     title: 'Shadowy Super-Operations Lead',
     linkedin: 'https://www.linkedin.com/in/ethan-protas-b0b724214/',
+  },
+  {
+    name: 'Dung Pham',
+    image: dungPhamImage,
+    title: 'Shadowy Super-Coder',
+    github: 'https://github.com/ljttl3q04t',
+    twitter: 'https://twitter.com/DzungPhamMins',
+    linkedin: 'https://www.linkedin.com/in/dung-pham-7b21a2197/',
   },
 ];
 

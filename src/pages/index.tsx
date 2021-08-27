@@ -14,7 +14,7 @@ import { MainLayout } from 'src/layouts';
 
 export default function HomePage(): React.ReactElement {
   return (
-    <MainLayout >
+    <MainLayout>
       <Introduction />
 
       <RoadMap id="roadmap" />
