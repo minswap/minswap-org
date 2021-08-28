@@ -6,7 +6,7 @@ export type GithubAnalytic = {
 };
 
 export async function getGithubAnalytics(): Promise<GithubAnalytic> {
-  const response = await fetch('https://dev.api.minswap.org/min-org/github-analytic');
+  const response = await fetch('https://api.minswap.org/min-org/github-analytic');
   const body: GithubAnalytic = await response.json();
   return body;
 }
