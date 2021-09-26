@@ -24,7 +24,7 @@ const teamMembers = [
   {
     name: 'Hieu Phan',
     image: hieuPhanImage,
-    title: 'Engineer',
+    title: 'Software Engineer',
     github: 'https://github.com/hieupnh',
     twitter: 'https://twitter.com/sun4123',
     linkedin: 'https://www.linkedin.com/in/phan-nguyen-huy-hieu-831a77152/',
@@ -32,7 +32,7 @@ const teamMembers = [
   {
     name: 'Richard Nguyen',
     image: richardNguyenImage,
-    title: 'Engineer',
+    title: 'Software Engineer',
     github: 'https://github.com/h2physics',
     twitter: 'https://twitter.com/richard_ng_42',
     linkedin: 'https://www.linkedin.com/in/richard-nguyen-700739163/',
@@ -40,7 +40,7 @@ const teamMembers = [
   {
     name: 'Khanh Le',
     image: khanhLeImage,
-    title: 'Engineer',
+    title: 'Software Engineer',
     github: 'https://github.com/lednhatkhanh',
     twitter: 'https://twitter.com/lednhatkhanh',
     linkedin: 'https://www.linkedin.com/in/lednhatkhanh',
@@ -76,7 +76,7 @@ const teamMembers = [
   {
     name: 'Dung Pham',
     image: dungPhamImage,
-    title: 'Engineer',
+    title: 'Software Engineer',
     github: 'https://github.com/ljttl3q04t',
     twitter: 'https://twitter.com/DzungPhamMins',
     linkedin: 'https://www.linkedin.com/in/dung-pham-7b21a2197/',
