@@ -33,7 +33,7 @@ export function DiscordCommunity() {
   return (
     <div className="py-14 lg:py-20">
       <SectionTitle>
-        Our <span className="text-blueBerry">Discord</span> community member
+        Our <span className="text-blueBerry">Discord</span> community members
       </SectionTitle>
 
       <div className="h-5 lg:h-12" />

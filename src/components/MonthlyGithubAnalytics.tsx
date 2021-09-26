@@ -17,7 +17,7 @@ export function MonthlyGithubAnalytics() {
     <div className="flex flex-col items-center px-5 pt-14 lg:pt-20">
       <SectionTitle subTitle="Some Facts">Monthly GitHub Analytics</SectionTitle>
 
-      <div className="h-5 lg:h-14"></div>
+      <div className="h-5 lg:h-14" />
 
       <div className="grid w-full grid-flow-row grid-cols-2 p-5 border rounded-lg md:w-max gap-y-6 lg:grid-cols-4 bg-trueGray-50 border-trueGray-200 lg:gap-x-5 lg:gap-y-12 lg:px-10 lg:py-12">
         <Item label="Total Commits" staticNumber={githubAnalytic?.totalCommit ?? 0} />
@@ -63,7 +63,7 @@ type ItemProps = {
 function Item({ staticNumber, label }: ItemProps) {
   return (
     <div className="flex flex-col lg:gap-y-2 gap-y-1">
-      <div className="text-3xl font-bold lg:text-6xl">{staticNumber.toLocaleString('en-US')}</div>
+      <div className="text-3xl font-bold lg:text-4xl">{staticNumber.toLocaleString('en-US')}</div>
       <div className="text-base lg:text-2xl text-trueGray-500">{label}</div>
     </div>
   );
