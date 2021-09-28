@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         primaryMain: '#2F45C5',
         blueBerry: '#5865f2',
+        greyser: '#d3dae2',
+        solitude: '#eaedf1',
         coolGray: colors.coolGray,
         trueGray: colors.trueGray,
       },
@@ -20,6 +22,9 @@ module.exports = {
       },
       fill: {
         none: 'none',
+      },
+      backgroundImage: {
+        mainLayout: 'linear-gradient(220deg, rgba(124, 128, 220, 0.2) 45%, rgba(124, 198, 220, 0.3))',
       },
     },
     fontFamily: {
