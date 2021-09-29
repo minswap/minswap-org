@@ -16,7 +16,7 @@ const teamMembers = [
   {
     name: 'Long Nguyen',
     image: longNguyenImage,
-    title: 'Shadowy Super-Coder Lead',
+    title: 'Lead Engineer',
     github: 'https://github.com/longngn',
     twitter: 'https://twitter.com/ngnlong',
     linkedin: 'https://www.linkedin.com/in/ngnlong/',
@@ -24,7 +24,7 @@ const teamMembers = [
   {
     name: 'Hieu Phan',
     image: hieuPhanImage,
-    title: 'Shadowy Super-Coder',
+    title: 'Software Engineer',
     github: 'https://github.com/hieupnh',
     twitter: 'https://twitter.com/sun4123',
     linkedin: 'https://www.linkedin.com/in/phan-nguyen-huy-hieu-831a77152/',
@@ -32,7 +32,7 @@ const teamMembers = [
   {
     name: 'Richard Nguyen',
     image: richardNguyenImage,
-    title: 'Shadowy Super-Coder',
+    title: 'Software Engineer',
     github: 'https://github.com/h2physics',
     twitter: 'https://twitter.com/richard_ng_42',
     linkedin: 'https://www.linkedin.com/in/richard-nguyen-700739163/',
@@ -40,7 +40,7 @@ const teamMembers = [
   {
     name: 'Khanh Le',
     image: khanhLeImage,
-    title: 'Shadowy Super-Coder',
+    title: 'Software Engineer',
     github: 'https://github.com/lednhatkhanh',
     twitter: 'https://twitter.com/lednhatkhanh',
     linkedin: 'https://www.linkedin.com/in/lednhatkhanh',
@@ -48,13 +48,13 @@ const teamMembers = [
   {
     name: 'Matt Cassler',
     image: mattImage,
-    title: 'Shadowy Super-Marketer',
+    title: 'Marketing Lead',
     twitter: 'https://twitter.com/Cassler33',
   },
   {
     name: 'Abdelilah Driouch',
     image: abdelImage,
-    title: 'Shadowy Super-Designer',
+    title: 'Product Designer',
     linkedin: 'https://www.linkedin.com/in/abdelilahdr/',
     link: 'https://abdel.design/me',
     twitter: 'https://twitter.com/abdelilahDR',
@@ -62,7 +62,7 @@ const teamMembers = [
   {
     name: 'Qayyum Yazid',
     image: qayyumImage,
-    title: 'Shadowy Super-Designer',
+    title: 'Product Designer',
     linkedin: 'https://www.linkedin.com/in/qayyum-yazid',
     link: 'https://creary.net/@smolpadok',
     twitter: 'https://twitter.com/smolpadok',
@@ -70,13 +70,13 @@ const teamMembers = [
   {
     name: 'Ethan Protas',
     image: ethanImage,
-    title: 'Shadowy Super-Operations Lead',
+    title: 'Operations Lead',
     linkedin: 'https://www.linkedin.com/in/ethan-protas-b0b724214/',
   },
   {
     name: 'Dung Pham',
     image: dungPhamImage,
-    title: 'Shadowy Super-Coder',
+    title: 'Software Engineer',
     github: 'https://github.com/ljttl3q04t',
     twitter: 'https://twitter.com/DzungPhamMins',
     linkedin: 'https://www.linkedin.com/in/dung-pham-7b21a2197/',
