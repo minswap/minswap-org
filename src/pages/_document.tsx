@@ -9,6 +9,7 @@ export default class MinswapInterfaceDocument extends Document {
           <link href="https://fonts.googleapis.com" rel="preconnect" />
           <link crossOrigin="" href="https://fonts.gstatic.com" rel="preconnect" />
           <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
           <script src="https://www.googletagmanager.com/gtag/js?id=G-JJ68DC38WV" async />
           <script
             dangerouslySetInnerHTML={{

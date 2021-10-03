@@ -3,7 +3,6 @@ import classNames from 'classnames';
 
 import { Announcement } from '../Announcement';
 import { MenuIcon } from '../icons';
-import { Buttons } from './Buttons';
 import { Drawer } from './Drawer';
 import { Logo } from './Logo';
 
@@ -24,7 +23,7 @@ export function MobileHeader({ isScroll, className }: Props) {
   }
 
   return (
-    <div className={classNames(isScroll ? 'sticky top-0 z-50' : null, className)}>
+    <div className={classNames(isScroll ? 'sticky top-0 z-50' : null, className, 'bg-white')}>
       <Announcement
         className={isScroll ? 'hidden' : ''}
         href="https://medium.com/minswap/minswap-fair-launch-tokenomics-and-fiso-airdrop-start-date-a75f3e75a546"

@@ -13,6 +13,7 @@ module.exports = {
         solitude: '#eaedf1',
         coolGray: colors.coolGray,
         trueGray: colors.trueGray,
+        dark: '#0f1743',
       },
       height: {
         50: '50rem',
@@ -29,6 +30,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Inter', 'system-ui'],
+      dmMono: ['DM Mono', 'monospace'],
     },
   },
   variants: {

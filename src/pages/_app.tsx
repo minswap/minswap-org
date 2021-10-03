@@ -4,6 +4,7 @@ import Head from 'next/head';
 
 import 'tailwindcss/tailwind.css';
 import 'swiper/swiper.scss';
+import 'tippy.js/dist/tippy.css';
 
 function MinswapInterfaceApp({ Component, pageProps }: AppProps): React.ReactElement<AppProps> {
   return (

@@ -1,6 +1,7 @@
 export * from './AFamiliarExperience';
 export * from './Announcement';
 export * from './Button';
+export * from './Checkbox';
 export * from './DeepDive';
 export * from './DiscordCommunity';
 export * from './Footer';

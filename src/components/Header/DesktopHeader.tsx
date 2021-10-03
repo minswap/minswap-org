@@ -13,7 +13,7 @@ type Props = {
 
 export function DesktopHeader({ isScroll, className }: Props) {
   return (
-    <div className={classNames(isScroll ? 'sticky top-0 z-50' : null, className)}>
+    <div className={classNames(isScroll ? 'sticky top-0 z-50' : null, className, 'bg-white')}>
       <Announcement href="https://medium.com/minswap/minswap-fair-launch-tokenomics-and-fiso-airdrop-start-date-a75f3e75a546">
         Minswap fair launch tokenomics and FISO airdrop start date
       </Announcement>

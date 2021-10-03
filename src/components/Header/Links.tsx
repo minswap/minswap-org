@@ -7,7 +7,7 @@ type Props = {
 
 export function Links({ onLinkClick }: Props) {
   return (
-    <div className="flex flex-col items-start text-black lg:text-gray-500 lg:text-sm text-md lg:items-center lg:flex-row gap-x-5">
+    <div className="flex flex-col items-start text-black lg:text-gray-500 lg:text-sm text-md lg:items-center lg:flex-row gap-x-7">
       <a
         className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto lg:hidden"
         href="https://app.minswap.org/"
@@ -51,6 +51,12 @@ export function Links({ onLinkClick }: Props) {
       <Link href="https://docs.minswap.org/faq/general">
         <a className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto" onClick={onLinkClick}>
           FAQ
+        </a>
+      </Link>
+
+      <Link href="/market-place">
+        <a className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto" onClick={onLinkClick}>
+          Sale 🔥
         </a>
       </Link>
 
