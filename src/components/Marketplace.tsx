@@ -6,7 +6,10 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import arrowDownIcon from 'src/assets/icons/arrow-down.svg';
 import adaIcon from 'src/assets/icons/cardano.png';
 import minIcon from 'src/assets/icons/minswap.png';
-import { MAXIMUM_ADA, MINIMUM_ADA, ORDER_DEADLINE_SECONDS } from 'src/constants';
+import { MAXIMUM_ADA, MIN, MIN_PER_ADA, MINIMUM_ADA, ORDER_DEADLINE_SECONDS } from 'src/constants';
+import { Amount } from 'src/models';
+import { ADA } from 'src/models/constants';
+import { tryParseAmount } from 'src/utils';
 
 import { Button } from './Button';
 import { Checkbox } from './Checkbox';
@@ -23,12 +26,18 @@ function calculateTimeLeft(end: Date) {
 
 export function Marketplace() {
   const [confirmNotUS, setConfirmNotUS] = React.useState(false);
-  const [token, setToken] = React.useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = React.useState<string | null>(null);
   const [userAddress, setUserAddress] = React.useState<string>('');
   const [countDown, setCountDown] = React.useState<number>(ORDER_DEADLINE_SECONDS);
+  const [amountADA, setAmountADA] = React.useState<Amount | undefined>(undefined);
+  const [amountMIN, setAmountMIN] = React.useState<Amount | undefined>(undefined);
+  const [inputError, setInputError] = React.useState<string | undefined>(undefined);
   const intervalId = React.useRef<NodeJS.Timeout | null>(null);
 
   const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const minimumADA = Amount.fromRawAmount(ADA, MINIMUM_ADA);
+  const maximumADA = Amount.fromRawAmount(ADA, MAXIMUM_ADA);
 
   const handleReCaptchaVerify = React.useCallback(async () => {
     if (!executeRecaptcha) {
@@ -36,11 +45,11 @@ export function Marketplace() {
     }
 
     const token = await executeRecaptcha();
-    setToken(token);
+    setCaptchaToken(token);
   }, [executeRecaptcha]);
 
   React.useEffect(() => {
-    if (token) {
+    if (captchaToken) {
       const end = new Date();
       end.setSeconds(end.getSeconds() + ORDER_DEADLINE_SECONDS);
       intervalId.current = setInterval(() => {
@@ -53,7 +62,7 @@ export function Marketplace() {
         }
       };
     }
-  }, [token]);
+  }, [captchaToken]);
 
   React.useEffect(() => {
     if (!countDown && intervalId.current) {
@@ -62,6 +71,15 @@ export function Marketplace() {
   }, [countDown]);
 
   function handleSubmit() {
+    setInputError(undefined);
+    if (!amountADA || !amountMIN) {
+      setInputError('Must enter ADA or MIN amount');
+      return;
+    }
+    if (amountADA.lessThan(minimumADA) || amountADA.greaterThan(maximumADA)) {
+      setInputError(`Can only buy from ${minimumADA.toExact()} ADA to ${maximumADA.toExact()} ADA`);
+      return;
+    }
     handleReCaptchaVerify();
   }
 
@@ -69,9 +87,25 @@ export function Marketplace() {
     setConfirmNotUS((confirmNotUS) => !confirmNotUS);
   }
 
+  function handleADAInputChange(input: string) {
+    input = input.replace(/[a-z\-,]/g, '');
+    const ada = tryParseAmount(input, ADA);
+    const min = ada?.multiply(MIN_PER_ADA);
+    setAmountADA(ada);
+    setAmountMIN(min);
+  }
+
+  function handleMINInputChange(input: string) {
+    input = input.replace(/[a-z\-,]/g, '');
+    const min = tryParseAmount(input, MIN);
+    const ada = min?.divide(MIN_PER_ADA);
+    setAmountADA(ada);
+    setAmountMIN(min);
+  }
+
   const handleCancelOrder = React.useCallback(() => {
     setCountDown(ORDER_DEADLINE_SECONDS);
-    setToken(null);
+    setCaptchaToken(null);
   }, []);
 
   return (
@@ -79,7 +113,7 @@ export function Marketplace() {
       <Header isScroll={false} />
 
       <div className="flex flex-col items-center py-12 md:py-24 gap-y-5 bg-mainLayout mainLayout px-2 md:px-0">
-        {token ? (
+        {captchaToken ? (
           <CompleteOrder countDown={countDown} onCancel={handleCancelOrder} />
         ) : (
           <>
@@ -97,6 +131,9 @@ export function Marketplace() {
                         className="w-full text-[20px] font-medium bg-transparent focus:outline-none font-dmMono font-medium"
                         placeholder="0.0"
                         size={1}
+                        type="number"
+                        value={amountADA?.toExact() ?? ''}
+                        onChange={(e) => handleADAInputChange(e.target.value)}
                       />
                     </div>
 
@@ -107,7 +144,7 @@ export function Marketplace() {
                       </div>
 
                       <div className="text-xs text-primaryMain">
-                        Min: {MINIMUM_ADA} ADA - Max: {MAXIMUM_ADA} ADA
+                        Min: {minimumADA.toExact()} ADA - Max: {maximumADA.toExact()} ADA
                       </div>
                     </div>
                   </div>
@@ -122,7 +159,9 @@ export function Marketplace() {
                         className="w-full text-[20px] font-medium bg-transparent focus:outline-none font-dmMono font-medium"
                         placeholder="0.0"
                         size={1}
-                        readOnly
+                        type="number"
+                        value={amountMIN?.toExact() ?? ''}
+                        onChange={(e) => handleMINInputChange(e.target.value)}
                       />
                     </div>
 
@@ -133,6 +172,8 @@ export function Marketplace() {
                   </div>
                 </div>
               </div>
+
+              {inputError && <div className="text-red-500 text-sm">{inputError}</div>}
 
               <div className="flex justify-between">
                 <Checkbox
