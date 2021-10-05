@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { SELLER_ADDRESS } from 'src/constants';
+
 import { CopyIcon, WarningIcon } from './icons';
 
 type Props = {
@@ -13,9 +15,6 @@ export function CompleteOrder({ countDown, onCancel }: Props) {
   return (
     <div className="flex flex-col w-full md:p-6 p-4 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-6">
       <div className="flex justify-between items-center relative">
-        {/*<button onClick={onBack}>*/}
-        {/*  <BackIcon />*/}
-        {/*</button>*/}
         <div></div>
 
         <h1 className="font-bold absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">Wallet info</h1>
@@ -40,7 +39,8 @@ export function CompleteOrder({ countDown, onCancel }: Props) {
       </div>
 
       <div className="bg-coolGray-100 rounded-2xl px-5 py-3 flex items-center justify-between overflow-x-auto md:overflow-x-hidden gap-x-4">
-        <span>addr19867c5lgh93034sfvfl2c563aeba70c35c58</span>
+        {/* TODO: Chỗ này cần để overflow truncate gì đấy cho đỡ trống */}
+        <span>{SELLER_ADDRESS.slice(0, 20)}...</span>
 
         <button className="bg-white rounded-xl p-3">
           <CopyIcon />

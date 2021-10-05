@@ -6,14 +6,13 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import arrowDownIcon from 'src/assets/icons/arrow-down.svg';
 import adaIcon from 'src/assets/icons/cardano.png';
 import minIcon from 'src/assets/icons/minswap.png';
+import { MAXIMUM_ADA, MINIMUM_ADA, ORDER_DEADLINE_SECONDS } from 'src/constants';
 
 import { Button } from './Button';
 import { Checkbox } from './Checkbox';
 import { CompleteOrder } from './CompleteOrder';
 import { Header } from './Header';
 import { SaleStatics } from './SaleStatics';
-
-const DURATION = 60 * 30;
 
 function calculateTimeLeft(end: Date) {
   const endSeconds = Math.round(end.getTime() / 1000);
@@ -25,7 +24,8 @@ function calculateTimeLeft(end: Date) {
 export function Marketplace() {
   const [confirmNotUS, setConfirmNotUS] = React.useState(false);
   const [token, setToken] = React.useState<string | null>(null);
-  const [countDown, setCountDown] = React.useState<number>(DURATION);
+  const [userAddress, setUserAddress] = React.useState<string>('');
+  const [countDown, setCountDown] = React.useState<number>(ORDER_DEADLINE_SECONDS);
   const intervalId = React.useRef<NodeJS.Timeout | null>(null);
 
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -42,7 +42,7 @@ export function Marketplace() {
   React.useEffect(() => {
     if (token) {
       const end = new Date();
-      end.setSeconds(end.getSeconds() + DURATION);
+      end.setSeconds(end.getSeconds() + ORDER_DEADLINE_SECONDS);
       intervalId.current = setInterval(() => {
         setCountDown(calculateTimeLeft(end));
       }, 1000);
@@ -70,7 +70,7 @@ export function Marketplace() {
   }
 
   const handleCancelOrder = React.useCallback(() => {
-    setCountDown(DURATION);
+    setCountDown(ORDER_DEADLINE_SECONDS);
     setToken(null);
   }, []);
 
@@ -91,7 +91,7 @@ export function Marketplace() {
                 <div className="flex flex-col p-4 border bg-opacity-50 border-opacity-30 active:border-greyser hover:border-greyser bg-solitude rounded-[20px]">
                   <div className="flex items-center">
                     <div className="items-center flex-1">
-                      <div className="text-base opacity-60">Swap from</div>
+                      <div className="text-base opacity-60">Sell</div>
                       <input
                         aria-label="Currency"
                         className="w-full text-[20px] font-medium bg-transparent focus:outline-none font-dmMono font-medium"
@@ -106,7 +106,9 @@ export function Marketplace() {
                         <Image alt="ADA icon" height={30} src={adaIcon} width={30} />
                       </div>
 
-                      <div className="text-xs text-primaryMain">Min: 50ADA - Max: 1kADA</div>
+                      <div className="text-xs text-primaryMain">
+                        Min: {MINIMUM_ADA} ADA - Max: {MAXIMUM_ADA} ADA
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -114,7 +116,7 @@ export function Marketplace() {
                 <div className="flex flex-col p-4 border bg-opacity-50 border-opacity-30 active:border-greyser hover:border-greyser bg-solitude rounded-[20px]">
                   <div className="flex items-center">
                     <div className="items-center flex-1">
-                      <div className="text-base opacity-60">Swap to</div>
+                      <div className="text-base opacity-60">Buy</div>
                       <input
                         aria-label="Currency"
                         className="w-full text-[20px] font-medium bg-transparent focus:outline-none font-dmMono font-medium"
