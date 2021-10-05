@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/minswap/minswap-org#readme",
   "dependencies": {
+    "@emurgo/cardano-serialization-lib-browser": "^9.1.0",
     "@tippyjs/react": "^4.2.5",
     "classnames": "^2.3.1",
     "critters": "^0.0.10",
