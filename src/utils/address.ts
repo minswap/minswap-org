@@ -1,9 +1,12 @@
+import { CARDANO_NETWORK } from 'src/config';
+
 import { RustModule } from '../rust-module';
 
-const paymentAddressRegex = new RegExp('^addr[a-z0-9]{99}$');
+const paymentAddressRegexMainnet = new RegExp('^addr[a-z0-9]{99}$');
+const paymentAddressRegexTestnet = new RegExp('^addr_test[a-z0-9]{99}$');
 
 export function isValidPaymentAddress(addr: string): boolean {
-  return paymentAddressRegex.test(addr);
+  return CARDANO_NETWORK === 'mainnet' ? paymentAddressRegexMainnet.test(addr) : paymentAddressRegexTestnet.test(addr);
 }
 
 export async function paymentAddrToStakeAddr(paymentAddrBech32: string): Promise<string> {
