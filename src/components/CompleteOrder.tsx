@@ -1,16 +1,27 @@
 import * as React from 'react';
 
+import { useCancelOrderMutation } from 'src/api';
 import { SELLER_ADDRESS } from 'src/constants';
 
 import { CopyIcon, WarningIcon } from './icons';
 
 type Props = {
+  orderId: string | undefined;
   countDown: number;
   onCancel: () => void;
 };
 
-export function CompleteOrder({ countDown, onCancel }: Props) {
+export function CompleteOrder({ orderId, countDown, onCancel }: Props) {
   const countDownText = React.useMemo(() => new Date(countDown * 1000).toISOString().substr(11, 8), [countDown]);
+  const { isLoading, error: cancelError, mutateAsync: cancelOrder } = useCancelOrderMutation();
+
+  async function handleCancel() {
+    if (!orderId) {
+      throw new Error(`Expect valid order ID, got ${orderId}`);
+    }
+    await cancelOrder({ orderId });
+    onCancel();
+  }
 
   return (
     <div className="flex flex-col w-full md:p-6 p-4 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-6">
@@ -19,10 +30,17 @@ export function CompleteOrder({ countDown, onCancel }: Props) {
 
         <h1 className="font-bold absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">Wallet info</h1>
 
-        <button className="rounded-3xl bg-red-500 text-white px-6 py-2 text-sm" onClick={onCancel}>
+        <button
+          className="rounded-3xl bg-red-500 text-white px-6 py-2 text-sm"
+          disabled={isLoading}
+          onClick={handleCancel}
+        >
+          {/* TODO: Handle loading state */}
           Cancel
         </button>
       </div>
+
+      {cancelError && <div className="text-red-500 text-sm">{cancelError.message}</div>}
 
       <div className="w-full h-[2px] bg-gray-200" />
 
@@ -43,6 +61,8 @@ export function CompleteOrder({ countDown, onCancel }: Props) {
         <span>{SELLER_ADDRESS.slice(0, 20)}...</span>
 
         <button className="bg-white rounded-xl p-3">
+          {/* TODO: Copy vào clipboard */}
+          {/* TODO: Thêm animation với icon lúc bấm copy thành công, trên Zeplin có */}
           <CopyIcon />
         </button>
       </div>

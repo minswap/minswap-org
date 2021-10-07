@@ -6,6 +6,7 @@ import { OverrideableComponentProps } from './extendableComponentProps';
 type BaseProps = {
   color?: 'default' | 'primary';
   size?: 'md' | 'lg';
+  loading?: boolean;
 };
 
 type Props<C extends React.ElementType> = OverrideableComponentProps<C, BaseProps>;
@@ -16,6 +17,7 @@ export function Button<C extends React.ElementType = 'button'>({
   component,
   color = 'default',
   size = 'md',
+  loading,
   ...rest
 }: Props<C>) {
   const Component = component ?? 'button';

@@ -2,20 +2,20 @@ import { useMutation, UseMutationResult } from 'react-query';
 
 import { getClient } from './client';
 
-export type CreateOrderParams = {
+export type CancelOrderParams = {
   orderId: string;
 };
 
-type CreateOrderReturns = Pick<
-  UseMutationResult<unknown, unknown, CreateOrderParams>,
-  'status' | 'error' | 'mutate' | 'isLoading'
+type CancelOrderReturns = Pick<
+  UseMutationResult<unknown, Error, CancelOrderParams>,
+  'status' | 'error' | 'mutateAsync' | 'isLoading'
 >;
 
-export function useCreateOrderMutation(): CreateOrderReturns {
-  const { status, error, mutate, isLoading } = useMutation<unknown, unknown, CreateOrderParams>({
+export function useCancelOrderMutation(): CancelOrderReturns {
+  const { status, error, mutateAsync, isLoading } = useMutation<unknown, Error, CancelOrderParams>({
     mutationFn(req) {
       return getClient(`/public-sale/orders/${req.orderId}`, {
-        method: 'PATCH',
+        method: 'DELETE',
       });
     },
   });
@@ -23,7 +23,7 @@ export function useCreateOrderMutation(): CreateOrderReturns {
   return {
     status,
     error,
-    mutate,
+    mutateAsync,
     isLoading,
   };
 }

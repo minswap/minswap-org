@@ -3,19 +3,22 @@ import { useMutation, UseMutationResult } from 'react-query';
 import { getClient } from './client';
 
 export type CreateOrderParams = {
-  paymentAddress: string;
-  stakeAddress: string;
+  paymentAddr: string;
   amountADA: number;
-  captchaToken: string;
+  captchaResponse: string;
+};
+
+export type CreateOrderResponse = {
+  id: string;
 };
 
 type CreateOrderReturns = Pick<
-  UseMutationResult<unknown, unknown, CreateOrderParams>,
-  'status' | 'error' | 'mutate' | 'isLoading'
+  UseMutationResult<CreateOrderResponse, Error, CreateOrderParams>,
+  'status' | 'error' | 'mutateAsync' | 'isLoading' | 'data'
 >;
 
 export function useCreateOrderMutation(): CreateOrderReturns {
-  const { status, error, mutate, isLoading } = useMutation<unknown, unknown, CreateOrderParams>({
+  const { status, error, mutateAsync, isLoading, data } = useMutation<CreateOrderResponse, Error, CreateOrderParams>({
     mutationFn(req) {
       return getClient('/public-sale/orders', {
         method: 'POST',
@@ -27,7 +30,8 @@ export function useCreateOrderMutation(): CreateOrderReturns {
   return {
     status,
     error,
-    mutate,
+    mutateAsync,
     isLoading,
+    data,
   };
 }

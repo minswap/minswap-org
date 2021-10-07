@@ -11,13 +11,12 @@ export async function getClient<ResponseType>(path: string, options: GetClientOp
   });
 
   if (!response.ok) {
+    let data = await response.text();
     try {
-      const data = await response.json();
-      throw new Error(data.message);
-    } catch (_) {
-      const message = await response.text();
-      throw new Error(message);
-    }
+      const json = JSON.parse(data);
+      data = json.message;
+    } catch (_) {}
+    throw new Error(data);
   }
 
   const data = await response.json();

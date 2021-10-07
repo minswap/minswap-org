@@ -3,10 +3,11 @@ import Image from 'next/image';
 import Tippy from '@tippyjs/react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
+import { useCreateOrderMutation } from 'src/api';
 import arrowDownIcon from 'src/assets/icons/arrow-down.svg';
 import adaIcon from 'src/assets/icons/cardano.png';
 import minIcon from 'src/assets/icons/minswap.png';
-import { MAXIMUM_ADA, MIN, MIN_PER_ADA, MINIMUM_ADA, ORDER_DEADLINE_SECONDS } from 'src/constants';
+import { MAXIMUM_ADA, MIN, MIN_PER_ADA, MINIMUM_ADA, ORDER_DEADLINE_SECONDS, TRANSACTION_FEE } from 'src/constants';
 import { Amount } from 'src/models';
 import { ADA } from 'src/models/constants';
 import { tryParseAmount } from 'src/utils';
@@ -15,7 +16,10 @@ import { Button } from './Button';
 import { Checkbox } from './Checkbox';
 import { CompleteOrder } from './CompleteOrder';
 import { Header } from './Header';
+import { Input } from './Input';
 import { SaleStatics } from './SaleStatics';
+
+const paymentAddrRegExp = new RegExp('^addr(_test)?[a-z0-9]{99}$');
 
 function calculateTimeLeft(end: Date) {
   const endSeconds = Math.round(end.getTime() / 1000);
@@ -26,43 +30,47 @@ function calculateTimeLeft(end: Date) {
 
 export function Marketplace() {
   const [confirmNotUS, setConfirmNotUS] = React.useState(false);
-  const [captchaToken, setCaptchaToken] = React.useState<string | null>(null);
   const [userAddress, setUserAddress] = React.useState<string>('');
   const [countDown, setCountDown] = React.useState<number>(ORDER_DEADLINE_SECONDS);
   const [amountADA, setAmountADA] = React.useState<Amount | undefined>(undefined);
   const [amountMIN, setAmountMIN] = React.useState<Amount | undefined>(undefined);
   const [inputError, setInputError] = React.useState<string | undefined>(undefined);
+  const [showCompleteOrder, setShowCompleteOrder] = React.useState<boolean>(false);
   const intervalId = React.useRef<NodeJS.Timeout | null>(null);
+
+  const { isLoading, error: apiError, mutateAsync: createOrder, data: orderData } = useCreateOrderMutation();
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const minimumADA = Amount.fromRawAmount(ADA, MINIMUM_ADA);
   const maximumADA = Amount.fromRawAmount(ADA, MAXIMUM_ADA);
 
-  const handleReCaptchaVerify = React.useCallback(async () => {
-    if (!executeRecaptcha) {
-      return;
-    }
+  const ADAtoSend: Amount | undefined = React.useMemo(
+    () => amountADA?.add(Amount.fromRawAmount(ADA, TRANSACTION_FEE)),
+    [amountADA],
+  );
 
+  const getRecaptcha = React.useCallback(async (): Promise<string | undefined> => {
+    if (!executeRecaptcha) {
+      return undefined;
+    }
     const token = await executeRecaptcha();
-    setCaptchaToken(token);
+    return token;
   }, [executeRecaptcha]);
 
-  React.useEffect(() => {
-    if (captchaToken) {
-      const end = new Date();
-      end.setSeconds(end.getSeconds() + ORDER_DEADLINE_SECONDS);
-      intervalId.current = setInterval(() => {
-        setCountDown(calculateTimeLeft(end));
-      }, 1000);
+  const startCoundown = React.useCallback(() => {
+    const end = new Date();
+    end.setSeconds(end.getSeconds() + ORDER_DEADLINE_SECONDS);
+    intervalId.current = setInterval(() => {
+      setCountDown(calculateTimeLeft(end));
+    }, 1000);
+  }, []);
 
-      return () => {
-        if (intervalId.current) {
-          clearInterval(intervalId.current);
-        }
-      };
+  const stopCoundown = React.useCallback(() => {
+    if (intervalId.current) {
+      clearInterval(intervalId.current);
     }
-  }, [captchaToken]);
+  }, []);
 
   React.useEffect(() => {
     if (!countDown && intervalId.current) {
@@ -70,8 +78,12 @@ export function Marketplace() {
     }
   }, [countDown]);
 
-  function handleSubmit() {
+  async function handleSubmit() {
     setInputError(undefined);
+    if (!paymentAddrRegExp.test(userAddress)) {
+      setInputError('Must enter payment address');
+      return;
+    }
     if (!amountADA || !amountMIN) {
       setInputError('Must enter ADA or MIN amount');
       return;
@@ -80,11 +92,30 @@ export function Marketplace() {
       setInputError(`Can only buy from ${minimumADA.toExact()} ADA to ${maximumADA.toExact()} ADA`);
       return;
     }
-    handleReCaptchaVerify();
+    const token = await getRecaptcha();
+    if (token === undefined) {
+      setInputError('Fail to get recaptcha token');
+      return;
+    }
+    await createOrder({
+      paymentAddr: userAddress,
+      amountADA: Number(ADAtoSend?.quotient),
+      captchaResponse: token,
+    });
+    // Clear form
+    setAmountADA(Amount.fromRawAmount(ADA, 0));
+    setAmountMIN(Amount.fromRawAmount(MIN, 0));
+
+    setShowCompleteOrder(true);
+    startCoundown();
   }
 
   function handleConfirmNotUSChange() {
     setConfirmNotUS((confirmNotUS) => !confirmNotUS);
+  }
+
+  function handleAddressChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setUserAddress(event.target.value.trim().toLowerCase());
   }
 
   function handleADAInputChange(input: string) {
@@ -103,21 +134,28 @@ export function Marketplace() {
     setAmountMIN(min);
   }
 
-  const handleCancelOrder = React.useCallback(() => {
+  async function handleCancelOrder() {
+    stopCoundown();
     setCountDown(ORDER_DEADLINE_SECONDS);
-    setCaptchaToken(null);
-  }, []);
+    setShowCompleteOrder(false);
+  }
 
   return (
     <>
       <Header isScroll={false} />
 
       <div className="flex flex-col items-center py-12 md:py-24 gap-y-5 bg-mainLayout mainLayout px-2 md:px-0">
-        {captchaToken ? (
-          <CompleteOrder countDown={countDown} onCancel={handleCancelOrder} />
+        {showCompleteOrder ? (
+          <CompleteOrder countDown={countDown} orderId={orderData?.id} onCancel={handleCancelOrder} />
         ) : (
           <>
             <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[460px] rounded-[30px] gap-y-6">
+              <Input
+                label="Enter your address"
+                placeholder="Enter your payment address"
+                value={userAddress}
+                onChange={handleAddressChange}
+              />
               <div className="relative flex flex-col gap-y-[10px]">
                 <div className="rounded-full p-3 bg-solitude absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center border-4 border-white">
                   <Image alt="Arrow down icon" src={arrowDownIcon} />
@@ -131,7 +169,6 @@ export function Marketplace() {
                         className="w-full text-[20px] font-medium bg-transparent focus:outline-none font-dmMono font-medium"
                         placeholder="0.0"
                         size={1}
-                        type="number"
                         value={amountADA?.toExact() ?? ''}
                         onChange={(e) => handleADAInputChange(e.target.value)}
                       />
@@ -159,7 +196,6 @@ export function Marketplace() {
                         className="w-full text-[20px] font-medium bg-transparent focus:outline-none font-dmMono font-medium"
                         placeholder="0.0"
                         size={1}
-                        type="number"
                         value={amountMIN?.toExact() ?? ''}
                         onChange={(e) => handleMINInputChange(e.target.value)}
                       />
@@ -174,6 +210,7 @@ export function Marketplace() {
               </div>
 
               {inputError && <div className="text-red-500 text-sm">{inputError}</div>}
+              {apiError && <div className="text-red-500 text-sm">{apiError.message}</div>}
 
               <div className="flex justify-between">
                 <Checkbox
@@ -191,7 +228,15 @@ export function Marketplace() {
                 </Tippy>
               </div>
 
-              <Button className="py-4 rounded-[14px]" color="primary" size="lg" onClick={handleSubmit}>
+              <Button
+                className="py-4 rounded-[14px]"
+                color="primary"
+                // TODO: Need style for disabled button and loading
+                disabled={!confirmNotUS}
+                loading={isLoading}
+                size="lg"
+                onClick={handleSubmit}
+              >
                 Buy
               </Button>
             </div>
