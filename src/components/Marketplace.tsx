@@ -103,8 +103,8 @@ export function Marketplace() {
       captchaResponse: token,
     });
     // Clear form
-    setAmountADA(Amount.fromRawAmount(ADA, 0));
-    setAmountMIN(Amount.fromRawAmount(MIN, 0));
+    setAmountADA(undefined);
+    setAmountMIN(undefined);
 
     setShowCompleteOrder(true);
     startCoundown();
