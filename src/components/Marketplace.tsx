@@ -102,9 +102,6 @@ export function Marketplace() {
       amountADA: Number(ADAtoSend?.quotient),
       captchaResponse: token,
     });
-    // Clear form
-    setAmountADA(undefined);
-    setAmountMIN(undefined);
 
     setShowCompleteOrder(true);
     startCoundown();
@@ -138,6 +135,10 @@ export function Marketplace() {
     stopCoundown();
     setCountDown(ORDER_DEADLINE_SECONDS);
     setShowCompleteOrder(false);
+
+    // Clear form
+    setAmountADA(undefined);
+    setAmountMIN(undefined);
   }
 
   return (
@@ -146,7 +147,13 @@ export function Marketplace() {
 
       <div className="flex flex-col items-center py-12 md:py-24 gap-y-5 bg-mainLayout mainLayout px-2 md:px-0">
         {showCompleteOrder ? (
-          <CompleteOrder countDown={countDown} orderId={orderData?.id} onCancel={handleCancelOrder} />
+          <CompleteOrder
+            adaToSend={ADAtoSend}
+            countDown={countDown}
+            minToReceive={amountMIN}
+            orderId={orderData?.id}
+            onCancel={handleCancelOrder}
+          />
         ) : (
           <>
             <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[460px] rounded-[30px] gap-y-6">

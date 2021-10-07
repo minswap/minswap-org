@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { useCancelOrderMutation } from 'src/api';
 import { SELLER_ADDRESS } from 'src/constants';
+import { Amount } from 'src/models';
 
 import { CopyIcon, WarningIcon } from './icons';
 
@@ -9,9 +10,11 @@ type Props = {
   orderId: string | undefined;
   countDown: number;
   onCancel: () => void;
+  adaToSend: Amount | undefined;
+  minToReceive: Amount | undefined;
 };
 
-export function CompleteOrder({ orderId, countDown, onCancel }: Props) {
+export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToReceive }: Props) {
   const countDownText = React.useMemo(() => new Date(countDown * 1000).toISOString().substr(11, 8), [countDown]);
   const { isLoading, error: cancelError, mutateAsync: cancelOrder } = useCancelOrderMutation();
 
@@ -70,7 +73,8 @@ export function CompleteOrder({ orderId, countDown, onCancel }: Props) {
       <div className="flex flex-col gap-y-5">
         <h2 className="font-bold text-2xl">What&apos;s next</h2>
         <div className="text-base opacity-60">
-          You must send exactly 1,000 ADA to this address and we will send back 4,000 MIN in a few minutes.
+          You must send <span className="font-bold">exactly {adaToSend?.toExact()} ADA</span> to this address and we
+          will send back {minToReceive?.toExact()} MIN in a few minutes.
         </div>
       </div>
 

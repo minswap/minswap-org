@@ -6,5 +6,5 @@ export const TRANSACTION_FEE = 2_000_000n;
 export const MIN_PER_ADA = 40n;
 export const ORDER_DEADLINE_SECONDS = 60 * 30;
 export const SELLER_ADDRESS =
-  'addr1q8t6x7ktjy6la09sljurqyjlkrxc4gf3tqgchw6lmdz0pflcjy3sa36eh39xswz9qgpf9ruk7cj34c7xzc3kar5fqtqsuse5qz';
-export const MIN = new Coin('2148479597260e11a129e3413f3bfc7dad602dcd9025ab81b06566c4', 'MIN', 6);
+  'addr_test1qquazwmva2j04eh5g603u7n4ztv9tp7l99t6v7zk6hn77hrm6m7xe8g3yylksua66hdvfut677jh5nyahtr6els5ym0sl4pgjs';
+export const MIN = new Coin('497a96fc6f8ce225dc5ecaa07b48fe2f10174a49f908fa4d986c1d9c', 'tMIN', 6);
