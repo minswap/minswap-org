@@ -25,9 +25,9 @@ export function DeepDive({ id }: Props) {
       <div className="h-8 lg:h-16"></div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-7 lg:gap-y-10 gap-y-5">
-        <Item image={fairLaunchImage} title="Fair Launch">
-          No pre-mine, no pre-sale, no VC. The only way to get MIN tokens is by participating in the protocol or
-          airdrop.
+        <Item image={fairLaunchImage} title="Fair Distribution">
+          No private investment or VC allocation. MIN tokens are fairly distributed to the community with 21.5%
+          allocation to core team and development funds.
         </Item>
 
         <Item image={yieldFarmingImage} title="Yield Farming">

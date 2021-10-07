@@ -15,7 +15,7 @@ const resourcesLinksProps: LinksColumnProps = {
 const productsLinksProps: LinksColumnProps = {
   title: 'Products',
   links: [
-    { text: 'Governance', href: 'https://docs.minswap.org/proposals/governance' },
+    { text: 'Governance', href: 'https://forum.minswap.org' },
     { text: 'Merch', href: 'https://minswap.creator-spring.com/' },
   ],
 };

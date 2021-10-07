@@ -36,7 +36,7 @@ export function Links({ onLinkClick }: Props) {
         </a>
       </Link>
 
-      <Link href="/#tokenomics">
+      <Link href="https://medium.com/minswap/minswap-fair-launch-tokenomics-and-fiso-airdrop-start-date-a75f3e75a546">
         <a className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto" onClick={onLinkClick}>
           Tokenomics
         </a>
@@ -66,9 +66,9 @@ export function Links({ onLinkClick }: Props) {
         </a>
       </Link>
 
-      <Link href="https://minswap.creator-spring.com/">
+      <Link href="https://forum.minswap.org/">
         <a className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto" onClick={onLinkClick}>
-          Merch
+          Governance
         </a>
       </Link>
     </div>
