@@ -17,3 +17,4 @@ export * from './SectionTitle';
 export * from './SeparatorLine';
 export * from './TeamMemberItem';
 export * from './TokenDistribution';
+export * from './Tooltip';

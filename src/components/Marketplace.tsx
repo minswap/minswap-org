@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Image from 'next/image';
-import Tippy from '@tippyjs/react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import { useCreateOrderMutation } from 'src/api';
@@ -18,6 +17,8 @@ import { CompleteOrder } from './CompleteOrder';
 import { Header } from './Header';
 import { Input } from './Input';
 import { SaleStatics } from './SaleStatics';
+import { Soldout } from './Soldout';
+import { Tooltip } from './Tooltip';
 
 const paymentAddrRegExp = new RegExp('^addr(_test)?[a-z0-9]{99}$');
 
@@ -157,12 +158,6 @@ export function Marketplace() {
         ) : (
           <>
             <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[460px] rounded-[30px] gap-y-6">
-              <Input
-                label="Enter your address"
-                placeholder="Enter your payment address"
-                value={userAddress}
-                onChange={handleAddressChange}
-              />
               <div className="relative flex flex-col gap-y-[10px]">
                 <div className="rounded-full p-3 bg-solitude absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center border-4 border-white">
                   <Image alt="Arrow down icon" src={arrowDownIcon} />
@@ -219,6 +214,13 @@ export function Marketplace() {
               {inputError && <div className="text-red-500 text-sm">{inputError}</div>}
               {apiError && <div className="text-red-500 text-sm">{apiError.message}</div>}
 
+              <Input
+                label="Enter your address"
+                placeholder="Enter your payment address"
+                value={userAddress}
+                onChange={handleAddressChange}
+              />
+
               <div className="flex justify-between">
                 <Checkbox
                   checked={confirmNotUS}
@@ -226,19 +228,17 @@ export function Marketplace() {
                   onChange={handleConfirmNotUSChange}
                 />
 
-                <Tippy
-                  className="!text-xs !rounded-xl !p-2"
+                <Tooltip
                   content="Residents of the United States of America are not permitted to purchase these tokens. All other buyers are advised to check the laws of their country before buying these utility tokens. Please stay compliant."
                   placement="right"
                 >
                   <div className="text-base text-primaryMain hover:cursor-default">What is this?</div>
-                </Tippy>
+                </Tooltip>
               </div>
 
               <Button
                 className="py-4 rounded-[14px]"
                 color="primary"
-                // TODO: Need style for disabled button and loading
                 disabled={!confirmNotUS}
                 loading={isLoading}
                 size="lg"

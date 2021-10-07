@@ -5,6 +5,7 @@ import { SELLER_ADDRESS } from 'src/constants';
 import { Amount } from 'src/models';
 
 import { CopyIcon, WarningIcon } from './icons';
+import { Tooltip } from './Tooltip';
 
 type Props = {
   orderId: string | undefined;
@@ -15,6 +16,7 @@ type Props = {
 };
 
 export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToReceive }: Props) {
+  const [showCopiedTooltip, setShowCopiedTooltip] = React.useState(false);
   const countDownText = React.useMemo(() => new Date(countDown * 1000).toISOString().substr(11, 8), [countDown]);
   const { isLoading, error: cancelError, mutateAsync: cancelOrder } = useCancelOrderMutation();
 
@@ -25,6 +27,19 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
     await cancelOrder({ orderId });
     onCancel();
   }
+
+  function handleCopy() {
+    navigator.clipboard.writeText(SELLER_ADDRESS);
+    setShowCopiedTooltip(true);
+  }
+
+  React.useEffect(() => {
+    if (showCopiedTooltip) {
+      setTimeout(() => {
+        setShowCopiedTooltip(false);
+      }, 1000);
+    }
+  }, [showCopiedTooltip]);
 
   return (
     <div className="flex flex-col w-full md:p-6 p-4 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-6">
@@ -60,21 +75,20 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
       </div>
 
       <div className="bg-coolGray-100 rounded-2xl px-5 py-3 flex items-center justify-between overflow-x-auto md:overflow-x-hidden gap-x-4">
-        {/* TODO: Chỗ này cần để overflow truncate gì đấy cho đỡ trống */}
-        <span>{SELLER_ADDRESS.slice(0, 20)}...</span>
+        <span className="whitespace-nowrap overflow-ellipsis overflow-hidden">{SELLER_ADDRESS}</span>
 
-        <button className="bg-white rounded-xl p-3">
-          {/* TODO: Copy vào clipboard */}
-          {/* TODO: Thêm animation với icon lúc bấm copy thành công, trên Zeplin có */}
-          <CopyIcon />
-        </button>
+        <Tooltip content="Address copied!" placement="bottom" visible={showCopiedTooltip}>
+          <button className="bg-white rounded-xl p-3" onClick={handleCopy}>
+            <CopyIcon />
+          </button>
+        </Tooltip>
       </div>
 
       <div className="flex flex-col gap-y-5">
         <h2 className="font-bold text-2xl">What&apos;s next</h2>
         <div className="text-base opacity-60">
-          You must send <span className="font-bold">exactly {adaToSend?.toExact()} ADA</span> to this address and we
-          will send back {minToReceive?.toExact()} MIN in a few minutes.
+          You must send exactly <strong>{adaToSend?.toExact()} ADA</strong> to this address and we will send back{' '}
+          <strong>{minToReceive?.toExact()} MIN</strong> in a few minutes.
         </div>
       </div>
 

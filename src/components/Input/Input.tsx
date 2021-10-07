@@ -13,14 +13,12 @@ export const Input = React.forwardRef<HTMLInputElement, Props>(function Input(
   return (
     <div className="flex-grow lg:flex-none">
       {label && <div className="text-sm pb-[6px] pl-[10px]">{label}</div>}
-      <div
-        className={classnames(
-          'flex flex-row items-center w-full text-sm px-5 border bg-greyser border-solid bg-opacity-50 rounded-[14px]',
-          className,
-        )}
-      >
+
+      <div className={classnames('flex flex-row items-center w-full text-sm bg-white bg-opacity-50', className)}>
         <input
-          className={'flex-grow py-[9px] font-sans border-none bg-transparent focus:text-primary focus:outline-none '}
+          className={
+            'flex-1 py-[9px] font-sans bg-transparent border focus:text-primary focus:outline-none focus:border focus:border-primaryMain rounded-[14px] px-5'
+          }
           ref={ref}
           {...rest}
         />
