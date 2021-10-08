@@ -64,11 +64,9 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
   return (
     <div className="flex flex-col w-full md:p-6 p-4 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-4">
       <h1 className="font-bold ">What&apos;s next</h1>
-
       {cancelError && <div className="text-sm text-red-500">{cancelError.message}</div>}
-
+      `
       <div className="w-full h-[1px] bg-gray-200" />
-
       <div className="flex gap-x-8">
         <div className="flex-shrink-0">
           <DynamicQrCode paymentAddress={SELLER_ADDRESS} />
@@ -77,22 +75,24 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
         <div className="flex flex-col justify-center gap-y-2">
           <div className="text-3xl text-primaryMain md:text-4xl font-dmMono">{countDownText}</div>
           <div className="text-sm opacity-60">
-            We reserve the MIN tokens for you in this time, if you don&apos;t complete the order before it will be
-            released.
+            {orderInfo?.status === 'SOLD'
+              ? 'Your order is completed, MIN token has been already sent to your wallet'
+              : orderInfo?.status === 'REFUNDED'
+              ? 'Your order is overtime, ADA token has been already refunded to your wallet'
+              : "We reserve the MIN tokens for you in this time, if you don't complete the order before it will be released."}
           </div>
           <Button
             className="px-8 h-[30px] rounded-xl"
-            color={orderInfo?.status === 'SOLD' ? 'success' : 'warning'}
+            color={orderInfo?.status === 'SOLD' ? 'success' : orderInfo?.status === 'REFUNDED' ? 'alert' : 'warning'}
             loading={isLoading}
-            readOnly={orderInfo?.status === 'SOLD'}
+            readOnly={orderInfo?.status === 'SOLD' || orderInfo?.status === 'REFUNDED'}
             spinnerClassName="w-[13px] h-[13px]"
             onClick={handleCancel}
           >
-            {orderInfo?.status === 'SOLD' ? 'Success' : 'Cancel'}
+            {orderInfo?.status === 'SOLD' ? 'Success' : orderInfo?.status === 'REFUNDED' ? 'Refunded' : 'Cancel'}
           </Button>
         </div>
       </div>
-
       <div className="flex items-center justify-between px-5 py-3 overflow-x-auto bg-coolGray-100 rounded-2xl md:overflow-x-hidden gap-x-4">
         <span className="overflow-hidden whitespace-nowrap overflow-ellipsis">{SELLER_ADDRESS}</span>
 
@@ -102,7 +102,6 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
           </button>
         </Tooltip>
       </div>
-
       <div className="flex flex-col gap-y-5">
         <h2 className="text-2xl font-bold">What&apos;s next</h2>
         <div className="text-base opacity-60">
@@ -110,7 +109,6 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
           <strong>{minToReceive?.toExact()} MIN</strong> in a few minutes.
         </div>
       </div>
-
       <div className="flex flex-col">
         <div className="flex items-center text-red-500 gap-x-2">
           <WarningIcon />

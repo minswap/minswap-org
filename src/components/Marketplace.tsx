@@ -38,8 +38,8 @@ export function Marketplace() {
   const [inputError, setInputError] = React.useState<string | undefined>(undefined);
   const [showCompleteOrder, setShowCompleteOrder] = React.useState<boolean>(false);
   const intervalId = React.useRef<NodeJS.Timeout | null>(null);
-  const { data: overview } = useGetOverview();
-  const hasSold = (overview?.available?.amount_min ?? 0) / 1_000_000;
+  const { data: overview } = useGetOverview(!showCompleteOrder);
+  const hasSoldout = overview?.available && overview?.available?.amount_min === 0;
 
   const { isLoading, error: apiError, mutateAsync: createOrder, data: orderData } = useCreateOrderMutation();
 
@@ -155,7 +155,7 @@ export function Marketplace() {
           />
         ) : (
           <>
-            {hasSold === 0 ? (
+            {hasSoldout ? (
               <Soldout />
             ) : (
               <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-6">

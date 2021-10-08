@@ -14,7 +14,7 @@ export type GetOrderResponse = {
 
 type GetOrderReturns = Pick<UseQueryResult<GetOrderResponse, Error>, 'status' | 'error' | 'isLoading' | 'data'>;
 
-export function useGetOverview(): GetOrderReturns {
+export function useGetOverview(enabled: boolean): GetOrderReturns {
   const { status, error, isLoading, data } = useQuery<GetOrderResponse, Error>({
     queryFn() {
       return getClient(`/public-sale/overview`, {
@@ -22,6 +22,7 @@ export function useGetOverview(): GetOrderReturns {
       });
     },
     refetchInterval: 5000,
+    enabled,
   });
 
   return {

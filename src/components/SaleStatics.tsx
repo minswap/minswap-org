@@ -20,7 +20,7 @@ function getDisplayAmount(amount: number | undefined): string {
 }
 
 export function SaleStatics() {
-  const { data } = useGetOverview();
+  const { data } = useGetOverview(true);
   const initialMin = data?.initial ? data?.initial.amount_min / 1_000_000 : 0;
   const initialADA = data?.initial ? data?.initial.amount_ada / 1_000_000 : 0;
   const availableMin = data?.available ? data?.available.amount_min / 1_000_000 : 0;

@@ -6,7 +6,7 @@ import { OverrideableComponentProps } from './extendableComponentProps';
 import { Spinner } from './Spinner';
 
 type BaseProps = {
-  color?: 'default' | 'primary' | 'warning' | 'success';
+  color?: 'default' | 'primary' | 'warning' | 'success' | 'alert';
   size?: 'md' | 'lg';
   loading?: boolean;
   readOnly?: boolean;
@@ -50,6 +50,7 @@ export function Button<C extends React.ElementType = 'button'>({
           primary: 'border border-primaryMain bg-primaryMain text-white',
           warning: 'border border-red-500 bg-red-500 text-white',
           success: 'border border-green-500 bg-green-500 text-white',
+          alert: 'border border-yellow-500 bg-yellow-500 text-white',
         }[color],
         loading
           ? 'cursor-not-allowed'
