@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { useCancelOrderMutation } from 'src/api';
+import { useGetOrderQuery } from 'src/api/useGetOrder';
 import { SELLER_ADDRESS } from 'src/constants';
 import { Amount } from 'src/models';
 
@@ -19,6 +20,7 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
   const [showCopiedTooltip, setShowCopiedTooltip] = React.useState(false);
   const countDownText = React.useMemo(() => new Date(countDown * 1000).toISOString().substr(11, 8), [countDown]);
   const { isLoading, error: cancelError, mutateAsync: cancelOrder } = useCancelOrderMutation();
+  const { data: orderInfo } = useGetOrderQuery(orderId);
 
   async function handleCancel() {
     if (!orderId) {
@@ -44,14 +46,13 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
   return (
     <div className="flex flex-col w-full md:p-6 p-4 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-4">
       <div className="flex items-center justify-between">
-        <h1 className="font-bold ">Min wallet info</h1>
+        <h1 className="font-bold ">What&apos;s next</h1>
 
         <button
           className="hidden px-6 py-2 text-sm font-bold text-red-500 bg-transparent rounded-3xl"
           disabled={isLoading}
           onClick={handleCancel}
         >
-          {/* TODO: Handle loading state, check status of order */}
           Cancel
         </button>
       </div>
@@ -77,7 +78,6 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
             disabled={isLoading}
             onClick={handleCancel}
           >
-            {/* TODO: Handle loading state, success transaction => success and bg-green, check status of order */}
             Cancel
           </button>
         </div>
@@ -96,7 +96,7 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
       <div className="flex flex-col gap-y-5">
         <h2 className="text-2xl font-bold">What&apos;s next</h2>
         <div className="text-base opacity-60">
-          You must send exactly <strong>{adaToSend?.toExact()} ADA</strong> to this address and we will send back{' '}
+          You must send <strong>exactly {adaToSend?.toExact()} ADA</strong> to this address and we will send back{' '}
           <strong>{minToReceive?.toExact()} MIN</strong> in a few minutes.
         </div>
       </div>

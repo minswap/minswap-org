@@ -117,7 +117,7 @@ export function Marketplace() {
   }
 
   function handleADAInputChange(input: string) {
-    input = input.replace(/[a-z\-,]/g, '');
+    input = input.replace(/[^0-9]/g, '');
     const ada = tryParseAmount(input, ADA);
     const min = ada?.multiply(MIN_PER_ADA);
     setAmountADA(ada);
@@ -125,7 +125,7 @@ export function Marketplace() {
   }
 
   function handleMINInputChange(input: string) {
-    input = input.replace(/[a-z\-,]/g, '');
+    input = input.replace(/[^0-9]/g, '');
     const min = tryParseAmount(input, MIN);
     const ada = min?.divide(MIN_PER_ADA);
     setAmountADA(ada);
@@ -169,7 +169,7 @@ export function Marketplace() {
                       <input
                         aria-label="Currency"
                         className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
-                        placeholder="0.0"
+                        placeholder="0"
                         size={1}
                         value={amountADA?.toExact() ?? ''}
                         onChange={(e) => handleADAInputChange(e.target.value)}
@@ -196,7 +196,7 @@ export function Marketplace() {
                       <input
                         aria-label="Currency"
                         className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
-                        placeholder="0.0"
+                        placeholder="0"
                         size={1}
                         value={amountMIN?.toExact() ?? ''}
                         onChange={(e) => handleMINInputChange(e.target.value)}
