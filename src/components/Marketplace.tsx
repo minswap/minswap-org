@@ -2,7 +2,7 @@ import * as React from 'react';
 import Image from 'next/image';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
-import { useCreateOrderMutation } from 'src/api';
+import { useCreateOrderMutation, useGetOverview } from 'src/api';
 import arrowDownIcon from 'src/assets/icons/arrow-down.svg';
 import adaIcon from 'src/assets/icons/cardano.png';
 import minIcon from 'src/assets/icons/minswap.png';
@@ -38,6 +38,7 @@ export function Marketplace() {
   const [inputError, setInputError] = React.useState<string | undefined>(undefined);
   const [showCompleteOrder, setShowCompleteOrder] = React.useState<boolean>(false);
   const intervalId = React.useRef<NodeJS.Timeout | null>(null);
+  const { data: overview } = useGetOverview();
 
   const { isLoading, error: apiError, mutateAsync: createOrder, data: orderData } = useCreateOrderMutation();
 
@@ -124,14 +125,6 @@ export function Marketplace() {
     setAmountMIN(min);
   }
 
-  function handleMINInputChange(input: string) {
-    input = input.replace(/[^0-9]/g, '');
-    const min = tryParseAmount(input, MIN);
-    const ada = min?.divide(MIN_PER_ADA);
-    setAmountADA(ada);
-    setAmountMIN(min);
-  }
-
   async function handleCancelOrder() {
     stopCoundown();
     setCountDown(ORDER_DEADLINE_SECONDS);
@@ -141,6 +134,8 @@ export function Marketplace() {
     setAmountADA(undefined);
     setAmountMIN(undefined);
   }
+
+  React.useEffect(() => {}, []);
 
   return (
     <>
@@ -157,96 +152,100 @@ export function Marketplace() {
           />
         ) : (
           <>
-            <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-6">
-              <div className="relative flex flex-col gap-y-[10px]">
-                <div className="absolute flex items-center justify-center p-3 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white rounded-full bg-solitude top-1/2 left-1/2">
-                  <Image alt="Arrow down icon" src={arrowDownIcon} />
-                </div>
-                <div className="flex flex-col p-4 border bg-opacity-50 border-opacity-30 active:border-greyser hover:border-greyser bg-solitude rounded-[20px]">
-                  <div className="flex items-center">
-                    <div className="items-center flex-1">
-                      <div className="text-base opacity-60">Sell</div>
-                      <input
-                        aria-label="Currency"
-                        className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
-                        placeholder="0"
-                        size={1}
-                        value={amountADA?.toExact() ?? ''}
-                        onChange={(e) => handleADAInputChange(e.target.value)}
-                      />
-                    </div>
+            {overview?.available?.amount_min === 0 ? (
+              <Soldout />
+            ) : (
+              <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-6">
+                <div className="relative flex flex-col gap-y-[10px]">
+                  <div className="absolute flex items-center justify-center p-3 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white rounded-full bg-solitude top-1/2 left-1/2">
+                    <Image alt="Arrow down icon" src={arrowDownIcon} />
+                  </div>
+                  <div className="flex flex-col p-4 border bg-opacity-50 border-opacity-30 active:border-greyser hover:border-greyser bg-solitude rounded-[20px]">
+                    <div className="flex items-center">
+                      <div className="items-center flex-1">
+                        <div className="text-base opacity-60">Sell</div>
+                        <input
+                          aria-label="Currency"
+                          className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
+                          placeholder="0"
+                          size={1}
+                          value={amountADA?.toExact() ?? ''}
+                          onChange={(e) => handleADAInputChange(e.target.value)}
+                        />
+                      </div>
 
-                    <div className="flex flex-col items-end gap-y-1">
+                      <div className="flex flex-col items-end gap-y-1">
+                        <div className="flex items-center gap-x-4">
+                          <span className="font-medium font-dmMono">ADA</span>
+                          <Image alt="ADA icon" height={30} src={adaIcon} width={30} />
+                        </div>
+
+                        <div className="text-xs text-primaryMain">
+                          Min: {minimumADA.toExact()} ADA - Max: {maximumADA.toExact()} ADA
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col p-4 border bg-opacity-50 border-opacity-30 active:border-greyser hover:border-greyser bg-solitude rounded-[20px]">
+                    <div className="flex items-center">
+                      <div className="items-center flex-1">
+                        <div className="text-base opacity-60">Buy</div>
+                        <input
+                          aria-label="Currency"
+                          className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
+                          placeholder="0"
+                          size={1}
+                          value={amountMIN?.toExact() ?? ''}
+                          readOnly
+                        />
+                      </div>
+
                       <div className="flex items-center gap-x-4">
-                        <span className="font-medium font-dmMono">ADA</span>
-                        <Image alt="ADA icon" height={30} src={adaIcon} width={30} />
-                      </div>
-
-                      <div className="text-xs text-primaryMain">
-                        Min: {minimumADA.toExact()} ADA - Max: {maximumADA.toExact()} ADA
+                        <span className="font-medium font-dmMono">MIN</span>
+                        <Image alt="MIN icon" height={30} src={minIcon} width={30} />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex flex-col p-4 border bg-opacity-50 border-opacity-30 active:border-greyser hover:border-greyser bg-solitude rounded-[20px]">
-                  <div className="flex items-center">
-                    <div className="items-center flex-1">
-                      <div className="text-base opacity-60">Buy</div>
-                      <input
-                        aria-label="Currency"
-                        className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
-                        placeholder="0"
-                        size={1}
-                        value={amountMIN?.toExact() ?? ''}
-                        onChange={(e) => handleMINInputChange(e.target.value)}
-                      />
-                    </div>
+                {inputError && <div className="text-sm text-red-500">{inputError}</div>}
+                {apiError && <div className="text-sm text-red-500">{apiError.message}</div>}
 
-                    <div className="flex items-center gap-x-4">
-                      <span className="font-medium font-dmMono">MIN</span>
-                      <Image alt="MIN icon" height={30} src={minIcon} width={30} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {inputError && <div className="text-sm text-red-500">{inputError}</div>}
-              {apiError && <div className="text-sm text-red-500">{apiError.message}</div>}
-
-              <Input
-                label="Enter your address"
-                placeholder="Enter your payment address"
-                value={userAddress}
-                onChange={handleAddressChange}
-              />
-
-              <div className="flex justify-between">
-                <Checkbox
-                  checked={confirmNotUS}
-                  label="I confirm I'm not a US citizen"
-                  onChange={handleConfirmNotUSChange}
+                <Input
+                  label="Enter your address"
+                  placeholder="Enter your payment address"
+                  value={userAddress}
+                  onChange={handleAddressChange}
                 />
 
-                <Tooltip
-                  content="Residents of the United States of America are not permitted to purchase these tokens. All other buyers are advised to check the laws of their country before buying these utility tokens. Please stay compliant."
-                  placement="right"
-                >
-                  <div className="text-base text-primaryMain hover:cursor-default">What is this?</div>
-                </Tooltip>
-              </div>
+                <div className="flex justify-between">
+                  <Checkbox
+                    checked={confirmNotUS}
+                    label="I confirm I'm not a US citizen"
+                    onChange={handleConfirmNotUSChange}
+                  />
 
-              <Button
-                className="py-4 rounded-[14px]"
-                color="primary"
-                disabled={!confirmNotUS}
-                loading={isLoading}
-                size="lg"
-                onClick={handleSubmit}
-              >
-                Buy
-              </Button>
-            </div>
+                  <Tooltip
+                    content="Residents of the United States of America are not permitted to purchase these tokens. All other buyers are advised to check the laws of their country before buying these utility tokens. Please stay compliant."
+                    placement="right"
+                  >
+                    <div className="text-base text-primaryMain hover:cursor-default">What is this?</div>
+                  </Tooltip>
+                </div>
+
+                <Button
+                  className="py-4 rounded-[14px]"
+                  color="primary"
+                  disabled={!confirmNotUS}
+                  loading={isLoading}
+                  size="lg"
+                  onClick={handleSubmit}
+                >
+                  Buy
+                </Button>
+              </div>
+            )}
 
             <SaleStatics />
           </>

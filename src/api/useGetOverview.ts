@@ -9,7 +9,7 @@ type Amount = {
 
 export type GetOrderResponse = {
   initial?: Amount;
-  sold?: Amount;
+  available?: Amount;
 };
 
 type GetOrderReturns = Pick<UseQueryResult<GetOrderResponse, Error>, 'status' | 'error' | 'isLoading' | 'data'>;

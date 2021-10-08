@@ -8,10 +8,6 @@ function getDisplayAmount(amount: number | undefined): string {
     return '0';
   }
 
-  if (amount > 1_000_000_000) {
-    return `${Math.round(amount / 1_000_000_000)}B`;
-  }
-
   if (amount > 1_000_000) {
     return `${Math.round(amount / 1_000_000)}M`;
   }
@@ -25,7 +21,9 @@ function getDisplayAmount(amount: number | undefined): string {
 
 export function SaleStatics() {
   const { data } = useGetOverview();
-  const soldPercentage = data?.sold && data.initial ? data.sold.amount_min / data.initial.amount_min : 0;
+  const minSold = data?.available && data?.initial ? data?.initial.amount_min - data?.available.amount_min : 0;
+  const adaSold = data?.available && data?.initial ? data?.initial.amount_ada - data?.available.amount_ada : 0;
+  const soldPercentage = data?.initial ? minSold / data.initial.amount_min : 0;
 
   return (
     <div className="w-full rounded-[30px] grid p-6 bg-white shadow-xl md:max-w-[500px] gap-y-2 grid-cols-2">
@@ -39,8 +37,8 @@ export function SaleStatics() {
       <div>
         <div className="text-base opacity-60">Token Sold</div>
         <div className="h-1" />
-        <div className="font-dmMono text-2xl font-medium">MIN {getDisplayAmount(data?.sold?.amount_min)}</div>
-        <div className="text-base text-primaryMain font-dmMono">ADA {getDisplayAmount(data?.sold?.amount_ada)}</div>
+        <div className="font-dmMono text-2xl font-medium">MIN {getDisplayAmount(minSold)}</div>
+        <div className="text-base text-primaryMain font-dmMono">ADA {getDisplayAmount(adaSold)}</div>
       </div>
 
       <div className="row-start-2 col-span-2 flex flex-col items-end">

@@ -22,9 +22,23 @@ const DynamicQrCode = dynamic<any>(() => import('./QrCode').then((mod) => mod.Qr
 
 export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToReceive }: Props) {
   const [showCopiedTooltip, setShowCopiedTooltip] = React.useState(false);
-  const countDownText = React.useMemo(() => new Date(countDown * 1000).toISOString().substr(11, 8), [countDown]);
   const { isLoading, error: cancelError, mutateAsync: cancelOrder } = useCancelOrderMutation();
   const { data: orderInfo } = useGetOrderQuery(orderId);
+  const currCountDown = React.useRef(countDown);
+  const countDownText = React.useMemo(() => {
+    const format = (time: number) => new Date(time * 1000).toISOString().substr(11, 8);
+    if (orderInfo?.status === 'SOLD') {
+      return format(currCountDown.current);
+    }
+
+    return format(countDown);
+  }, [countDown, orderInfo]);
+
+  React.useEffect(() => {
+    if (orderInfo && orderInfo.status !== 'SOLD') {
+      currCountDown.current = countDown;
+    }
+  }, [countDown]);
 
   async function handleCancel() {
     if (!orderId) {
