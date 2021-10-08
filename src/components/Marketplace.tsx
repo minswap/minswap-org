@@ -146,7 +146,7 @@ export function Marketplace() {
     <>
       <Header isScroll={false} />
 
-      <div className="flex flex-col items-center py-12 md:py-24 gap-y-5 bg-mainLayout mainLayout px-2 md:px-0">
+      <div className="flex flex-col items-center px-2 py-8 md:py-20 gap-y-5 bg-mainLayout mainLayout md:px-0">
         {showCompleteOrder ? (
           <CompleteOrder
             adaToSend={ADAtoSend}
@@ -159,7 +159,7 @@ export function Marketplace() {
           <>
             <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[460px] rounded-[30px] gap-y-6">
               <div className="relative flex flex-col gap-y-[10px]">
-                <div className="rounded-full p-3 bg-solitude absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center border-4 border-white">
+                <div className="absolute flex items-center justify-center p-3 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white rounded-full bg-solitude top-1/2 left-1/2">
                   <Image alt="Arrow down icon" src={arrowDownIcon} />
                 </div>
                 <div className="flex flex-col p-4 border bg-opacity-50 border-opacity-30 active:border-greyser hover:border-greyser bg-solitude rounded-[20px]">
@@ -168,7 +168,7 @@ export function Marketplace() {
                       <div className="text-base opacity-60">Sell</div>
                       <input
                         aria-label="Currency"
-                        className="w-full text-[20px] font-medium bg-transparent focus:outline-none font-dmMono font-medium"
+                        className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
                         placeholder="0.0"
                         size={1}
                         value={amountADA?.toExact() ?? ''}
@@ -178,7 +178,7 @@ export function Marketplace() {
 
                     <div className="flex flex-col items-end gap-y-1">
                       <div className="flex items-center gap-x-4">
-                        <span className="font-dmMono font-medium">ADA</span>
+                        <span className="font-medium font-dmMono">ADA</span>
                         <Image alt="ADA icon" height={30} src={adaIcon} width={30} />
                       </div>
 
@@ -195,7 +195,7 @@ export function Marketplace() {
                       <div className="text-base opacity-60">Buy</div>
                       <input
                         aria-label="Currency"
-                        className="w-full text-[20px] font-medium bg-transparent focus:outline-none font-dmMono font-medium"
+                        className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
                         placeholder="0.0"
                         size={1}
                         value={amountMIN?.toExact() ?? ''}
@@ -204,15 +204,15 @@ export function Marketplace() {
                     </div>
 
                     <div className="flex items-center gap-x-4">
-                      <span className="font-dmMono font-medium">MIN</span>
+                      <span className="font-medium font-dmMono">MIN</span>
                       <Image alt="MIN icon" height={30} src={minIcon} width={30} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {inputError && <div className="text-red-500 text-sm">{inputError}</div>}
-              {apiError && <div className="text-red-500 text-sm">{apiError.message}</div>}
+              {inputError && <div className="text-sm text-red-500">{inputError}</div>}
+              {apiError && <div className="text-sm text-red-500">{apiError.message}</div>}
 
               <Input
                 label="Enter your address"

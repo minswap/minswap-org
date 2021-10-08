@@ -5,6 +5,7 @@ import { SELLER_ADDRESS } from 'src/constants';
 import { Amount } from 'src/models';
 
 import { CopyIcon, WarningIcon } from './icons';
+import { QrCode } from './QrCode';
 import { Tooltip } from './Tooltip';
 
 type Props = {
@@ -42,50 +43,58 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
   }, [showCopiedTooltip]);
 
   return (
-    <div className="flex flex-col w-full md:p-6 p-4 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-6">
-      <div className="flex justify-between items-center relative">
-        <div></div>
-
-        <h1 className="font-bold absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">Wallet info</h1>
+    <div className="flex flex-col w-full md:p-6 p-4 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-4">
+      <div className="flex items-center justify-between">
+        <h1 className="font-bold ">Min wallet info</h1>
 
         <button
-          className="rounded-3xl bg-red-500 text-white px-6 py-2 text-sm"
+          className="hidden px-6 py-2 text-sm font-bold text-red-500 bg-transparent rounded-3xl"
           disabled={isLoading}
           onClick={handleCancel}
         >
-          {/* TODO: Handle loading state */}
+          {/* TODO: Handle loading state, check status of order */}
           Cancel
         </button>
       </div>
 
-      {cancelError && <div className="text-red-500 text-sm">{cancelError.message}</div>}
+      {cancelError && <div className="text-sm text-red-500">{cancelError.message}</div>}
 
-      <div className="w-full h-[2px] bg-gray-200" />
+      <div className="w-full h-[1px] bg-gray-200" />
 
       <div className="flex gap-x-8">
-        <div className="bg-gray-300 h-32 w-32 flex-shrink-0" />
+        <div className="flex-shrink-0">
+          <QrCode paymentAddress={SELLER_ADDRESS} />
+        </div>
 
-        <div className="flex flex-col gap-y-5 justify-center">
-          <div className="text-primaryMain md:text-4xl font-dmMono text-3xl">{countDownText}</div>
+        <div className="flex flex-col justify-center gap-y-2">
+          <div className="text-3xl text-primaryMain md:text-4xl font-dmMono">{countDownText}</div>
           <div className="text-sm opacity-60">
             We reserve the MIN tokens for you in this time, if you don&apos;t complete the order before it will be
             released.
           </div>
+          <button
+            className="px-8 py-[6px] text-sm text-white bg-red-500 rounded-xl"
+            disabled={isLoading}
+            onClick={handleCancel}
+          >
+            {/* TODO: Handle loading state, success transaction => success and bg-green, check status of order */}
+            Cancel
+          </button>
         </div>
       </div>
 
-      <div className="bg-coolGray-100 rounded-2xl px-5 py-3 flex items-center justify-between overflow-x-auto md:overflow-x-hidden gap-x-4">
-        <span className="whitespace-nowrap overflow-ellipsis overflow-hidden">{SELLER_ADDRESS}</span>
+      <div className="flex items-center justify-between px-5 py-3 overflow-x-auto bg-coolGray-100 rounded-2xl md:overflow-x-hidden gap-x-4">
+        <span className="overflow-hidden whitespace-nowrap overflow-ellipsis">{SELLER_ADDRESS}</span>
 
         <Tooltip content="Address copied!" placement="bottom" visible={showCopiedTooltip}>
-          <button className="bg-white rounded-xl p-3" onClick={handleCopy}>
+          <button className="p-3 bg-white rounded-xl" onClick={handleCopy}>
             <CopyIcon />
           </button>
         </Tooltip>
       </div>
 
       <div className="flex flex-col gap-y-5">
-        <h2 className="font-bold text-2xl">What&apos;s next</h2>
+        <h2 className="text-2xl font-bold">What&apos;s next</h2>
         <div className="text-base opacity-60">
           You must send exactly <strong>{adaToSend?.toExact()} ADA</strong> to this address and we will send back{' '}
           <strong>{minToReceive?.toExact()} MIN</strong> in a few minutes.
