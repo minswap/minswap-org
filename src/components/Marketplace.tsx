@@ -39,6 +39,7 @@ export function Marketplace() {
   const [showCompleteOrder, setShowCompleteOrder] = React.useState<boolean>(false);
   const intervalId = React.useRef<NodeJS.Timeout | null>(null);
   const { data: overview } = useGetOverview();
+  const hasSold = (overview?.available?.amount_min ?? 0) / 1_000_000;
 
   const { isLoading, error: apiError, mutateAsync: createOrder, data: orderData } = useCreateOrderMutation();
 
@@ -82,8 +83,12 @@ export function Marketplace() {
 
   async function handleSubmit() {
     setInputError(undefined);
-    if (!paymentAddrRegExp.test(userAddress)) {
+    if (!userAddress) {
       setInputError('Must enter payment address');
+      return;
+    }
+    if (!paymentAddrRegExp.test(userAddress)) {
+      setInputError('Invalid payment address');
       return;
     }
     if (!amountADA || !amountMIN) {
@@ -135,8 +140,6 @@ export function Marketplace() {
     setAmountMIN(undefined);
   }
 
-  React.useEffect(() => {}, []);
-
   return (
     <>
       <Header isScroll={false} />
@@ -152,7 +155,7 @@ export function Marketplace() {
           />
         ) : (
           <>
-            {overview?.available?.amount_min === 0 ? (
+            {hasSold === 0 ? (
               <Soldout />
             ) : (
               <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-6">
@@ -237,7 +240,7 @@ export function Marketplace() {
                 <Button
                   className="py-4 rounded-[14px]"
                   color="primary"
-                  disabled={!confirmNotUS}
+                  disabled={!confirmNotUS || !amountADA}
                   loading={isLoading}
                   size="lg"
                   onClick={handleSubmit}

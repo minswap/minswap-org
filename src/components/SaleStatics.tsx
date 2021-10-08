@@ -21,17 +21,21 @@ function getDisplayAmount(amount: number | undefined): string {
 
 export function SaleStatics() {
   const { data } = useGetOverview();
-  const minSold = data?.available && data?.initial ? data?.initial.amount_min - data?.available.amount_min : 0;
-  const adaSold = data?.available && data?.initial ? data?.initial.amount_ada - data?.available.amount_ada : 0;
-  const soldPercentage = data?.initial ? minSold / data.initial.amount_min : 0;
+  const initialMin = data?.initial ? data?.initial.amount_min / 1_000_000 : 0;
+  const initialADA = data?.initial ? data?.initial.amount_ada / 1_000_000 : 0;
+  const availableMin = data?.available ? data?.available.amount_min / 1_000_000 : 0;
+  const availableADA = data?.available ? data?.available.amount_ada / 1_000_000 : 0;
+  const minSold = initialMin - availableMin;
+  const adaSold = initialADA - availableADA;
+  const soldPercentage = minSold / initialMin;
 
   return (
     <div className="w-full rounded-[30px] grid p-6 bg-white shadow-xl md:max-w-[500px] gap-y-2 grid-cols-2">
       <div>
         <div className="text-base opacity-60">Total Tokens</div>
         <div className="h-1" />
-        <div className="font-dmMono text-2xl font-medium">MIN {getDisplayAmount(data?.initial?.amount_min)}</div>
-        <div className="text-base text-primaryMain font-dmMono">ADA {getDisplayAmount(data?.initial?.amount_ada)}</div>
+        <div className="font-dmMono text-2xl font-medium">MIN {getDisplayAmount(initialMin)}</div>
+        <div className="text-base text-primaryMain font-dmMono">ADA {getDisplayAmount(initialADA)}</div>
       </div>
 
       <div>
