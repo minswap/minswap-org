@@ -1,10 +1,12 @@
 import * as React from 'react';
+import dynamic from 'next/dynamic';
 
 import { useCancelOrderMutation } from 'src/api';
 import { useGetOrderQuery } from 'src/api/useGetOrder';
 import { SELLER_ADDRESS } from 'src/constants';
 import { Amount } from 'src/models';
 
+import { Button } from './Button';
 import { CopyIcon, WarningIcon } from './icons';
 import { Tooltip } from './Tooltip';
 
@@ -15,6 +17,8 @@ type Props = {
   adaToSend: Amount | undefined;
   minToReceive: Amount | undefined;
 };
+
+const DynamicQrCode = dynamic<any>(() => import('./QrCode').then((mod) => mod.QrCode), { ssr: false });
 
 export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToReceive }: Props) {
   const [showCopiedTooltip, setShowCopiedTooltip] = React.useState(false);
@@ -62,10 +66,9 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
       <div className="w-full h-[1px] bg-gray-200" />
 
       <div className="flex gap-x-8">
-        {/* TODO: Fix QR code error: self is not defined */}
-        {/* <div className="flex-shrink-0">
-          <QrCode paymentAddress={SELLER_ADDRESS} />
-        </div> */}
+        <div className="flex-shrink-0">
+          <DynamicQrCode paymentAddress={SELLER_ADDRESS} />
+        </div>
 
         <div className="flex flex-col justify-center gap-y-2">
           <div className="text-3xl text-primaryMain md:text-4xl font-dmMono">{countDownText}</div>
@@ -73,13 +76,16 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
             We reserve the MIN tokens for you in this time, if you don&apos;t complete the order before it will be
             released.
           </div>
-          <button
-            className="px-8 py-[6px] text-sm text-white bg-red-500 rounded-xl"
-            disabled={isLoading}
+          <Button
+            className="px-8 h-[30px] rounded-xl"
+            color={orderInfo?.status !== 'SOLD' ? 'success' : 'warning'}
+            loading={isLoading}
+            spinnerClassName="w-[13px] h-[13px]"
+            readOnly
             onClick={handleCancel}
           >
-            Cancel
-          </button>
+            {orderInfo?.status !== 'SOLD' ? 'Success' : 'Cancel'}
+          </Button>
         </div>
       </div>
 

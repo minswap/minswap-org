@@ -1,13 +1,16 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import classnames from 'classnames';
 
 import { OverrideableComponentProps } from './extendableComponentProps';
 import { Spinner } from './Spinner';
 
 type BaseProps = {
-  color?: 'default' | 'primary';
+  color?: 'default' | 'primary' | 'warning' | 'success';
   size?: 'md' | 'lg';
   loading?: boolean;
+  readOnly?: boolean;
+  spinnerClassName?: string;
 };
 
 type Props<C extends React.ElementType> = OverrideableComponentProps<C, BaseProps>;
@@ -19,17 +22,19 @@ export function Button<C extends React.ElementType = 'button'>({
   color = 'default',
   size = 'md',
   loading,
-  onChange,
+  onClick,
+  spinnerClassName,
+  readOnly,
   ...rest
 }: Props<C>) {
   const Component = component ?? 'button';
 
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
-    if (loading) {
+    if (loading || readOnly) {
       return;
     }
 
-    onChange(event);
+    onClick(event);
   }
 
   return (
@@ -43,9 +48,13 @@ export function Button<C extends React.ElementType = 'button'>({
         {
           default: 'border border-gray-300 bg-white',
           primary: 'border border-primaryMain bg-primaryMain text-white',
+          warning: 'border border-red-500 bg-red-500 text-white',
+          success: 'border border-green-500 bg-green-500 text-white',
         }[color],
         loading
           ? 'cursor-not-allowed'
+          : readOnly
+          ? 'cursor-default'
           : {
               default: 'hover:text-black hover:border-black',
               primary: 'hover:bg-white hover:text-primaryMain',
@@ -55,7 +64,7 @@ export function Button<C extends React.ElementType = 'button'>({
       onClick={handleClick}
       {...rest}
     >
-      {loading ? <Spinner className="w-6 h-6" /> : children}
+      {loading ? <Spinner className={classnames('w-6 h-6', spinnerClassName)} /> : children}
     </Component>
   );
 }

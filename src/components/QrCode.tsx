@@ -4,14 +4,13 @@ import QRCodeStyling from 'qr-code-styling';
 const qrCode = new QRCodeStyling({
   width: 150,
   height: 150,
-  // image: '/src/assets/icons/minswap.png',
+  image: '/minswap.png',
   dotsOptions: {
     color: '#0f1743',
     type: 'dots',
   },
   imageOptions: {
-    crossOrigin: 'anonymous',
-    margin: 4,
+    hideBackgroundDots: false,
   },
 });
 
@@ -24,7 +23,6 @@ export function QrCode({ paymentAddress }: Props): React.ReactElement<Props> {
 
   React.useEffect(() => {
     if (ref.current) {
-      // Chỗ này bị build error: Argument of type 'null' is not assignable to parameter of type 'HTMLElement | undefined'.
       qrCode.append(ref.current ?? undefined);
     }
   }, [ref]);
