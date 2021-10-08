@@ -35,10 +35,10 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
   }, [countDown, orderInfo]);
 
   React.useEffect(() => {
-    if (orderInfo && orderInfo.status !== 'SOLD') {
+    if (orderInfo && orderInfo.status !== 'SOLD' && orderInfo.status !== 'REFUNDED') {
       currCountDown.current = countDown;
     }
-  }, [countDown]);
+  }, [countDown, orderInfo]);
 
   async function handleCancel() {
     if (!orderId) {
