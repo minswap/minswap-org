@@ -24,7 +24,7 @@ export function QrCode({ paymentAddress }: Props): React.ReactElement<Props> {
 
   React.useEffect(() => {
     if (ref.current) {
-      qrCode.append(ref.current ?? undefined);
+      qrCode.append(ref.current);
     }
   }, [ref]);
 

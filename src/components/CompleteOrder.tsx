@@ -5,7 +5,6 @@ import { SELLER_ADDRESS } from 'src/constants';
 import { Amount } from 'src/models';
 
 import { CopyIcon, WarningIcon } from './icons';
-import { QrCode } from './QrCode';
 import { Tooltip } from './Tooltip';
 
 type Props = {
@@ -62,9 +61,10 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
       <div className="w-full h-[1px] bg-gray-200" />
 
       <div className="flex gap-x-8">
-        <div className="flex-shrink-0">
+        {/* TODO: Fix QR code error: self is not defined */}
+        {/* <div className="flex-shrink-0">
           <QrCode paymentAddress={SELLER_ADDRESS} />
-        </div>
+        </div> */}
 
         <div className="flex flex-col justify-center gap-y-2">
           <div className="text-3xl text-primaryMain md:text-4xl font-dmMono">{countDownText}</div>
