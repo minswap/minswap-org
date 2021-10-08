@@ -1,8 +1,6 @@
 import * as React from 'react';
 import QRCodeStyling from 'qr-code-styling';
 
-import minIcon from 'src/assets/icons/minswap.png';
-
 const qrCode = new QRCodeStyling({
   width: 150,
   height: 150,
@@ -25,8 +23,10 @@ export function QrCode({ paymentAddress }: Props): React.ReactElement<Props> {
   const ref = React.useRef(null);
 
   React.useEffect(() => {
-    qrCode.append(ref.current);
-  }, []);
+    if (ref.current) {
+      qrCode.append(ref.current);
+    }
+  }, [ref]);
 
   React.useEffect(() => {
     qrCode.update({
