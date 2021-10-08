@@ -65,7 +65,6 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
     <div className="flex flex-col w-full md:p-6 p-4 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-4">
       <h1 className="font-bold ">What&apos;s next</h1>
       {cancelError && <div className="text-sm text-red-500">{cancelError.message}</div>}
-      `
       <div className="w-full h-[1px] bg-gray-200" />
       <div className="flex gap-x-8">
         <div className="flex-shrink-0">
