@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 
 import { useCancelOrderMutation } from 'src/api';
 import { useGetOrderQuery } from 'src/api/useGetOrder';
+import { CARDANOSCAN_URL } from 'src/config';
 import { SELLER_ADDRESS } from 'src/constants';
 import { Amount } from 'src/models';
 
@@ -64,22 +65,35 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
   return (
     <div className="flex flex-col w-full md:p-6 p-4 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-4">
       <h1 className="font-bold ">What&apos;s next</h1>
-      {cancelError && <div className="text-sm text-red-500">{cancelError.message}</div>}
-      `
       <div className="w-full h-[1px] bg-gray-200" />
-      <div className="flex gap-x-8">
+      <div className="flex items-center gap-x-8">
         <div className="flex-shrink-0">
           <DynamicQrCode paymentAddress={SELLER_ADDRESS} />
         </div>
 
-        <div className="flex flex-col justify-center gap-y-2">
+        <div className="flex flex-col justify-center gap-y-2 ">
           <div className="text-3xl text-primaryMain md:text-4xl font-dmMono">{countDownText}</div>
-          <div className="text-sm opacity-60">
-            {orderInfo?.status === 'SOLD'
-              ? 'Your order is completed, MIN token has been already sent to your wallet'
-              : orderInfo?.status === 'REFUNDED'
-              ? 'Your order is overtime, ADA token has been already refunded to your wallet'
-              : "We reserve the MIN tokens for you in this time, if you don't complete the order before it will be released."}
+          <div className="text-sm">
+            <div className="opacity-60">
+              {orderInfo?.status === 'SOLD'
+                ? 'Your order is completed, MIN token has been already sent to your wallet'
+                : orderInfo?.status === 'REFUNDED'
+                ? 'Your order is overtime, ADA token has been already refunded to your wallet'
+                : "We reserve the MIN tokens for you in this time, if you don't complete the order before it will be released."}
+            </div>
+            {orderInfo?.txId && (
+              <div className="mt-1">
+                View on{' '}
+                <a
+                  className="font-bold text-primaryMain"
+                  href={`${CARDANOSCAN_URL}/transaction/${orderInfo.txId}`}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Cardanoscan
+                </a>
+              </div>
+            )}
           </div>
           <Button
             className="px-8 h-[30px] rounded-xl"
@@ -91,6 +105,7 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
           >
             {orderInfo?.status === 'SOLD' ? 'Success' : orderInfo?.status === 'REFUNDED' ? 'Refunded' : 'Cancel'}
           </Button>
+          {cancelError && <div className="text-sm text-red-500">{cancelError.message}</div>}
         </div>
       </div>
       <div className="flex items-center justify-between px-5 py-3 overflow-x-auto bg-coolGray-100 rounded-2xl md:overflow-x-hidden gap-x-4">
