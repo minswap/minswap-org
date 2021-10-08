@@ -24,7 +24,8 @@ export function QrCode({ paymentAddress }: Props): React.ReactElement<Props> {
 
   React.useEffect(() => {
     if (ref.current) {
-      qrCode.append(ref.current);
+      // Chỗ này bị build error: Argument of type 'null' is not assignable to parameter of type 'HTMLElement | undefined'.
+      qrCode.append(ref.current ?? undefined);
     }
   }, [ref]);
 
