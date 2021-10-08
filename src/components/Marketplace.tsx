@@ -157,7 +157,7 @@ export function Marketplace() {
           />
         ) : (
           <>
-            <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[460px] rounded-[30px] gap-y-6">
+            <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-6">
               <div className="relative flex flex-col gap-y-[10px]">
                 <div className="absolute flex items-center justify-center p-3 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white rounded-full bg-solitude top-1/2 left-1/2">
                   <Image alt="Arrow down icon" src={arrowDownIcon} />

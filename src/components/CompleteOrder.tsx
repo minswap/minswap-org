@@ -49,17 +49,7 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
 
   return (
     <div className="flex flex-col w-full md:p-6 p-4 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-4">
-      <div className="flex items-center justify-between">
-        <h1 className="font-bold ">What&apos;s next</h1>
-
-        <button
-          className="hidden px-6 py-2 text-sm font-bold text-red-500 bg-transparent rounded-3xl"
-          disabled={isLoading}
-          onClick={handleCancel}
-        >
-          Cancel
-        </button>
-      </div>
+      <h1 className="font-bold ">What&apos;s next</h1>
 
       {cancelError && <div className="text-sm text-red-500">{cancelError.message}</div>}
 
@@ -78,13 +68,13 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
           </div>
           <Button
             className="px-8 h-[30px] rounded-xl"
-            color={orderInfo?.status !== 'SOLD' ? 'success' : 'warning'}
+            color={orderInfo?.status === 'SOLD' ? 'success' : 'warning'}
             loading={isLoading}
+            readOnly={orderInfo?.status === 'SOLD'}
             spinnerClassName="w-[13px] h-[13px]"
-            readOnly
             onClick={handleCancel}
           >
-            {orderInfo?.status !== 'SOLD' ? 'Success' : 'Cancel'}
+            {orderInfo?.status === 'SOLD' ? 'Success' : 'Cancel'}
           </Button>
         </div>
       </div>
