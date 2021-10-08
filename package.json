@@ -24,12 +24,10 @@
   },
   "homepage": "https://github.com/minswap/minswap-org#readme",
   "dependencies": {
-    "@emurgo/cardano-serialization-lib-browser": "^9.1.0",
     "@tippyjs/react": "^4.2.5",
     "big.js": "^6.1.1",
     "classnames": "^2.3.1",
     "critters": "^0.0.10",
-    "crypto-random-string": "^4.0.0",
     "decimal.js-light": "^2.5.1",
     "ethers": "^5.4.7",
     "lodash": "^4.17.21",
@@ -46,7 +44,6 @@
     "toformat": "^2.0.0"
   },
   "devDependencies": {
-    "next-transpile-modules": "^8.0.0",
     "@next/bundle-analyzer": "^11.0.1",
     "@types/big.js": "^6.1.2",
     "@types/lodash": "^4.14.171",
