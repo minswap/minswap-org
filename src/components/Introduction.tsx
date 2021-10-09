@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import introductionImage from 'src/assets/introduction-bg.png';
 
@@ -23,11 +24,13 @@ export function Introduction() {
         <div className="m-3 md:h-5"></div>
 
         <div className="flex gap-x-4 lg:hidden">
-          <a href="https://minswap.org/marketplace" rel="noreferrer" target="_blank">
-            <Button className="h-full" size="md">
-              Sale 🔥
-            </Button>
-          </a>
+          <Link href="/marketplace">
+            <a>
+              <Button className="h-full" size="md">
+                Sale 🔥
+              </Button>
+            </a>
+          </Link>
           <a href="https://app.minswap.org" rel="noreferrer" target="_blank">
             <Button className="h-full" color="primary" size="md">
               View the app <ArrowRightIcon />
@@ -36,11 +39,13 @@ export function Introduction() {
         </div>
 
         <div className="hidden lg:flex gap-x-4">
-          <a href="https://minswap.org/marketplace" rel="noreferrer" target="_blank">
-            <Button className="h-full" size="lg">
-              Sale 🔥
-            </Button>
-          </a>
+          <Link href="/marketplace">
+            <a>
+              <Button className="h-full" size="lg">
+                Sale 🔥
+              </Button>
+            </a>
+          </Link>
           <a href="https://app.minswap.org" rel="noreferrer" target="_blank">
             <Button className="h-full" color="primary" size="lg">
               View the app <ArrowRightIcon />
