@@ -121,7 +121,7 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
         <h2 className="text-2xl font-bold">What&apos;s next</h2>
         <div className="text-base opacity-60">
           You must send <strong>exactly {adaToSend?.toExact()} ADA</strong> to this address and we will send back{' '}
-          <strong>{minToReceive?.toExact()} MIN</strong> in a few minutes.
+          <strong>{minToReceive?.toExact()} MIN</strong> in a few minutes. <br/>We will refund the full amount of ADA to you minus 2 ADA if you send the wrong amount or send to invalid orders.
         </div>
       </div>
       <div className="flex flex-col">
