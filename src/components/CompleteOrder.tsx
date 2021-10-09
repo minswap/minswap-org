@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 
 import { useCancelOrderMutation } from 'src/api';
 import { useGetOrderQuery } from 'src/api/useGetOrder';
-import { CARDANOSCAN_URL } from 'src/config';
+import { CARDANO_NETWORK } from 'src/config';
 import { SELLER_ADDRESS } from 'src/constants';
 import { Amount } from 'src/models';
 
@@ -81,19 +81,6 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
                 ? 'Your order is overtime, ADA token has been already refunded to your wallet'
                 : "We reserve the MIN tokens for you in this time, if you don't complete the order before it will be released."}
             </div>
-            {orderInfo?.txId && (
-              <div className="mt-1 text-sm md:text-base">
-                View on{' '}
-                <a
-                  className="font-bold text-primaryMain"
-                  href={`${CARDANOSCAN_URL}/transaction/${orderInfo.txId}`}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Cardanoscan
-                </a>
-              </div>
-            )}
           </div>
           <Button
             className="px-8 h-[30px] rounded-xl"
@@ -121,28 +108,60 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
       <div className="flex flex-col gap-y-5">
         <h2 className="text-xl md:text-2xl font-bold">What&apos;s next</h2>
         <div className="text-sm md:text-base opacity-60">
-          You must send <strong>exactly {adaToSend?.toExact()} ADA</strong> to this address and we will send back{' '}
-          <strong>{minToReceive?.toExact()} MIN</strong> in a few minutes. <br />
-          We will refund the full amount of ADA to you minus 2 ADA if you send the wrong amount or send to invalid
-          orders.
+          {orderInfo?.status === 'CREATED' && (
+            <div>
+              {' '}
+              You must send <strong>exactly {adaToSend?.toExact()} ADA</strong> to this address and we will send back{' '}
+              <strong>{minToReceive?.toExact()} MIN</strong> in a few minutes. <br />
+              We will refund the full amount of ADA to you minus 2 ADA if you send the wrong amount.{' '}
+            </div>
+          )}
+          {orderInfo?.txId && (
+            <div>
+              View on{' '}
+              <a
+                className="font-bold text-primaryMain"
+                href={`${
+                  CARDANO_NETWORK === 'mainnet' ? 'https://cardanoscan.io' : 'https://testnet.cardanoscan.io'
+                }/transaction/${orderInfo.txId}`}
+                rel="noreferrer"
+                target="_blank"
+              >
+                Cardanoscan
+              </a>
+              . (It might take 3-5 minutes for transaction to appear on Cardanoscan).
+            </div>
+          )}
+          {orderInfo?.status === 'SOLD' && (
+            <div>
+              <br />
+              <strong>Note:</strong> MIN tokens have 6 decimals like ADA, so your wallet will display an amount of{' '}
+              {minToReceive?.quotient.toString()} MIN but it is actually {minToReceive?.toExact()} MIN.
+            </div>
+          )}
         </div>
       </div>
-      <div className="flex flex-col text-sm md:text-base">
-        <div className="flex items-center text-red-500 gap-x-2">
-          <WarningIcon />
-          <span>Important</span>
+      {orderInfo?.status === 'CREATED' && (
+        <div className="flex flex-col text-sm md:text-base">
+          <div className="flex items-center text-red-500 gap-x-2">
+            <WarningIcon />
+            <span>Important</span>
+          </div>
+
+          <div className="h-5" />
+
+          <p className="opacity-60">
+            You must use a wallet that can receive native tokens like <strong>Daedalus</strong> or{' '}
+            <strong>Yoroi</strong>.
+          </p>
+
+          <div className="h-3" />
+
+          <p className="opacity-60">
+            If you send from exchanges like Binance, eToro, etc. you cannot receive MIN tokens.
+          </p>
         </div>
-
-        <div className="h-5" />
-
-        <p className="opacity-60">
-          You must use a wallet that can receive native tokens like <strong>Daedalus</strong> or <strong>Yoroi</strong>.
-        </p>
-
-        <div className="h-3" />
-
-        <p className="opacity-60">If you send from exchanges like Binance, eToro,... you cannot receive MIN tokens.</p>
-      </div>
+      )}
     </div>
   );
 }

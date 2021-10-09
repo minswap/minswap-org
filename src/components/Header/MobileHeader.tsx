@@ -28,7 +28,7 @@ export function MobileHeader({ isScroll, className }: Props) {
         className={isScroll ? 'hidden' : ''}
         href="https://medium.com/minswap/minswap-september-update-fcda89e05993"
       >
-        Minswap September Update
+        Minswap public sale is live!
       </Announcement>
 
       <header className={classNames('flex items-center py-4 px-5 gap-x-2', isScroll ? 'shadow-md bg-white' : null)}>

@@ -1,7 +1,7 @@
 import { Coin } from 'src/models';
 
 export const MINIMUM_ADA = 100_000_000n;
-export const MAXIMUM_ADA = 2_000_000_000n;
+export const MAXIMUM_ADA = 4_000_000_000n;
 export const TRANSACTION_FEE = 2_000_000n;
 export const MIN_PER_ADA = 40n;
 export const ORDER_DEADLINE_SECONDS = 60 * 30;

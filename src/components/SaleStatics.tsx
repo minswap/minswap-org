@@ -27,19 +27,19 @@ export function SaleStatics() {
   const availableADA = data?.available ? data?.available.amount_ada / 1_000_000 : 0;
   const minSold = initialMin - availableMin;
   const adaSold = initialADA - availableADA;
-  const soldPercentage = minSold / initialMin;
+  const soldPercentage = (minSold / initialMin) * 100;
 
   return (
     <div className="w-full rounded-[30px] grid p-6 bg-white shadow-xl md:max-w-[600px] gap-y-4 md:grid-cols-3 grid-cols-2">
       <div>
-        <div className="md:text-base text-sm opacity-60">Total Tokens</div>
+        <div className="md:text-base text-sm opacity-60">Total</div>
         <div className="h-1" />
         <div className="font-dmMono md:text-2xl text-xl font-medium">MIN {getDisplayAmount(initialMin)}</div>
         <div className="md:text-base text-sm text-primaryMain font-dmMono">ADA {getDisplayAmount(initialADA)}</div>
       </div>
 
       <div>
-        <div className="md:text-base text-sm opacity-60">Token Sold</div>
+        <div className="md:text-base text-sm opacity-60">Sold</div>
         <div className="h-1" />
         <div className="font-dmMono md:text-2xl text-xl font-medium">MIN {getDisplayAmount(minSold)}</div>
         <div className="md:text-base text-sm text-primaryMain font-dmMono">ADA {getDisplayAmount(adaSold)}</div>
@@ -59,7 +59,7 @@ export function SaleStatics() {
             soldPercentage === 100 ? 'text-green-500' : 'text-primaryMain',
           )}
         >
-          {soldPercentage}% Sold
+          {soldPercentage.toFixed(2)}% Sold
         </div>
         <div className="relative h-1 w-full">
           <div

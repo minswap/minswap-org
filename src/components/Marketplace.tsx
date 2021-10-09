@@ -257,6 +257,13 @@ export function Marketplace() {
                   </Tooltip>
                 </div>
 
+                {ADAtoSend && amountADA && (
+                  <div>
+                    You need to send <strong>{ADAtoSend.toExact()} ADA</strong> to Minswap wallet to complete the
+                    transaction (2 ADA is for minimum UTxO ADA and transaction fee).
+                  </div>
+                )}
+
                 <div className="flex flex-col gap-y-2">
                   <Button
                     className="py-4 rounded-[14px]"
