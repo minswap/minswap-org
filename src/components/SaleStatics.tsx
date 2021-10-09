@@ -30,7 +30,7 @@ export function SaleStatics() {
   const soldPercentage = minSold / initialMin;
 
   return (
-    <div className="w-full rounded-[30px] grid p-6 bg-white shadow-xl md:max-w-[500px] gap-y-2 grid-cols-2">
+    <div className="w-full rounded-[30px] grid p-6 bg-white shadow-xl md:max-w-[600px] gap-y-4 md:grid-cols-3 grid-cols-2">
       <div>
         <div className="md:text-base text-sm opacity-60">Total Tokens</div>
         <div className="h-1" />
@@ -45,7 +45,14 @@ export function SaleStatics() {
         <div className="md:text-base text-sm text-primaryMain font-dmMono">ADA {getDisplayAmount(adaSold)}</div>
       </div>
 
-      <div className="row-start-2 col-span-2 flex flex-col items-end">
+      <div className="col-span-2 md:col-span-1">
+        <div className="md:text-base text-sm opacity-60">Available Tokens</div>
+        <div className="h-1" />
+        <div className="font-dmMono md:text-2xl text-xl font-medium">MIN {getDisplayAmount(availableMin)}</div>
+        <div className="md:text-base text-sm text-primaryMain font-dmMono">ADA {getDisplayAmount(availableADA)}</div>
+      </div>
+
+      <div className="md:row-start-2 row-start-3 col-start-1 md:col-span-3 col-span-2 flex flex-col items-end">
         <div
           className={classnames(
             'font-dmMono text-sm md:text-base',

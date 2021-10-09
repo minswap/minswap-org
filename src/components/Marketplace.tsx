@@ -257,16 +257,27 @@ export function Marketplace() {
                   </Tooltip>
                 </div>
 
-                <Button
-                  className="py-4 rounded-[14px]"
-                  color="primary"
-                  disabled={!confirmNotUS || !amountADA}
-                  loading={isLoading}
-                  size="lg"
-                  onClick={handleSubmit}
-                >
-                  Buy
-                </Button>
+                <div className="flex flex-col gap-y-2">
+                  <Button
+                    className="py-4 rounded-[14px]"
+                    color="primary"
+                    disabled={!confirmNotUS || !amountADA}
+                    loading={isLoading}
+                    size="lg"
+                    onClick={handleSubmit}
+                  >
+                    Buy
+                  </Button>
+
+                  <a
+                    className="text-sm md:text-base text-primaryMain"
+                    href="https://medium.com/minswap"
+                    rel="noreferrer noopener"
+                    target="_blank"
+                  >
+                    Read Instruction
+                  </a>
+                </div>
               </div>
             )}
 
