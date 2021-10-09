@@ -25,7 +25,7 @@ export function Checkbox({ checked, label, ...rest }: Props) {
         </div>
       </div>
 
-      <span className="text-base opacity-60">{label}</span>
+      <span className="text-sm md:text-base opacity-60">{label}</span>
     </label>
   );
 }

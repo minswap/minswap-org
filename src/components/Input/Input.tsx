@@ -17,7 +17,7 @@ export const Input = React.forwardRef<HTMLInputElement, Props>(function Input(
       <div className={classnames('flex flex-row items-center w-full text-sm bg-white bg-opacity-50', className)}>
         <input
           className={
-            'flex-1 py-[9px] font-sans bg-transparent border focus:text-primary focus:outline-none focus:border focus:border-primaryMain rounded-[14px] px-5'
+            'flex-1 py-[9px] font-sans bg-transparent border focus:text-primary focus:outline-none focus:border focus:border-primaryMain rounded-[14px] px-5 text-base'
           }
           ref={ref}
           {...rest}

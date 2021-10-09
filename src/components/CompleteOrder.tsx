@@ -82,7 +82,7 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
                 : "We reserve the MIN tokens for you in this time, if you don't complete the order before it will be released."}
             </div>
             {orderInfo?.txId && (
-              <div className="mt-1">
+              <div className="mt-1 text-sm md:text-base">
                 View on{' '}
                 <a
                   className="font-bold text-primaryMain"
@@ -112,19 +112,22 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
         <span className="overflow-hidden whitespace-nowrap overflow-ellipsis">{SELLER_ADDRESS}</span>
 
         <Tooltip content="Address copied!" placement="bottom" visible={showCopiedTooltip}>
-          <button className="p-3 bg-white rounded-xl" onClick={handleCopy}>
+          <button className="p-3 bg-white rounded-xl text-sm md:text-base" onClick={handleCopy}>
             <CopyIcon />
           </button>
         </Tooltip>
       </div>
+
       <div className="flex flex-col gap-y-5">
-        <h2 className="text-2xl font-bold">What&apos;s next</h2>
-        <div className="text-base opacity-60">
+        <h2 className="text-xl md:text-2xl font-bold">What&apos;s next</h2>
+        <div className="text-sm md:text-base opacity-60">
           You must send <strong>exactly {adaToSend?.toExact()} ADA</strong> to this address and we will send back{' '}
-          <strong>{minToReceive?.toExact()} MIN</strong> in a few minutes. <br/>We will refund the full amount of ADA to you minus 2 ADA if you send the wrong amount or send to invalid orders.
+          <strong>{minToReceive?.toExact()} MIN</strong> in a few minutes. <br />
+          We will refund the full amount of ADA to you minus 2 ADA if you send the wrong amount or send to invalid
+          orders.
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col text-sm md:text-base">
         <div className="flex items-center text-red-500 gap-x-2">
           <WarningIcon />
           <span>Important</span>

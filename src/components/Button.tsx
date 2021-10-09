@@ -34,7 +34,7 @@ export function Button<C extends React.ElementType = 'button'>({
       return;
     }
 
-    onClick(event);
+    onClick?.(event);
   }
 
   return (
@@ -42,7 +42,7 @@ export function Button<C extends React.ElementType = 'button'>({
       className={classNames(
         'leading-none rounded whitespace-nowrap flex-nowrap flex items-center justify-center select-none transition duration-300 disabled:bg-opacity-100 disabled:bg-solitude disabled:cursor-not-allowed disabled:text-gray-600 disabled:border-solitude',
         {
-          md: 'text-sm px-5 py-2',
+          md: 'text-xs md:text-sm px-5 py-2',
           lg: 'px-6 py-3',
         }[size],
         {

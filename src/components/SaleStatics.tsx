@@ -32,21 +32,26 @@ export function SaleStatics() {
   return (
     <div className="w-full rounded-[30px] grid p-6 bg-white shadow-xl md:max-w-[500px] gap-y-2 grid-cols-2">
       <div>
-        <div className="text-base opacity-60">Total Tokens</div>
+        <div className="md:text-base text-sm opacity-60">Total Tokens</div>
         <div className="h-1" />
-        <div className="font-dmMono text-2xl font-medium">MIN {getDisplayAmount(initialMin)}</div>
-        <div className="text-base text-primaryMain font-dmMono">ADA {getDisplayAmount(initialADA)}</div>
+        <div className="font-dmMono md:text-2xl text-xl font-medium">MIN {getDisplayAmount(initialMin)}</div>
+        <div className="md:text-base text-sm text-primaryMain font-dmMono">ADA {getDisplayAmount(initialADA)}</div>
       </div>
 
       <div>
-        <div className="text-base opacity-60">Token Sold</div>
+        <div className="md:text-base text-sm opacity-60">Token Sold</div>
         <div className="h-1" />
-        <div className="font-dmMono text-2xl font-medium">MIN {getDisplayAmount(minSold)}</div>
-        <div className="text-base text-primaryMain font-dmMono">ADA {getDisplayAmount(adaSold)}</div>
+        <div className="font-dmMono md:text-2xl text-xl font-medium">MIN {getDisplayAmount(minSold)}</div>
+        <div className="md:text-base text-sm text-primaryMain font-dmMono">ADA {getDisplayAmount(adaSold)}</div>
       </div>
 
       <div className="row-start-2 col-span-2 flex flex-col items-end">
-        <div className={classnames('font-dmMono ', soldPercentage === 100 ? 'text-green-500' : 'text-primaryMain')}>
+        <div
+          className={classnames(
+            'font-dmMono text-sm md:text-base',
+            soldPercentage === 100 ? 'text-green-500' : 'text-primaryMain',
+          )}
+        >
           {soldPercentage}% Sold
         </div>
         <div className="relative h-1 w-full">

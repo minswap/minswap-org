@@ -230,10 +230,30 @@ export function Marketplace() {
                   />
 
                   <Tooltip
+                    arrow={false}
                     content="Residents of the United States of America are not permitted to purchase these tokens. All other buyers are advised to check the laws of their country before buying these utility tokens. Please stay compliant."
                     placement="right"
+                    popperOptions={{
+                      modifiers: [
+                        {
+                          name: 'flip',
+                          options: {
+                            fallbackPlacements: ['top-end'],
+                          },
+                        },
+                        {
+                          name: 'preventOverflow',
+                          options: {
+                            altAxis: true,
+                            tether: false,
+                          },
+                        },
+                      ],
+                    }}
                   >
-                    <div className="text-base text-primaryMain hover:cursor-default">What is this?</div>
+                    <div className="text-sm md:text-base text-primaryMain hover:cursor-default flex items-center">
+                      What is this?
+                    </div>
                   </Tooltip>
                 </div>
 
