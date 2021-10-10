@@ -155,138 +155,134 @@ export function Marketplace() {
           />
         ) : (
           <>
-            {hasSoldout ? (
-              <Soldout />
-            ) : (
-              <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-6">
-                <div className="relative flex flex-col gap-y-[10px]">
-                  <div className="absolute flex items-center justify-center p-3 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white rounded-full bg-solitude top-1/2 left-1/2">
-                    <Image alt="Arrow down icon" src={arrowDownIcon} />
-                  </div>
-                  <div className="flex flex-col p-4 border bg-opacity-50 border-opacity-30 active:border-greyser hover:border-greyser bg-solitude rounded-[20px]">
-                    <div className="flex items-center">
-                      <div className="items-center flex-1">
-                        <div className="text-base opacity-60">Sell</div>
-                        <input
-                          aria-label="Currency"
-                          className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
-                          placeholder="0"
-                          size={1}
-                          value={amountADA?.toExact() ?? ''}
-                          onChange={(e) => handleADAInputChange(e.target.value)}
-                        />
-                      </div>
-
-                      <div className="flex flex-col items-end gap-y-1">
-                        <div className="flex items-center gap-x-4">
-                          <span className="font-medium font-dmMono">ADA</span>
-                          <Image alt="ADA icon" height={30} src={adaIcon} width={30} />
-                        </div>
-
-                        <div className="text-xs text-primaryMain">
-                          Min: {minimumADA.toExact()} ADA - Max: {maximumADA.toExact()} ADA
-                        </div>
-                      </div>
+            <div className="flex flex-col w-full p-6 bg-white shadow-xl md:max-w-[500px] rounded-[30px] gap-y-6">
+              <div className="relative flex flex-col gap-y-[10px]">
+                <div className="absolute flex items-center justify-center p-3 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white rounded-full bg-solitude top-1/2 left-1/2">
+                  <Image alt="Arrow down icon" src={arrowDownIcon} />
+                </div>
+                <div className="flex flex-col p-4 border bg-opacity-50 border-opacity-30 active:border-greyser hover:border-greyser bg-solitude rounded-[20px]">
+                  <div className="flex items-center">
+                    <div className="items-center flex-1">
+                      <div className="text-base opacity-60">Sell</div>
+                      <input
+                        aria-label="Currency"
+                        className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
+                        placeholder="0"
+                        size={1}
+                        value={amountADA?.toExact() ?? ''}
+                        onChange={(e) => handleADAInputChange(e.target.value)}
+                      />
                     </div>
-                  </div>
 
-                  <div className="flex flex-col p-4 border bg-opacity-50 border-opacity-30 active:border-greyser hover:border-greyser bg-solitude rounded-[20px]">
-                    <div className="flex items-center">
-                      <div className="items-center flex-1">
-                        <div className="text-base opacity-60">Buy</div>
-                        <input
-                          aria-label="Currency"
-                          className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
-                          placeholder="0"
-                          size={1}
-                          value={amountMIN?.toExact() ?? ''}
-                          readOnly
-                        />
-                      </div>
-
+                    <div className="flex flex-col items-end gap-y-1">
                       <div className="flex items-center gap-x-4">
-                        <span className="font-medium font-dmMono">MIN</span>
-                        <Image alt="MIN icon" height={30} src={minIcon} width={30} />
+                        <span className="font-medium font-dmMono">ADA</span>
+                        <Image alt="ADA icon" height={30} src={adaIcon} width={30} />
+                      </div>
+
+                      <div className="text-xs text-primaryMain">
+                        Min: {minimumADA.toExact()} ADA - Max: {maximumADA.toExact()} ADA
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {inputError && <div className="text-sm text-red-500">{inputError}</div>}
-                {apiError && <div className="text-sm text-red-500">{apiError.message}</div>}
-
-                <Input
-                  label="Enter your address"
-                  placeholder="Enter your payment address"
-                  value={userAddress}
-                  onChange={handleAddressChange}
-                />
-
-                <div className="flex justify-between">
-                  <Checkbox
-                    checked={confirmNotUS}
-                    label="I confirm I'm not a US citizen"
-                    onChange={handleConfirmNotUSChange}
-                  />
-
-                  <Tooltip
-                    arrow={false}
-                    content="Residents of the United States of America are not permitted to purchase these tokens. All other buyers are advised to check the laws of their country before buying these utility tokens. Please stay compliant."
-                    placement="right"
-                    popperOptions={{
-                      modifiers: [
-                        {
-                          name: 'flip',
-                          options: {
-                            fallbackPlacements: ['top-end'],
-                          },
-                        },
-                        {
-                          name: 'preventOverflow',
-                          options: {
-                            altAxis: true,
-                            tether: false,
-                          },
-                        },
-                      ],
-                    }}
-                  >
-                    <div className="flex items-center text-sm md:text-base text-primaryMain hover:cursor-default">
-                      What is this?
+                <div className="flex flex-col p-4 border bg-opacity-50 border-opacity-30 active:border-greyser hover:border-greyser bg-solitude rounded-[20px]">
+                  <div className="flex items-center">
+                    <div className="items-center flex-1">
+                      <div className="text-base opacity-60">Buy</div>
+                      <input
+                        aria-label="Currency"
+                        className="w-full text-[20px] bg-transparent focus:outline-none font-dmMono font-medium"
+                        placeholder="0"
+                        size={1}
+                        value={amountMIN?.toExact() ?? ''}
+                        readOnly
+                      />
                     </div>
-                  </Tooltip>
-                </div>
 
-                {ADAtoSend && amountADA && (
-                  <div>
-                    You need to send <strong>{ADAtoSend.toExact()} ADA</strong> to Minswap wallet to complete the
-                    transaction (2 ADA is for minimum UTxO ADA and transaction fee).
+                    <div className="flex items-center gap-x-4">
+                      <span className="font-medium font-dmMono">MIN</span>
+                      <Image alt="MIN icon" height={30} src={minIcon} width={30} />
+                    </div>
                   </div>
-                )}
-
-                <div className="flex flex-col gap-y-2">
-                  <Button
-                    className="py-4 rounded-[14px]"
-                    color="primary"
-                    disabled={!confirmNotUS || !amountADA}
-                    loading={isLoading}
-                    size="lg"
-                    onClick={handleSubmit}
-                  >
-                    Buy
-                  </Button>
-
-                  <a
-                    className="text-sm md:text-base text-primaryMain"
-                    href="https://medium.com/minswap/how-to-buy-minswap-token-6305ae4b8cc2"
-                    rel="noreferrer noopener"
-                    target="_blank"
-                  >
-                    Read Instruction
-                  </a>
                 </div>
               </div>
-            )}
+
+              {inputError && <div className="text-sm text-red-500">{inputError}</div>}
+              {apiError && <div className="text-sm text-red-500">{apiError.message}</div>}
+
+              <Input
+                label="Enter your address"
+                placeholder="Enter your payment address"
+                value={userAddress}
+                onChange={handleAddressChange}
+              />
+
+              <div className="flex justify-between">
+                <Checkbox
+                  checked={confirmNotUS}
+                  label="I confirm I'm not a US citizen"
+                  onChange={handleConfirmNotUSChange}
+                />
+
+                <Tooltip
+                  arrow={false}
+                  content="Residents of the United States of America are not permitted to purchase these tokens. All other buyers are advised to check the laws of their country before buying these utility tokens. Please stay compliant."
+                  placement="right"
+                  popperOptions={{
+                    modifiers: [
+                      {
+                        name: 'flip',
+                        options: {
+                          fallbackPlacements: ['top-end'],
+                        },
+                      },
+                      {
+                        name: 'preventOverflow',
+                        options: {
+                          altAxis: true,
+                          tether: false,
+                        },
+                      },
+                    ],
+                  }}
+                >
+                  <div className="flex items-center text-sm md:text-base text-primaryMain hover:cursor-default">
+                    What is this?
+                  </div>
+                </Tooltip>
+              </div>
+
+              {ADAtoSend && amountADA && (
+                <div>
+                  You need to send <strong>{ADAtoSend.toExact()} ADA</strong> to Minswap wallet to complete the
+                  transaction (2 ADA is for minimum UTxO ADA and transaction fee).
+                </div>
+              )}
+
+              <div className="flex flex-col gap-y-2">
+                <Button
+                  className="py-4 rounded-[14px]"
+                  color="primary"
+                  disabled={!confirmNotUS || !amountADA}
+                  loading={isLoading}
+                  size="lg"
+                  onClick={handleSubmit}
+                >
+                  Buy
+                </Button>
+
+                <a
+                  className="text-sm md:text-base text-primaryMain"
+                  href="https://medium.com/minswap/how-to-buy-minswap-token-6305ae4b8cc2"
+                  rel="noreferrer noopener"
+                  target="_blank"
+                >
+                  Read Instruction
+                </a>
+              </div>
+            </div>
 
             <SaleStatics />
           </>
