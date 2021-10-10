@@ -23,8 +23,10 @@ export function SaleStatics() {
   const { data } = useGetOverview(true);
   const initialMin = data?.initial ? data?.initial.amount_min / 1_000_000 : 0;
   const initialADA = data?.initial ? data?.initial.amount_ada / 1_000_000 : 0;
-  const availableMin = data?.available ? data?.available.amount_min / 1_000_000 : 0;
-  const availableADA = data?.available ? data?.available.amount_ada / 1_000_000 : 0;
+  let availableMin = data?.available ? data?.available.amount_min / 1_000_000 : 0;
+  availableMin = availableMin > 0 ? availableMin : 0;
+  let availableADA = data?.available ? data?.available.amount_ada / 1_000_000 : 0;
+  availableADA = availableADA > 0 ? availableADA : 0;
   const minSold = initialMin - availableMin;
   const adaSold = initialADA - availableADA;
   const soldPercentage = (minSold / initialMin) * 100;
