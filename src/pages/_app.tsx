@@ -1,11 +1,19 @@
 import * as React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { Hydrate } from 'react-query/hydration';
 
 import 'tailwindcss/tailwind.css';
 import 'swiper/swiper.scss';
+import 'tippy.js/dist/tippy.css';
 
 function MinswapInterfaceApp({ Component, pageProps }: AppProps): React.ReactElement<AppProps> {
+  const queryClientRef = React.useRef<QueryClient>();
+  if (!queryClientRef.current) {
+    queryClientRef.current = new QueryClient();
+  }
+
   return (
     <>
       <Head>
@@ -38,7 +46,11 @@ function MinswapInterfaceApp({ Component, pageProps }: AppProps): React.ReactEle
         {/* Open Graph Data End*/}
       </Head>
 
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClientRef.current}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Component {...pageProps} />
+        </Hydrate>
+      </QueryClientProvider>
     </>
   );
 }
