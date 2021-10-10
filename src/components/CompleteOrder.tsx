@@ -1,5 +1,6 @@
 import * as React from 'react';
 import dynamic from 'next/dynamic';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import { useCancelOrderMutation } from 'src/api';
 import { useGetOrderQuery } from 'src/api/useGetOrder';
@@ -25,10 +26,11 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
   const [showCopiedTooltip, setShowCopiedTooltip] = React.useState(false);
   const { isLoading, error: cancelError, mutateAsync: cancelOrder } = useCancelOrderMutation();
   const { data: orderInfo } = useGetOrderQuery(orderId);
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const currCountDown = React.useRef(countDown);
   const countDownText = React.useMemo(() => {
     const format = (time: number) => new Date(time * 1000).toISOString().substr(11, 8);
-    if (orderInfo?.status === 'SOLD') {
+    if (orderInfo?.status === 'SOLD' || orderInfo?.status === 'REFUNDED') {
       return format(currCountDown.current);
     }
 
@@ -41,11 +43,28 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
     }
   }, [countDown, orderInfo]);
 
+  const getRecaptcha = React.useCallback(async (): Promise<string | undefined> => {
+    if (!executeRecaptcha) {
+      return undefined;
+    }
+    const token = await executeRecaptcha();
+    return token;
+  }, [executeRecaptcha]);
+
   async function handleCancel() {
     if (!orderId) {
       throw new Error(`Expect valid order ID, got ${orderId}`);
     }
-    await cancelOrder({ orderId });
+
+    const token = await getRecaptcha();
+    if (token === undefined) {
+      throw new Error('Fail to get recaptcha token');
+    }
+
+    await cancelOrder({
+      orderId: orderId,
+      captchaResponse: token,
+    });
     onCancel();
   }
 
@@ -99,14 +118,14 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
         <span className="overflow-hidden whitespace-nowrap overflow-ellipsis">{SELLER_ADDRESS}</span>
 
         <Tooltip content="Address copied!" placement="bottom" visible={showCopiedTooltip}>
-          <button className="p-3 bg-white rounded-xl text-sm md:text-base" onClick={handleCopy}>
+          <button className="p-3 text-sm bg-white rounded-xl md:text-base" onClick={handleCopy}>
             <CopyIcon />
           </button>
         </Tooltip>
       </div>
 
       <div className="flex flex-col gap-y-5">
-        <h2 className="text-xl md:text-2xl font-bold">What&apos;s next</h2>
+        <h2 className="text-xl font-bold md:text-2xl">What&apos;s next</h2>
         <div className="text-sm md:text-base opacity-60">
           {orderInfo?.status === 'CREATED' && (
             <div>
