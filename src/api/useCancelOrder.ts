@@ -4,6 +4,7 @@ import { getClient } from './client';
 
 export type CancelOrderParams = {
   orderId: string;
+  captchaResponse: string;
 };
 
 type CancelOrderReturns = Pick<
@@ -16,6 +17,7 @@ export function useCancelOrderMutation(): CancelOrderReturns {
     mutationFn(req) {
       return getClient(`/public-sale/orders/${req.orderId}`, {
         method: 'DELETE',
+        body: req,
       });
     },
   });
