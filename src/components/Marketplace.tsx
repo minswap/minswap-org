@@ -278,7 +278,7 @@ export function Marketplace() {
 
                   <a
                     className="text-sm md:text-base text-primaryMain"
-                    href="https://medium.com/minswap"
+                    href="https://medium.com/minswap/how-to-buy-minswap-token-6305ae4b8cc2"
                     rel="noreferrer noopener"
                     target="_blank"
                   >

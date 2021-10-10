@@ -136,7 +136,8 @@ export function CompleteOrder({ orderId, countDown, onCancel, adaToSend, minToRe
             <div>
               <br />
               <strong>Note:</strong> MIN tokens have 6 decimals like ADA, so your wallet will display an amount of{' '}
-              {minToReceive?.quotient.toString()} MIN but it is actually {minToReceive?.toExact()} MIN.
+              {Number(minToReceive?.quotient).toLocaleString('en-US')} MIN but it is actually {minToReceive?.toExact()}{' '}
+              MIN.
             </div>
           )}
         </div>
