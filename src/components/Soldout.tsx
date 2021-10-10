@@ -17,16 +17,15 @@ export function Soldout() {
         <p>Hi everyone 🖖</p>
         <br />
         <p>
-          The Minswap public sale has finalized, raising $1.2M. This successful result was possible because of the
-          enormous support of the Minswap community.
+          The Minswap public sale has finalized, raising <strong>$1.4M</strong>. This successful result was possible
+          because of the enormous support of the Minswap community.
         </p>
         <br />
-        <p>The Minswap team has shared some exciting highlights:</p>
+        <p>The Minswap team has shared an exciting highlight:</p>
         <br />
-        <p>*M MIN (**% of the initial supply) allocated to the community</p>
-        <p>Participants: ~*k in **% of verified, whitelisted users participated & got token allocation.</p>
-        <br />
-        <p>Read the announcement here: https://</p>
+        <p>
+          <strong>25M MIN</strong> (<strong>0.5%</strong> of the initial supply) allocated to the community.
+        </p>
       </div>
     </div>
   );
