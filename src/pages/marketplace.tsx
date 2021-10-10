@@ -39,11 +39,9 @@ function getCountdown(start: Date, now: Date) {
 }
 
 export default function MarketPalcePage() {
-  const START_TIME = set(new Date(), {
-    hours: 20,
-    minutes: 0,
-    seconds: 0,
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const START_TIME = new Date(Date.UTC(2021, 10, 10, 13, 0, 0));
+
   const [countDown, setCountDown] = React.useState(() => getCountdown(START_TIME, new Date()));
   const intervalRef = React.useRef<NodeJS.Timer | null>(null);
 
