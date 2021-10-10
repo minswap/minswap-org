@@ -6,7 +6,7 @@ import { useCreateOrderMutation, useGetOverview } from 'src/api';
 import arrowDownIcon from 'src/assets/icons/arrow-down.svg';
 import adaIcon from 'src/assets/icons/cardano.png';
 import minIcon from 'src/assets/icons/minswap.png';
-import { MAXIMUM_ADA, MIN, MIN_PER_ADA, MINIMUM_ADA, ORDER_DEADLINE_SECONDS, TRANSACTION_FEE } from 'src/constants';
+import { MAXIMUM_ADA, MIN_PER_ADA, MINIMUM_ADA, ORDER_DEADLINE_SECONDS, TRANSACTION_FEE } from 'src/constants';
 import { Amount } from 'src/models';
 import { ADA } from 'src/models/constants';
 import { tryParseAmount } from 'src/utils';
@@ -39,7 +39,7 @@ export function Marketplace() {
   const [showCompleteOrder, setShowCompleteOrder] = React.useState<boolean>(false);
   const intervalId = React.useRef<NodeJS.Timeout | null>(null);
   const { data: overview } = useGetOverview(!showCompleteOrder);
-  const hasSoldout = overview?.available && overview?.available?.amount_min === 0;
+  const hasSoldout = overview?.available && overview?.available?.amount_ada < 100;
 
   const { isLoading, error: apiError, mutateAsync: createOrder, data: orderData } = useCreateOrderMutation();
 
@@ -251,7 +251,7 @@ export function Marketplace() {
                       ],
                     }}
                   >
-                    <div className="text-sm md:text-base text-primaryMain hover:cursor-default flex items-center">
+                    <div className="flex items-center text-sm md:text-base text-primaryMain hover:cursor-default">
                       What is this?
                     </div>
                   </Tooltip>

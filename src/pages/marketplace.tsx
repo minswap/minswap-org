@@ -75,10 +75,10 @@ export default function MarketPalcePage() {
             <Image alt="Background" layout="fill" objectFit="cover" quality={80} src={backgroundImage} priority />
           </div>
 
-          <div className="flex justify-center items-center mt-32 flex flex-col gap-y-4">
+          <div className="flex flex-col items-center justify-center mt-32 gap-y-4">
             <Image alt="Countdown" className="animate-spin" height={200} src={minswapLoading} width={200} />
             <div className="text-2xl font-bold">Coming soon</div>
-            <div className="text-primaryMain text-4xl font-bold font-dmMono">{countDown}</div>
+            <div className="text-4xl font-bold text-primaryMain font-dmMono">{countDown}</div>
           </div>
         </>
       ) : (
