@@ -7,6 +7,7 @@ import backgroundImage from 'src/assets/marketplace/background@2x.png';
 import minswapLoading from 'src/assets/minswap-loading.svg';
 
 import { Header } from '../components';
+import { Marketplace } from '../components';
 
 const TIME_END = '00:00:00';
 
@@ -66,27 +67,27 @@ export default function MarketPalcePage() {
 
   return (
     <GoogleReCaptchaProvider language="en" reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}>
-      {/* {countDown !== TIME_END ? ( */}
-      <>
-        <Header />
-        <div className="fixed inset-0 -z-1">
-          <Image alt="Background" layout="fill" objectFit="cover" quality={80} src={backgroundImage} priority />
-        </div>
-
-        <div className="flex flex-col items-center justify-center mt-32 gap-y-4">
-          <Image alt="Countdown" className="animate-spin" height={200} src={minswapLoading} width={200} />
-          <div className="text-2xl font-bold">Coming soon</div>
-          {/* <div className="text-4xl font-bold text-primaryMain font-dmMono">{countDown}</div> */}
-        </div>
-      </>
-      {/*) : (
+      {/* {countDown !== TIME_END ? (
         <>
+          <Header />
           <div className="fixed inset-0 -z-1">
             <Image alt="Background" layout="fill" objectFit="cover" quality={80} src={backgroundImage} priority />
           </div>
-          <Marketplace />
+
+          <div className="flex flex-col items-center justify-center mt-32 gap-y-4">
+            <Image alt="Countdown" className="animate-spin" height={200} src={minswapLoading} width={200} />
+            <div className="text-2xl font-bold">Coming soon</div>
+            <div className="text-4xl font-bold text-primaryMain font-dmMono">{countDown}</div>
+          </div>
         </>
-      )} */}
+      ) : ( */}
+      <>
+        <div className="fixed inset-0 -z-1">
+          <Image alt="Background" layout="fill" objectFit="cover" quality={80} src={backgroundImage} priority />
+        </div>
+        <Marketplace />
+      </>
+      {/* )} */}
     </GoogleReCaptchaProvider>
   );
 }
