@@ -41,7 +41,8 @@
     "react-query": "^3.25.1",
     "swiper": "^6.8.0",
     "tiny-invariant": "^1.1.0",
-    "toformat": "^2.0.0"
+    "toformat": "^2.0.0",
+    "date-fns": "^2.25.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^11.0.1",
