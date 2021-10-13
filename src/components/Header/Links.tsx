@@ -54,12 +54,6 @@ export function Links({ onLinkClick }: Props) {
         </a>
       </Link>
 
-      <Link href="/marketplace">
-        <a className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto" onClick={onLinkClick}>
-          Sale 🔥
-        </a>
-      </Link>
-
       <Link href="https://fiso.minswap.org/">
         <a className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto" onClick={onLinkClick}>
           FISO

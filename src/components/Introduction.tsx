@@ -24,10 +24,10 @@ export function Introduction() {
         <div className="m-3 md:h-5"></div>
 
         <div className="flex gap-x-4 lg:hidden">
-          <Link href="/marketplace">
+          <Link href="https://fiso.minswap.org/">
             <a>
               <Button className="h-full" size="md">
-                Sale 🔥
+                FISO Stake Pools
               </Button>
             </a>
           </Link>
@@ -39,10 +39,10 @@ export function Introduction() {
         </div>
 
         <div className="hidden lg:flex gap-x-4">
-          <Link href="/marketplace">
+          <Link href="https://fiso.minswap.org/">
             <a>
               <Button className="h-full" size="lg">
-                Sale 🔥
+                FISO Stake Pools
               </Button>
             </a>
           </Link>
