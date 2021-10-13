@@ -9,7 +9,6 @@ export * from './Header';
 export * from './icons';
 export * from './Introduction';
 export * from './JoinTheCommunity';
-export * from './Marketplace';
 export * from './MonthlyGithubAnalytics';
 export * from './RoadMap';
 export * from './ScrollToTopButton';

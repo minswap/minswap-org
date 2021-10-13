@@ -68,18 +68,21 @@ const teamMembers = [
     twitter: 'https://twitter.com/smolpadok',
   },
   {
-    name: 'Ethan Protas',
-    image: ethanImage,
-    title: 'Operations Lead',
-    linkedin: 'https://www.linkedin.com/in/ethan-protas-b0b724214/',
-  },
-  {
     name: 'Dung Pham',
     image: dungPhamImage,
     title: 'Software Engineer',
     github: 'https://github.com/ljttl3q04t',
     twitter: 'https://twitter.com/DzungPhamMins',
     linkedin: 'https://www.linkedin.com/in/dung-pham-7b21a2197/',
+  },
+];
+
+const advisors = [
+  {
+    name: 'Ethan Protas',
+    image: ethanImage,
+    title: 'Strategy Advisor',
+    linkedin: 'https://www.linkedin.com/in/ethan-protas-b0b724214/',
   },
 ];
 
@@ -104,6 +107,26 @@ export default function TeamPage() {
               name={member.name}
               title={member.title}
               twitter={member.twitter}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="h-12 lg:h-24"></div>
+
+      <SectionTitle>Advisors</SectionTitle>
+
+      <div className="h-12 lg:h-24"></div>
+
+      <div className="flex justify-center w-full px-5">
+        <div className="text-center w-max teamMembers">
+          {advisors.map((member) => (
+            <TeamMemberItem
+              image={member.image}
+              key={member.name}
+              linkedin={member.linkedin}
+              name={member.name}
+              title={member.title}
             />
           ))}
         </div>
