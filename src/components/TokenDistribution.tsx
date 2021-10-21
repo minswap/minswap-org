@@ -1,4 +1,5 @@
 import * as React from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
 import tokenDistributionBg from 'src/assets/token-distribution-bg.png';
@@ -102,7 +103,7 @@ export function TokenDistribution({ id }: Props) {
             </div>
           </div>
 
-          <div className="relative px-5 mx-5 bg-white shadow-2xl lg:pr-24 lg:p-14 py-7 lg-rounded-3xl rounded-2xl">
+          <div className="relative px-5 pb-5 mx-5 bg-white shadow-2xl lg:pr-24 lg:p-14 py-7 lg-rounded-3xl rounded-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-7 gap-x-7">
               {items.map((item, index) => (
                 <Item index={index} key={item}>
@@ -111,17 +112,45 @@ export function TokenDistribution({ id }: Props) {
               ))}
             </div>
 
-            <div className="absolute top-0 bottom-0 right-0 pointer-events-none select-none w-96">
+            <div className="absolute top-0 bottom-0 right-0 hidden pointer-events-none select-none w-96 md:block">
               <Image
                 alt="Background"
                 layout="fill"
-                objectFit="cover"
+                objectFit="fill"
+                objectPosition="center"
                 placeholder="empty"
                 quality="100"
                 src={tokenDistributionBg}
               />
             </div>
+
+            <div className="hidden md:block">
+              <div className="py-10 text-2xl font-bold">FISO Vesting Schedule</div>
+              <div className="flex items-center">
+                <div className="flex items-center w-20">
+                  <div className="w-5 h-5 rounded-full bg-primaryMain"></div>
+                  <div className="w-2"></div>
+                  <span className="font-bold">MIN</span>
+                </div>
+                <div className="w-2"></div>
+                <div className="text-gray-500">45 day lockup period + 45 day vesting</div>
+              </div>
+
+              <div className="h-6"></div>
+
+              <div className="flex items-center">
+                <div className="flex items-center w-20">
+                  <div className="bg-[#7cc6dc] w-5 h-5 rounded-full"></div>
+                  <div className="w-2"></div>
+                  <span className="font-bold">MINt</span>
+                </div>
+                <div className="w-2"></div>
+                <div className="text-gray-500">45 day lockup period + 45 day vesting</div>
+              </div>
+            </div>
           </div>
+
+          <DynamicTokenomics />
         </div>
       </div>
     </>
@@ -143,3 +172,8 @@ function Item({ children, index }: ItemProps) {
     </div>
   );
 }
+
+const DynamicTokenomics = dynamic<Record<string, never>>(
+  () => import('src/components/Tokenomics').then((mod) => mod.Tokenomics),
+  { ssr: false },
+);

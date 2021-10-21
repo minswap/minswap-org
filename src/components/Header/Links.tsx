@@ -36,7 +36,7 @@ export function Links({ onLinkClick }: Props) {
         </a>
       </Link>
 
-      <Link href="https://medium.com/minswap/minswap-fair-launch-tokenomics-and-fiso-airdrop-start-date-a75f3e75a546">
+      <Link href="/#tokenomics">
         <a className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto" onClick={onLinkClick}>
           Tokenomics
         </a>
