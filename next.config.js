@@ -1,6 +1,7 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
+const withTM = require('next-transpile-modules')(['echarts', 'zrender']);
 
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
@@ -29,4 +30,4 @@ const config = {
   },
 };
 
-module.exports = withBundleAnalyzer(config);
+module.exports = withBundleAnalyzer(withTM(config));

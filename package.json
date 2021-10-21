@@ -28,7 +28,9 @@
     "big.js": "^6.1.1",
     "classnames": "^2.3.1",
     "critters": "^0.0.10",
+    "date-fns": "^2.25.0",
     "decimal.js-light": "^2.5.1",
+    "echarts": "^5.2.1",
     "ethers": "^5.4.7",
     "lodash": "^4.17.21",
     "luxon": "^2.0.1",
@@ -41,10 +43,10 @@
     "react-query": "^3.25.1",
     "swiper": "^6.8.0",
     "tiny-invariant": "^1.1.0",
-    "toformat": "^2.0.0",
-    "date-fns": "^2.25.0"
+    "toformat": "^2.0.0"
   },
   "devDependencies": {
+    "next-transpile-modules": "^8.0.0",
     "@next/bundle-analyzer": "^11.0.1",
     "@types/big.js": "^6.1.2",
     "@types/lodash": "^4.14.171",
