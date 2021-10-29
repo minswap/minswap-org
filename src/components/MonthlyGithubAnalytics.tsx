@@ -29,7 +29,7 @@ export function MonthlyGithubAnalytics() {
           <Button
             className="w-full text-white bg-black gap-x-4 hover:bg-opacity-80 hover:text-white lg:hidden"
             component="a"
-            href="https://github.com/minswap/minswap-org"
+            href="https://github.com/minswap"
             rel="noreferrer noopener"
             size="md"
             target="_blank"
@@ -41,7 +41,7 @@ export function MonthlyGithubAnalytics() {
           <Button
             className="hidden text-white bg-black gap-x-5 hover:bg-opacity-80 hover:text-white lg:flex"
             component="a"
-            href="https://github.com/minswap/minswap-org"
+            href="https://github.com/minswap"
             rel="noreferrer noopener"
             size="lg"
             target="_blank"
