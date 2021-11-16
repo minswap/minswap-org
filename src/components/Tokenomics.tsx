@@ -61,8 +61,8 @@ export function Tokenomics() {
       echarts.use([SVGRenderer] as unknown as Parameters<typeof echarts.use>[0]);
       const width = (window.innerWidth / 5) * 4;
       chartRef.current.style.width = `${width}px`;
-      const radius = Math.min(width, 500) / 2;
-      chartRef.current.style.height = `${radius * 2}px`;
+      const radius = Math.min(width - 20, 500) / 2;
+      chartRef.current.style.height = `${radius * 2 + 20}px`;
       const chart = echarts.init(chartRef.current, undefined, { renderer: 'svg' });
 
       chart.setOption({
