@@ -10,6 +10,7 @@ export * from './icons';
 export * from './Introduction';
 export * from './JoinTheCommunity';
 export * from './MonthlyGithubAnalytics';
+export * from './Partners';
 export * from './RoadMap';
 export * from './ScrollToTopButton';
 export * from './SectionTitle';
