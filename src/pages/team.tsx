@@ -1,58 +1,54 @@
 import * as React from 'react';
 
-import abdelImage from 'src/assets/team/abdel.jpeg';
-import dungPhamImage from 'src/assets/team/dungph.jpeg';
+import abdelImage from 'src/assets/team/abdel.png';
+import casslerImage from 'src/assets/team/cassler.png';
+import dzungImage from 'src/assets/team/dzung.png';
 import ethanImage from 'src/assets/team/ethan.jpg';
-import hieuPhanImage from 'src/assets/team/hieupnh.jpeg';
-import richardNguyenImage from 'src/assets/team/hungnv.jpg';
+import hieuPhanImage from 'src/assets/team/hieu.png';
 import khanhLeImage from 'src/assets/team/khanhle.jpeg';
-import longNguyenImage from 'src/assets/team/longnlv.jpg';
-import mattImage from 'src/assets/team/mattcass.jpeg';
-import qayyumImage from 'src/assets/team/qayyum.png';
+import longNguyenImage from 'src/assets/team/long.png';
+import richardNguyenImage from 'src/assets/team/richard.png';
+import smolpadokImage from 'src/assets/team/smolpadok.png';
 import { SectionTitle, TeamMemberItem } from 'src/components';
 import { MainLayout } from 'src/layouts';
 
 const teamMembers = [
   {
-    name: 'Long Nguyen',
+    name: 'Long',
     image: longNguyenImage,
     title: 'Lead Engineer',
     github: 'https://github.com/longngn',
     twitter: 'https://twitter.com/ngnlong',
-    linkedin: 'https://www.linkedin.com/in/ngnlong/',
   },
   {
-    name: 'Hieu Phan',
+    name: 'Hieu',
     image: hieuPhanImage,
     title: 'Software Engineer',
     github: 'https://github.com/hieupnh',
     twitter: 'https://twitter.com/sun4123',
-    linkedin: 'https://www.linkedin.com/in/phan-nguyen-huy-hieu-831a77152/',
   },
   {
-    name: 'Richard Nguyen',
+    name: 'Richard',
     image: richardNguyenImage,
     title: 'Software Engineer',
     github: 'https://github.com/h2physics',
     twitter: 'https://twitter.com/richard_ng_42',
-    linkedin: 'https://www.linkedin.com/in/richard-nguyen-700739163/',
   },
   {
-    name: 'Khanh Le',
+    name: 'Khanh',
     image: khanhLeImage,
     title: 'Software Engineer',
     github: 'https://github.com/lednhatkhanh',
     twitter: 'https://twitter.com/lednhatkhanh',
-    linkedin: 'https://www.linkedin.com/in/lednhatkhanh',
   },
   {
-    name: 'Matt Cassler',
-    image: mattImage,
-    title: 'Marketing Lead',
+    name: 'Cassler',
+    image: casslerImage,
+    title: 'Communication Lead',
     twitter: 'https://twitter.com/Cassler33',
   },
   {
-    name: 'Abdelilah Driouch',
+    name: 'Abdel',
     image: abdelImage,
     title: 'Product Designer',
     linkedin: 'https://www.linkedin.com/in/abdelilahdr/',
@@ -60,20 +56,19 @@ const teamMembers = [
     twitter: 'https://twitter.com/abdelilahDR',
   },
   {
-    name: 'Qayyum Yazid',
-    image: qayyumImage,
+    name: 'Smolpadok',
+    image: smolpadokImage,
     title: 'Product Designer',
     linkedin: 'https://www.linkedin.com/in/qayyum-yazid',
     link: 'https://creary.net/@smolpadok',
     twitter: 'https://twitter.com/smolpadok',
   },
   {
-    name: 'Dung Pham',
-    image: dungPhamImage,
+    name: 'Dzung',
+    image: dzungImage,
     title: 'Software Engineer',
     github: 'https://github.com/ljttl3q04t',
     twitter: 'https://twitter.com/DzungPhamMins',
-    linkedin: 'https://www.linkedin.com/in/dung-pham-7b21a2197/',
   },
 ];
 
