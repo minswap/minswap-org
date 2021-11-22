@@ -1,12 +1,20 @@
 import * as React from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
+import cardwalletPartner from 'src/assets/partners/cardwallet.png';
+import handlePartner from 'src/assets/partners/handle.png';
+import indigoPartner from 'src/assets/partners/indigo.png';
+import liqwidPartner from 'src/assets/partners/liqwid.png';
+import meldPartner from 'src/assets/partners/meld.png';
 import {
   AFamiliarExperience,
   DeepDive,
   Introduction,
   MonthlyGithubAnalytics,
+  Partners,
   RoadMap,
+  SectionTitle,
   SeparatorLine,
   TokenDistribution,
 } from 'src/components';
@@ -31,6 +39,8 @@ export default function HomePage(): React.ReactElement {
       <SeparatorLine />
 
       <MinArt />
+
+      <Partners />
     </MainLayout>
   );
 }
