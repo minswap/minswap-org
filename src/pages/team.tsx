@@ -1,11 +1,10 @@
 import * as React from 'react';
 
 import abdelImage from 'src/assets/team/abdel.png';
-import casslerImage from 'src/assets/team/cassler.png';
 import dzungImage from 'src/assets/team/dzung.png';
 import ethanImage from 'src/assets/team/ethan.jpg';
 import hieuPhanImage from 'src/assets/team/hieu.png';
-import khanhLeImage from 'src/assets/team/khanhle.jpeg';
+import khanhLeImage from 'src/assets/team/khanh.png';
 import longNguyenImage from 'src/assets/team/long.png';
 import richardNguyenImage from 'src/assets/team/richard.png';
 import smolpadokImage from 'src/assets/team/smolpadok.png';
@@ -16,21 +15,21 @@ const teamMembers = [
   {
     name: 'Long',
     image: longNguyenImage,
-    title: 'Lead Engineer',
+    title: 'Founder / Lead Engineer',
     github: 'https://github.com/longngn',
     twitter: 'https://twitter.com/ngnlong',
   },
   {
-    name: 'Hieu',
+    name: 'Hieu Phan',
     image: hieuPhanImage,
-    title: 'Software Engineer',
+    title: 'Co-Founder',
     github: 'https://github.com/hieupnh',
     twitter: 'https://twitter.com/sun4123',
   },
   {
     name: 'Richard',
     image: richardNguyenImage,
-    title: 'Software Engineer',
+    title: 'Co-Founder',
     github: 'https://github.com/h2physics',
     twitter: 'https://twitter.com/richard_ng_42',
   },
@@ -42,13 +41,7 @@ const teamMembers = [
     twitter: 'https://twitter.com/lednhatkhanh',
   },
   {
-    name: 'Cassler',
-    image: casslerImage,
-    title: 'Communication Lead',
-    twitter: 'https://twitter.com/Cassler33',
-  },
-  {
-    name: 'Abdel',
+    name: 'Abdelilah',
     image: abdelImage,
     title: 'Product Designer',
     linkedin: 'https://www.linkedin.com/in/abdelilahdr/',
@@ -91,7 +84,7 @@ export default function TeamPage() {
       <div className="h-12 lg:h-24"></div>
 
       <div className="flex justify-center w-full px-5">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 lg:gap-20 md:gap-15 w-max teamMembers">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 lg:gap-28 md:gap-15 w-max teamMembers">
           {teamMembers.map((member) => (
             <TeamMemberItem
               github={member.github}
