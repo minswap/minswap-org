@@ -59,16 +59,10 @@ export function Introduction() {
         </div>
 
         {/* Desktop */}
-        <div className="absolute inset-0 hidden -z-1 lg:block">
-          <Image
-            alt="Background"
-            layout="fill"
-            objectFit="cover"
-            placeholder="blur"
-            quality="100"
-            src={introductionImage}
-            priority
-          />
+        <div className="absolute inset-0 hidden -z-1 lg:block overflow-hidden">
+          <video className="min-w-full min-h-full" autoPlay loop muted playsInline>
+            <source src="/min_vid.webm" type="video/webm" />
+          </video>
         </div>
       </div>
 
