@@ -31,7 +31,7 @@ function MinswapInterfaceApp({ Component, pageProps }: AppProps): React.ReactEle
           content="MinSwap is a Multi-pool decentralized exchange (DEX) that runs on the Cardano (ADA) Blockchain. Swap tokens with minimal cost, minimal time and maximal convenience."
           name="twitter:description"
         />
-        <meta content="/meta-bg.png" name="twitter:image" />
+        <meta content="https://minswap.org/meta-bg.png" name="twitter:image" />
         {/* Twitter Card Data End */}
 
         {/* Open Graph Data Start*/}
