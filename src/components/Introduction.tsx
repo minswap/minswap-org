@@ -24,10 +24,10 @@ export function Introduction() {
         <div className="m-3 md:h-5"></div>
 
         <div className="flex gap-x-4 lg:hidden">
-          <Link href="https://fiso.minswap.org/">
+          <Link href="https://docs.minswap.org/whitepaper">
             <a>
               <Button className="h-full" size="md">
-                FISO Stake Pools
+                Read whitepaper
               </Button>
             </a>
           </Link>
@@ -39,10 +39,10 @@ export function Introduction() {
         </div>
 
         <div className="hidden lg:flex gap-x-4">
-          <Link href="https://fiso.minswap.org/">
+          <Link href="https://docs.minswap.org/whitepaper">
             <a>
               <Button className="h-full" size="lg">
-                FISO Stake Pools
+                Read whitepaper
               </Button>
             </a>
           </Link>
