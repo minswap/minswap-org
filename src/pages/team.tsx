@@ -44,15 +44,13 @@ const teamMembers = [
     name: 'Abdelilah',
     image: abdelImage,
     title: 'Product Designer',
-    linkedin: 'https://www.linkedin.com/in/abdelilahdr/',
-    link: 'https://abdel.design/me',
+    github: 'https://github.com/abdelilahDR',
     twitter: 'https://twitter.com/abdelilahDR',
   },
   {
     name: 'Smolpadok',
     image: smolpadokImage,
     title: 'Product Designer',
-    linkedin: 'https://www.linkedin.com/in/qayyum-yazid',
     link: 'https://creary.net/@smolpadok',
     twitter: 'https://twitter.com/smolpadok',
   },
@@ -91,7 +89,6 @@ export default function TeamPage() {
               image={member.image}
               key={member.name}
               link={member.link}
-              linkedin={member.linkedin}
               name={member.name}
               title={member.title}
               twitter={member.twitter}
