@@ -60,7 +60,7 @@ export function Introduction() {
 
         {/* Desktop */}
         <div className="absolute inset-0 hidden -z-1 lg:block overflow-hidden">
-          <video className="min-w-full min-h-full" autoPlay loop muted playsInline>
+          <video className="absolute bottom-0" autoPlay loop muted playsInline>
             <source src="/min_vid.webm" type="video/webm" />
           </video>
         </div>
@@ -69,7 +69,7 @@ export function Introduction() {
       <style jsx>{`
         @media (min-width: 1024px) {
           .introduction {
-            height: calc(100vh - 100px);
+            height: calc(100vh - 70px);
           }
         }
       `}</style>
