@@ -6,6 +6,6 @@ export type ExtendableComponentProps<C extends React.ElementType, P = {}> = Omit
 > &
   P;
 
-export type OverrideableComponentProps<C extends React.ElementType, P = {}> = ExtendableComponentProps<C, P> & {
+export type OverridableComponentProps<C extends React.ElementType, P = {}> = ExtendableComponentProps<C, P> & {
   component?: C;
 };
