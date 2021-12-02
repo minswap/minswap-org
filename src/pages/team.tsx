@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import abdelImage from 'src/assets/team/abdel.png';
 import dzungImage from 'src/assets/team/dzung.png';
-import ethanImage from 'src/assets/team/ethan.jpg';
+import ethanImage from 'src/assets/team/ethan.png';
 import hieuPhanImage from 'src/assets/team/hieu.png';
 import khanhLeImage from 'src/assets/team/khanh.png';
 import longNguyenImage from 'src/assets/team/long.png';
