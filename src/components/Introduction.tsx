@@ -24,10 +24,10 @@ export function Introduction() {
         <div className="m-3 md:h-5"></div>
 
         <div className="flex gap-x-4 lg:hidden">
-          <Link href="https://docs.minswap.org/whitepaper">
-            <a>
+          <Link href="https://fiso.minswap.org/my-rewards">
+            <a target="_blank">
               <Button className="h-full" size="md">
-                Read whitepaper
+                FISO rewards
               </Button>
             </a>
           </Link>
@@ -39,10 +39,10 @@ export function Introduction() {
         </div>
 
         <div className="hidden lg:flex gap-x-4">
-          <Link href="https://docs.minswap.org/whitepaper">
-            <a>
+          <Link href="https://fiso.minswap.org/my-rewards">
+            <a target="_blank">
               <Button className="h-full" size="lg">
-                Read whitepaper
+                FISO rewards
               </Button>
             </a>
           </Link>
@@ -59,7 +59,7 @@ export function Introduction() {
         </div>
 
         {/* Desktop */}
-        <div className="absolute inset-0 hidden -z-1 lg:block overflow-hidden">
+        <div className="absolute inset-0 hidden overflow-hidden -z-1 lg:block">
           <video className="absolute bottom-0" autoPlay loop muted playsInline>
             <source src="/min_vid.webm" type="video/webm" />
           </video>
