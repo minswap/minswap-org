@@ -1,8 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import classnames from 'classnames';
 
-import { OverrideableComponentProps } from './extendableComponentProps';
+import { OverridableComponentProps } from './extendableComponentProps';
 import { Spinner } from './Spinner';
 
 type BaseProps = {
@@ -13,7 +12,7 @@ type BaseProps = {
   spinnerClassName?: string;
 };
 
-type Props<C extends React.ElementType> = OverrideableComponentProps<C, BaseProps>;
+type Props<C extends React.ElementType> = OverridableComponentProps<C, BaseProps>;
 
 export function Button<C extends React.ElementType = 'button'>({
   children,
@@ -52,20 +51,25 @@ export function Button<C extends React.ElementType = 'button'>({
           success: 'border border-green-500 bg-green-500 text-white',
           alert: 'border border-yellow-500 bg-yellow-500 text-white',
         }[color],
-        loading
-          ? 'cursor-not-allowed'
-          : readOnly
-          ? 'cursor-default'
-          : {
-              default: 'hover:text-black hover:border-black',
-              primary: 'hover:bg-white hover:text-primaryMain',
-            },
+        {
+          'cursor-not-allowed': loading,
+          'cursor-default': !loading && readOnly,
+        },
+        !loading &&
+          !readOnly &&
+          {
+            default: 'hover:text-black hover:border-black',
+            primary: 'hover:bg-white hover:text-primaryMain',
+            warning: 'hover:bg-white hover:text-red-500',
+            success: 'hover:bg-white hover:text-green-500',
+            alert: 'hover:bg-white hover:text-yellow-500',
+          }[color],
         className,
       )}
       onClick={handleClick}
       {...rest}
     >
-      {loading ? <Spinner className={classnames('w-6 h-6', spinnerClassName)} /> : children}
+      {loading ? <Spinner className={classNames('w-6 h-6', spinnerClassName)} /> : children}
     </Component>
   );
 }
