@@ -2,69 +2,57 @@ import * as React from 'react';
 import Image from 'next/image';
 import * as echarts from 'echarts';
 import { SVGRenderer } from 'echarts/renderers';
+import debounce from 'lodash/debounce';
 
 import logoMain from 'src/assets/logo-main.svg';
-
-type Item = { title: string; percent: number; color: string; scale?: number };
-
-const data: Item[] = [
-  {
-    title: 'Core Team',
-    percent: 10,
-    color: '#7dc5da',
-  },
-  { title: 'Development Fund', percent: 10, color: '#99e5c2', scale: 1.3 },
-  {
-    title: 'Incentives / Partnership',
-    percent: 1.5,
-    color: '#7bede2',
-  },
-  { title: 'DAO Treasury', percent: 6, color: '#ca7add', scale: 1.3 },
-  { title: 'FISO Airdrop', percent: 2.5, color: '#6e5ae2' },
-  {
-    percent: 70,
-    title: 'Yield Farming',
-    color: '#2f45c5',
-    scale: 1.3,
-  },
-];
 
 export function Tokenomics() {
   const chartRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
-    if (chartRef.current) {
-      function getItemLabel(color: string) {
-        return {
-          formatter(params: { value: number; name: string }) {
-            return `{circle|}{gap|}{percent|${params.value}%}{gap|}{text|${params.name.toUpperCase()}}`;
+    function getItemLabel(color: string) {
+      return {
+        formatter(params: { value: number; name: string }) {
+          return `{circle|}{gap|}{percent|${params.value}%}{gap|}{text|${params.name.toUpperCase()}}`;
+        },
+        rich: {
+          circle: {
+            width: 15,
+            height: 15,
+            backgroundColor: color,
+            borderRadius: 9999,
           },
-          rich: {
-            circle: {
-              width: 15,
-              height: 15,
-              backgroundColor: color,
-              borderRadius: 9999,
-            },
-            gap: {
-              width: 6,
-            },
-            text: { fontWeight: 'bold', color: 'rgb(107, 114, 128)' },
-            percent: {
-              fontWeight: 'bold',
-              color: '#000',
-            },
+          gap: {
+            width: 6,
           },
-        };
+          text: { fontWeight: 'bold', color: 'rgb(107, 114, 128)' },
+          percent: {
+            fontWeight: 'bold',
+            color: '#000',
+          },
+        },
+      };
+    }
+
+    echarts.use([SVGRenderer] as unknown as Parameters<typeof echarts.use>[0]);
+    let chart: echarts.ECharts | null = null;
+    setChartSize();
+
+    function setChartSize() {
+      if (!chartRef.current) {
+        return;
       }
 
-      echarts.use([SVGRenderer] as unknown as Parameters<typeof echarts.use>[0]);
+      if (chart && !chart.isDisposed()) {
+        chart.dispose();
+      }
+
       const width = (window.innerWidth / 5) * 4;
       chartRef.current.style.width = `${width}px`;
       const radius = Math.min(width - 20, 500) / 2;
       chartRef.current.style.height = `${radius * 2 + 20}px`;
-      const chart = echarts.init(chartRef.current, undefined, { renderer: 'svg' });
 
+      chart = echarts.init(chartRef.current, undefined, { renderer: 'svg' });
       chart.setOption({
         series: [
           {
@@ -131,9 +119,13 @@ export function Tokenomics() {
           },
         ],
       });
-
-      // chart.setOption({ series: [{ label: { show: true } }] }, false, true);
     }
+
+    const debouncedSetChartSize = debounce(setChartSize, 500);
+    window.addEventListener('resize', debouncedSetChartSize);
+    return () => {
+      window.removeEventListener('resize', debouncedSetChartSize);
+    };
   }, []);
 
   return (
