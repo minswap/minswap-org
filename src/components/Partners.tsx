@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Image from 'next/image';
 
+import AnetaPartner from '../assets/partners/Aneta.png';
 import StricaPartner from '../assets/partners/Strica.png';
 import VyFiPartner from '../assets/partners/VyFi.png';
 import { SectionTitle } from './SectionTitle';
@@ -19,6 +20,10 @@ export function Partners() {
 
         <a className="w-[220px]" href="https://strica.io/" rel="noreferrer" target="_blank" title="Strica">
           <Image alt="Strica" src={StricaPartner} />
+        </a>
+
+        <a className="w-[260px]" href="https://www.anetabtc.io/" rel="noreferrer" target="_blank" title="Aneta">
+          <Image alt="Aneta" src={AnetaPartner} />
         </a>
       </div>
     </div>
