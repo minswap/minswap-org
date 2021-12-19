@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Image from 'next/image';
 
+import AdaHandlePartner from '../assets/partners/Ada-handle.png';
 import AnetaPartner from '../assets/partners/Aneta.png';
 import StricaPartner from '../assets/partners/Strica.png';
 import VyFiPartner from '../assets/partners/VyFi.png';
@@ -24,6 +25,10 @@ export function Partners() {
 
         <a className="w-[260px]" href="https://www.anetabtc.io/" rel="noreferrer" target="_blank" title="Aneta">
           <Image alt="Aneta" src={AnetaPartner} />
+        </a>
+
+        <a className="w-[260px]" href="https://adahandle.com/" rel="noreferrer" target="_blank" title="AdaHandle">
+          <Image alt="AdaHandle" src={AdaHandlePartner} />
         </a>
       </div>
     </div>
