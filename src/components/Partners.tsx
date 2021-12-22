@@ -7,9 +7,13 @@ import StricaPartner from '../assets/partners/Strica.png';
 import VyFiPartner from '../assets/partners/VyFi.png';
 import { SectionTitle } from './SectionTitle';
 
-export function Partners() {
+type Props = {
+  id: string;
+};
+
+export function Partners({ id }: Props) {
   return (
-    <div className="flex flex-col items-center pt-14 lg:pt-20" id="partners">
+    <div className="flex flex-col items-center pt-14 lg:pt-20" id={id}>
       <SectionTitle>Our Partners</SectionTitle>
 
       <div className="h-10" />

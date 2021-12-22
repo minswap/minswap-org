@@ -40,7 +40,7 @@ export default function HomePage(): React.ReactElement {
 
       <MinArt />
 
-      <Partners />
+      <Partners id="partners" />
     </MainLayout>
   );
 }

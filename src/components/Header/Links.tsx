@@ -54,7 +54,7 @@ export function Links({ onLinkClick }: Props) {
         </a>
       </Link>
 
-      <Link href="#partners">
+      <Link href="/#partners">
         <a className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto" onClick={onLinkClick}>
           Partners
         </a>
