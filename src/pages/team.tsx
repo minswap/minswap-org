@@ -24,7 +24,7 @@ const teamMembers = [
     image: hieuPhanImage,
     title: 'Co-Founder',
     github: 'https://github.com/hieupnh',
-    twitter: 'https://twitter.com/sun4123',
+    twitter: 'https://twitter.com/hieupnh',
   },
   {
     name: 'Richard',
