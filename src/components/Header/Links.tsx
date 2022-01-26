@@ -10,10 +10,10 @@ export function Links({ onLinkClick }: Props) {
     <div className="flex flex-col items-start text-black lg:text-gray-500 lg:text-sm text-md lg:items-center lg:flex-row gap-x-7">
       <a
         className="w-full px-4 py-2 hover:text-black lg:py-0 lg:px-0 lg:w-auto lg:hidden"
-        href="https://app.minswap.org/"
+        href="https://testnet.minswap.org/"
         onClick={onLinkClick}
       >
-        Launch App
+        Launch Testnet
       </a>
 
       <a
