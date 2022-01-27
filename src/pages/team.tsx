@@ -1,11 +1,16 @@
 import * as React from 'react';
 
 import abdelImage from 'src/assets/team/abdel.png';
+import adrianImage from 'src/assets/team/adrian.png';
+import badrImage from 'src/assets/team/badr.png';
+import duyImage from 'src/assets/team/duy.png';
 import dzungImage from 'src/assets/team/dzung.png';
 import ethanImage from 'src/assets/team/ethan.png';
 import hieuPhanImage from 'src/assets/team/hieu.png';
+import jamesImage from 'src/assets/team/james.png';
 import khanhLeImage from 'src/assets/team/khanh.png';
 import longNguyenImage from 'src/assets/team/long.png';
+import parichayImage from 'src/assets/team/parichay.png';
 import richardNguyenImage from 'src/assets/team/richard.png';
 import smolpadokImage from 'src/assets/team/smolpadok.png';
 import { SectionTitle, TeamMemberItem } from 'src/components';
@@ -60,6 +65,37 @@ const teamMembers = [
     title: 'Software Engineer',
     github: 'https://github.com/ljttl3q04t',
     twitter: 'https://twitter.com/DzungPhamMins',
+  },
+  {
+    name: 'Thai Bao',
+    image: jamesImage,
+    title: 'Software Engineer',
+    github: 'https://github.com/theuranus',
+    twitter: 'https://twitter.com/james_ng_th',
+  },
+  {
+    name: 'Parichay',
+    image: parichayImage,
+    title: 'Software Engineer',
+    github: 'https://github.com/baymac',
+  },
+  {
+    name: 'Duy Tran',
+    image: duyImage,
+    title: 'Software Quality Assurance',
+    twitter: 'https://twitter.com/DuyTrn41315594',
+  },
+  {
+    name: 'PurritoGeneral',
+    image: adrianImage,
+    title: 'Growth',
+    twitter: 'https://twitter.com/PurritoGeneral',
+  },
+  {
+    name: 'Badr',
+    image: badrImage,
+    title: 'Growth',
+    twitter: 'https://twitter.com/elfahimbadr',
   },
 ];
 
