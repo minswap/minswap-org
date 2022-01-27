@@ -48,7 +48,7 @@ const teamMembers = [
   {
     name: 'Abdelilah',
     image: abdelImage,
-    title: 'Product Designer',
+    title: 'Design Lead',
     github: 'https://github.com/abdelilahDR',
     twitter: 'https://twitter.com/abdelilahDR',
   },
