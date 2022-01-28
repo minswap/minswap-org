@@ -67,7 +67,7 @@ const teamMembers = [
     twitter: 'https://twitter.com/DzungPhamMins',
   },
   {
-    name: 'Thai Bao',
+    name: 'James',
     image: jamesImage,
     title: 'Software Engineer',
     github: 'https://github.com/theuranus',
