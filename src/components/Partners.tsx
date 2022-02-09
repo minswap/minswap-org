@@ -3,8 +3,14 @@ import Image from 'next/image';
 
 import AdaHandlePartner from '../assets/partners/Ada-handle.png';
 import AnetaPartner from '../assets/partners/Aneta.png';
+import GeniusYieldPartner from '../assets/partners/Genius-Yield.png';
+import GeroWalletPartner from '../assets/partners/GeroWallet.svg';
+import IndigoPartner from '../assets/partners/Indigo.png';
+import MlabsPartner from '../assets/partners/Mlabs.png';
 import StricaPartner from '../assets/partners/Strica.png';
+import TweagPartner from '../assets/partners/Tweag.svg';
 import VyFiPartner from '../assets/partners/VyFi.png';
+import WellTypedPartner from '../assets/partners/Well-Typed.svg';
 import { SectionTitle } from './SectionTitle';
 
 type Props = {
@@ -33,6 +39,36 @@ export function Partners({ id }: Props) {
 
         <a className="w-[260px]" href="https://adahandle.com/" rel="noreferrer" target="_blank" title="AdaHandle">
           <Image alt="AdaHandle" src={AdaHandlePartner} />
+        </a>
+
+        <a
+          className="w-[340px]"
+          href="https://www.geniusyield.co/"
+          rel="noreferrer"
+          target="_blank"
+          title="Genius Yield"
+        >
+          <Image alt="Genius Yield" src={GeniusYieldPartner} />
+        </a>
+
+        <a className="w-[296px]" href="https://gerowallet.io/" rel="noreferrer" target="_blank" title="GeroWallet">
+          <Image alt="GeroWallet" src={GeroWalletPartner} />
+        </a>
+
+        <a className="w-[180px]" href="https://mlabs.city/" rel="noreferrer" target="_blank" title="Mlabs">
+          <Image alt="Mlabs" src={MlabsPartner} />
+        </a>
+
+        <a className="w-[200px]" href="https://indigoprotocol.io/" rel="noreferrer" target="_blank" title="Indigo">
+          <Image alt="Indigo" src={IndigoPartner} />
+        </a>
+
+        <a className="w-[300px]" href="https://www.tweag.io/" rel="noreferrer" target="_blank" title="Tweag">
+          <Image alt="Tweag" src={TweagPartner} />
+        </a>
+
+        <a className="w-[260px]" href="https://well-typed.com/" rel="noreferrer" target="_blank" title="Well-Typed">
+          <Image alt="Well-Typed" src={WellTypedPartner} />
         </a>
       </div>
     </div>
