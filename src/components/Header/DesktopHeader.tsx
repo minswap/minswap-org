@@ -14,9 +14,9 @@ type Props = {
 export function DesktopHeader({ isScroll, className }: Props) {
   return (
     <div className={classNames(isScroll ? 'sticky top-0 z-50' : null, className)}>
-      {/* <Announcement href="https://medium.com/minswap/how-to-buy-minswap-token-6305ae4b8cc2">
-        How to buy Minswap token
-      </Announcement> */}
+      <Announcement href="https://lbe.minswap.org">
+        The Discovery Phase is now LIVE 🎉, you can supply ADA now
+      </Announcement>
 
       <header className={classNames('grid justify-around py-4 header', isScroll ? 'shadow-md bg-white' : null)}>
         <Logo />
