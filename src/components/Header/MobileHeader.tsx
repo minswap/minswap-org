@@ -24,7 +24,7 @@ export function MobileHeader({ isScroll, className }: Props) {
 
   return (
     <div className={classNames(isScroll ? 'sticky top-0 z-50' : null, className, 'bg-white')}>
-      <Announcement className={isScroll ? 'hidden' : ''} href="https://lbe.minswap.org">
+      <Announcement className={classNames(isScroll ? 'hidden' : '', 'px-5 text-center')} href="https://lbe.minswap.org">
         The Discovery Phase is now LIVE 🎉, you can supply ADA now
       </Announcement>
 
