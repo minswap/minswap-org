@@ -47,11 +47,8 @@ export function DeepDive({ id }: Props) {
         </Item>
 
         <Item image={communityFirstImage} title="Community First">
-          All trading fees go directly to liquidity providers. MIN token holder vote democratically on protocol changes.
-        </Item>
-
-        <Item image={ethereumCompatibleImage} title="Ethereum Compatible">
-          With ERC-20 Converter, users can trade Ethereum tokens at much lower fees.
+          All trading fees go to liquidity providers and MIN stakers. MIN token holder vote democratically on protocol
+          changes.
         </Item>
 
         <Item image={stakePoolImage} title="Stake Pool Operators Support">
