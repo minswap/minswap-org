@@ -116,7 +116,7 @@ export function JoinTheCommunity() {
         {/* Medium */}
         <a
           className="flex flex-col items-center gap-y-2 lg:hidden"
-          href="https://medium.com/minswap"
+          href="https://minswap-labs.medium.com/"
           rel="noreferrer"
           target="_blank"
         >
@@ -126,7 +126,7 @@ export function JoinTheCommunity() {
 
         <a
           className="flex-col items-center hidden lg:flex gap-y-4"
-          href="https://medium.com/minswap"
+          href="https://minswap-labs.medium.com/"
           rel="noreferrer"
           target="_blank"
         >
