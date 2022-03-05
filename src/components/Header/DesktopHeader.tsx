@@ -15,7 +15,7 @@ export function DesktopHeader({ isScroll, className }: Props) {
   return (
     <div className={classNames(isScroll ? 'sticky top-0 z-50' : null, className)}>
       <Announcement href="https://lbe.minswap.org">
-        The Discovery Phase is now LIVE 🎉, you can supply ADA now
+        The Encounter Phase is now LIVE 🎉, you can redeem purrADA for LP tokens now
       </Announcement>
 
       <header className={classNames('grid justify-around py-4 header', isScroll ? 'shadow-md bg-white' : null)}>
