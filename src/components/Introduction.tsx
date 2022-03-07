@@ -31,9 +31,9 @@ export function Introduction() {
               </Button>
             </a>
           </Link>
-          <a href="https://testnet.minswap.org" rel="noreferrer" target="_blank">
+          <a href="https://app.minswap.org" rel="noreferrer" target="_blank">
             <Button className="h-full" color="primary" size="md">
-              View testnet <ArrowRightIcon />
+              Enter App <ArrowRightIcon />
             </Button>
           </a>
         </div>
@@ -46,9 +46,9 @@ export function Introduction() {
               </Button>
             </a>
           </Link>
-          <a href="https://testnet.minswap.org" rel="noreferrer" target="_blank">
+          <a href="https://app.minswap.org" rel="noreferrer" target="_blank">
             <Button className="h-full" color="primary" size="lg">
-              View testnet <ArrowRightIcon />
+              Enter App <ArrowRightIcon />
             </Button>
           </a>
         </div>

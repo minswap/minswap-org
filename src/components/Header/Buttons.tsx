@@ -9,9 +9,9 @@ export function Buttons() {
         <Button className="h-full">Documentation</Button>
       </a>
 
-      <a href="https://testnet.minswap.org/" rel="noreferrer" target="_blank">
+      <a href="https://app.minswap.org/" rel="noreferrer" target="_blank">
         <Button className="h-full" color="primary">
-          Testnet
+          App
         </Button>
       </a>
     </>
