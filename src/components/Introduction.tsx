@@ -24,13 +24,6 @@ export function Introduction() {
         <div className="m-3 md:h-5"></div>
 
         <div className="flex gap-x-4 lg:hidden">
-          <Link href="https://fiso.minswap.org/my-rewards">
-            <a target="_blank">
-              <Button className="h-full" size="md">
-                FISO rewards
-              </Button>
-            </a>
-          </Link>
           <a href="https://app.minswap.org" rel="noreferrer" target="_blank">
             <Button className="h-full" color="primary" size="md">
               Enter App <ArrowRightIcon />
@@ -39,13 +32,6 @@ export function Introduction() {
         </div>
 
         <div className="hidden lg:flex gap-x-4">
-          <Link href="https://fiso.minswap.org/my-rewards">
-            <a target="_blank">
-              <Button className="h-full" size="lg">
-                FISO rewards
-              </Button>
-            </a>
-          </Link>
           <a href="https://app.minswap.org" rel="noreferrer" target="_blank">
             <Button className="h-full" color="primary" size="lg">
               Enter App <ArrowRightIcon />
