@@ -30,8 +30,6 @@ export default function HomePage(): React.ReactElement {
 
       <DeepDive id="features" />
 
-      <MonthlyGithubAnalytics />
-
       <TokenDistribution id="tokenomics" />
 
       <AFamiliarExperience />

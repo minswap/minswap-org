@@ -24,10 +24,10 @@ const milestones: Milestone[] = [
   {
     items: ['Mainnet', 'Security Audit', 'Liquidity Mining'],
     time: 'Q1 2022',
-    hasReached: false,
+    hasReached: true,
   },
   {
-    items: ['Decentralized Autonomous Organization (DAO)', 'Community Governance'],
+    items: ['Decentralized Autonomous Organization (DAO)', 'Double Farming', 'MIN Staking'],
     time: 'Q2 2022',
     hasReached: false,
   },
