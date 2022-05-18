@@ -4,13 +4,14 @@ import { DiscordCommunity, Footer, Header, JoinTheCommunity, ScrollToTopButton, 
 
 type Props = {
   children: React.ReactNode;
+  hideCommunity?: boolean;
 };
 
-export function MainLayout({ children }: Props) {
+export function MainLayout({ children, hideCommunity }: Props) {
   const [isScroll, setIsScroll] = React.useState(false);
 
   React.useEffect(() => {
-    const handlScrollY = () => {
+    const handleScrollY = () => {
       const value = window.scrollY;
       if (value > 0 && isScroll === false) {
         setIsScroll(true);
@@ -18,11 +19,11 @@ export function MainLayout({ children }: Props) {
         setIsScroll(false);
       }
     };
-    handlScrollY();
+    handleScrollY();
 
-    window.addEventListener('scroll', handlScrollY);
+    window.addEventListener('scroll', handleScrollY);
     return () => {
-      window.removeEventListener('scroll', handlScrollY);
+      window.removeEventListener('scroll', handleScrollY);
     };
   });
 
@@ -32,8 +33,12 @@ export function MainLayout({ children }: Props) {
 
       <main>
         {children}
-        <JoinTheCommunity />
-        <DiscordCommunity />
+        {!hideCommunity && (
+          <>
+            <JoinTheCommunity />
+            <DiscordCommunity />
+          </>
+        )}
       </main>
 
       <SeparatorLine />
