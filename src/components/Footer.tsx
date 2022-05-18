@@ -20,7 +20,7 @@ const productsLinksProps: LinksColumnProps = {
 
 const documentationLinksProps: LinksColumnProps = {
   title: 'Documentation',
-  links: [{ text: 'Oracle', href: 'https://docs.minswap.org/oracle' }],
+  links: [{ text: 'Privacy policy', href: '/privacy' }],
 };
 
 const foundationLinksProps: LinksColumnProps = {

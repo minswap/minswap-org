@@ -23,7 +23,6 @@ export function MobileHeader({ isScroll, className }: Props) {
 
   return (
     <div className={classNames(isScroll ? 'sticky top-0 z-50' : null, className, 'bg-white')}>
-
       <header className={classNames('flex items-center py-4 px-5 gap-x-2', isScroll ? 'shadow-md bg-white' : null)}>
         <Logo />
 

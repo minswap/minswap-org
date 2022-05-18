@@ -13,7 +13,6 @@ type Props = {
 export function DesktopHeader({ isScroll, className }: Props) {
   return (
     <div className={classNames(isScroll ? 'sticky top-0 z-50' : null, className)}>
-
       <header className={classNames('grid justify-around py-4 header', isScroll ? 'shadow-md bg-white' : null)}>
         <Logo />
 
